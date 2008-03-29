@@ -1,0 +1,12 @@
+plugin:
+    name: feather-feeds
+    author: El Draper
+    version: 1.0
+    homepage: http://featherblog.com
+    about: This plugin provides RSS and ATOM feeds for Feather blogs.
+    contents:
+        .:
+            - init.rb
+        controllers:
+            .:
+                - feeds.rb
