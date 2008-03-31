@@ -1,0 +1,12 @@
+plugin:
+    name: feather-comments
+    author: Michael Leung
+    version: 1.0
+    homepage: http://featherblog.com
+    about: This plugin provides the base commenting system for feather.
+    contents:
+        .:
+            - init.rb
+        controllers:
+            .:
+                - comments.rb
