@@ -5,5 +5,5 @@ Hooks::Routing.add_route do
 end
 
 Hooks::View.register_view do
-  { :controller => "articles", :action => "show", :partial => "comments" }
+  { :name => "after_post", :partial => "comments" }
 end

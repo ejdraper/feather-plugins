@@ -10,3 +10,11 @@ plugin:
         controllers:
             .:
                 - comments.rb
+        models:
+            .:
+                - comment.rb
+        views:
+            .:
+            after_post:
+                .:
+                    - _comments.html.erb
