@@ -1,1 +1,37 @@
 <h3>Comments</h3>
+<% Comment.all_for_post(@article.id).each do |comment| %>
+	<b>Re: <%= @article.title %></b> by <i><%= link_to comment.name, comment.website %></i>
+	<br /><br />
+	<%= comment.comment %>
+	<br /><br />
+	<i>Created <%= render_relative_date(comment.created_at) %></i>
+	<br /><br />
+<% end %>
+<br />
+<h3>Leave Comment</h3>
+<% if session[:comment_error] %>
+	There were errors that prohibited your comment from being saved!
+	<br /><br />
+	<% session[:comment_error].each do |err| %>
+		<%= err[1].first %><br />
+	<% end %>
+	<br />
+	<% session[:comment_error] = nil %>
+<% end %>
+<% @comment = Comment.new %>
+<% @comment.post_id = @article.id %>
+<% form_for :comment, :action => "/comments/create" do %>
+<%= hidden_control :post_id %>
+<p>
+	Name: <%= text_control :name, :size => 30 %>
+</p>
+<p>
+	Website: <%= text_control :website, :size => 30 %>
+</p>
+<p>
+	Comment: <%= text_area_control :comment, :rows => 10, :cols => 30 %>
+</p>
+<p>
+	<%= submit_button "Leave comment" %>
+</p>
+<% end %>
