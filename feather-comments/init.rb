@@ -10,5 +10,5 @@ Hooks::View.register_view do
 end
 
 Hooks::View.register_view do
-  { :name => "after_post_in_list", :partial => "comments" }
+  { :name => "meta_section", :partial => "comments" }
 end
