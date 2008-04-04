@@ -18,6 +18,6 @@ plugin:
             after_post:
                 .:
                     - _comments.html.erb
-            after_post_in_list:
+            meta_section:
                 .:
                     - _comments.html.erb
