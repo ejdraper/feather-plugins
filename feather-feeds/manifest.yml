@@ -3,10 +3,15 @@ plugin:
     author: El Draper
     version: 1.0
     homepage: http://featherblog.com
-    about: This plugin provides RSS and ATOM feeds for Feather blogs.
+    about: This plugin provides an RSS feed for a Feather blog.
     contents:
         .:
             - init.rb
         controllers:
             .:
                 - feeds.rb
+        views:
+            .:
+                head:
+                    .:
+                        - _feed_link.html.erb
