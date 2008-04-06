@@ -11,7 +11,7 @@
       <abbr title="<%= render_relative_date(comment.created_at) %>"><span class="date"><%= render_relative_date(comment.created_at) %></span></abbr>
     </div>
     <div class="content">
-      <%= comment.comment %>
+      <%= textile_to_html(comment.comment) %>
     </div>
   </li>  
 <% end %>
@@ -42,7 +42,7 @@
         <%= text_field :name => 'comment[website]', :size => 30, :id => 'comment_website' %>
       </p>
       <p>
-      	<label class="text" for="comment_comment">Comment:</label>
+      	<label class="text" for="comment_comment">Comment: <small><a href="http://hobix.com/textile/quick.html">Textile enabled</a></small></label>
       	<%= text_area_field "", :name => 'comment[comment]', :rows => 10, :cols => 30, :id => 'comment_comment' %>
       </p>
       <div class="formactions">
