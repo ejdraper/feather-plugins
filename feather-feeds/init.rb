@@ -11,4 +11,9 @@ end
 
 Hooks::View.register_view do
   { :name => "head", :partial => "feed_link" }
-end
+end  
+
+Hooks::View.register_view do
+  { :name => "sidebar", :partial => "feed_link" }
+end  
+

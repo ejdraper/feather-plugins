@@ -1,6 +1,6 @@
 plugin:
     name: feather-comments
-    author: Michael Leung
+    author: Michael Leung and El Draper
     version: 1.0
     homepage: http://featherblog.com
     about: This plugin provides the base commenting system for feather.
