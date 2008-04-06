@@ -3,7 +3,7 @@ require File.join(File.join(File.dirname(__FILE__), "models"), "link")
 
 Merb::Router.prepend do |r|
   r.namespace :admin do |admin|
-    admin.resource :links
+    admin.resources :links
   end
 end
 

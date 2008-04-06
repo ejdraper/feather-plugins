@@ -13,3 +13,10 @@ plugin:
         models:
             .:
                 - link.rb
+        views:
+            .:
+                admin:
+                    .:
+                        links:
+                            .:
+                                - index.html.erb
