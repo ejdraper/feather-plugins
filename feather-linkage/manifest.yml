@@ -1,0 +1,15 @@
+plugin:
+    name: feather-linkage
+    author: Michael Leung
+    version: 1.0
+    homepage: http://featherblog.com
+    about: This plugin provides the ability to create arbitrary sidebar links.
+    contents:
+        .:
+            - init.rb
+        controllers:
+            .:
+                - links.rb
+        models:
+            .:
+                - link.rb
