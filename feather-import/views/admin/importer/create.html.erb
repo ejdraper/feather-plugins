@@ -1,0 +1,37 @@
+<h1>Imported Existing Content</h1>
+<% if defined?(@articles) && !@articles.nil? %>
+	<b>Articles:</b>
+	<% @articles.each do |article| %>
+		<p>
+		<% if article.new_record? %>
+			<%= article.title %> : unable to save!
+			<br />
+			<ul>
+			<% article.errors.collect { |e| e[1][0] }.each do |e| %>
+				<li><%= e %></li>
+			<% end %>
+			</ul>
+		<% else %>
+			<%= article.title %> : saved as article <%= article.id %>, available at <%= link_to article.permalink, article.permalink %>
+		<% end %>
+		</p>
+	<% end %>
+<% end %>
+<% if defined?(@comments) && !@comments.nil? %>
+	<b>Comments:</b>
+	<% @comments.each do |comment| %>
+		<p>
+		<% if comment.new_record? %>
+			Comment by <%= comment.name %> : unable to save!
+			<br />
+			<ul>
+			<% comment.errors.collect { |e| e[1][0] }.each do |e| %>
+				<li><%= e %></li>
+			<% end %>
+			</ul>
+		<% else %>
+			Comment by <%= comment.name %> : saved as <%= comment.id %>
+		<% end %>
+		</p>
+	<% end %>
+<% end %>

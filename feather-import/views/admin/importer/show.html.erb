@@ -1,0 +1,9 @@
+<h1>Import existing content</h1>
+
+<% form_tag(:action => url(:admin_importer)) do %>
+	<%= text_field :name => "articles_url", :label => "Articles Feed" %><br />
+	<% if defined?(Comment) %>
+		<%= text_field :name => "comments_url", :label => "Comments Feed" %><br />
+	<% end %>
+	<%= submit_button "Import" %>
+<% end %>
