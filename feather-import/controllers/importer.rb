@@ -30,8 +30,8 @@ module Admin
           # Grab the information from the article feed item
           article.title = (a/"title").text
           article.content = (a/"description").text
-          article.published = true
-          article.published_at = (a/"pubdate").text
+          article.published = "1"
+          article.published_at = DateTime.parse((a/"pubdate").text)
           article.permalink = URI.parse((a/"guid").text).request_uri
           article.user_id = self.current_user.id
           # Save the article
@@ -42,7 +42,7 @@ module Admin
         # Return the list of processed articles
         processed
       end
-      
+
       ##
       # This processes the comments feed url
       def process_comments(url)
@@ -59,8 +59,9 @@ module Admin
           # Grab the information from the comment feed item
           comment.comment = (c/"description").text
           comment.name = (c/"dc:creator").text
-          comment.created_at = (c/"pubdate").text
-          comment.article_id = Article.first(:title => (c/"title").text.gsub("Re: ", "")).id
+          comment.created_at = DateTime.parse((c/"pubdate").text)
+          a = Article.first(:title => (c/"title").text.gsub("Re: ", ""))
+          comment.article_id = a.id unless a.nil?
           # Save the comment
           comment.save
           # Add it to the list of processed comments

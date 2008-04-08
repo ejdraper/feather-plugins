@@ -6,7 +6,7 @@ class Comment < DataMapper::Base
   property :created_at, :datetime
   property :email_address, :string
   
-  validates_presence_of :name, :comment
+  validates_presence_of :name, :comment, :article_id
   
   def self.all_for_post(article_id, method = :all)
     self.send(method, {:article_id => article_id, :order => "created_at"})
