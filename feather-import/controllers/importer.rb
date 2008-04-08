@@ -10,7 +10,7 @@ module Admin
       # Process the article feed if specified
       @articles = process_articles(params[:articles_url]) if params[:articles_url] && params[:articles_url] != ""
       # Process the comment feed if specified
-      @comments = process_comments(params[:comments_url]) if params[:comments_url] && params[:comments_url] != ""
+      @comments = process_comments(params[:comments_url]) if params[:comments_url] && params[:comments_url] != "" && (defined?(Comment) && is_plugin_active("feather-comments"))
       # Render the results
       render
     end
