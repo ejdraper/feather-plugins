@@ -15,3 +15,6 @@ plugin:
                 head:
                     .:
                         - _feed_link.html.erb
+                sidebar:
+                    .:
+                        - _feed_link.html.erb
