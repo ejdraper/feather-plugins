@@ -1,0 +1,7 @@
+<!-- We need a way to add style sheet stuff in for these plugins, instead of whack inline styles. -->
+<div id="sidebar-groups" style="margin-top: 20px">
+  <% SidebarGroup.all.each do |sidebar_group| %>
+    <h3><%= sidebar_group.title %></h3>
+    <%= textile_to_html(sidebar_group.content) %>
+  <% end %>
+</div>
