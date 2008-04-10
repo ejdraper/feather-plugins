@@ -1,7 +1,7 @@
 gem "RedCloth"
 require "redcloth"
 gem "BlueCloth"
-require "BlueCloth"
+require "bluecloth"
 gem "rubypants"
 require "rubypants"
 
@@ -14,9 +14,9 @@ Hooks::Formatters.register_formatter("markdown") do |text|
 end
 
 Hooks::Formatters.register_formatter("textile+smartypants") do |text|
-  RubyPants.new(RedCloth.new(text).to_html).to_html
+  RedCloth.new(RubyPants.new(text).to_html).to_html
 end
 
 Hooks::Formatters.register_formatter("markdown+smartypants") do |text|
-  RubyPants.new(BlueCloth.new(text).to_html).to_html
+  BlueCloth.new(RubyPants.new(text).to_html).to_html
 end
