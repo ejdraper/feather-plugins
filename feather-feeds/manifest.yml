@@ -18,3 +18,9 @@ plugin:
                 sidebar:
                     .:
                         - _feed_link.html.erb
+        gems:
+            .:
+                - builder-2.1.2.gem
+        specifications:
+            .:
+                - builder-2.1.2.gemspec

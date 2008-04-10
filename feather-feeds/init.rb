@@ -1,5 +1,5 @@
 require File.join(File.join(File.dirname(__FILE__), "controllers"), "feeds")
-require "builder"
+gem "builder"
 
 Merb::Router.prepend do |r|
   r.match("/articles.rss").to(:controller => "Feeds", :action => "articles")
@@ -12,9 +12,6 @@ Hooks::Menu.add_menu_item do
 end
 
 Hooks::View.register_view do
-  { :name => "head", :partial => "feed_link" }
-end  
-
-Hooks::View.register_view do
+  { :name => "head", :partial => "feed_link" },
   { :name => "sidebar", :partial => "feed_link" }
 end

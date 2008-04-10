@@ -3,7 +3,7 @@
     Feel free to throw in whatever content you want. Textile is available. Maybe you want to create
     a blogroll, or links to your Working with Rails Page, or, whatever.
   </p>
-  <%= partial 'shared/textile_help' %>
+  <%= partial 'shared/formatting_help' %>
 <% end %>
 
 <%= error_messages_for @sidebar_group %>
@@ -11,7 +11,7 @@
 
 <% form_for :sidebar_group, :action => url(:admin_sidebar_group, @sidebar_group) do %>
   <%= partial 'form' %>
-  <p><%= submit_button 'Save Sidebar Gruoup' %> or <%= link_to 'Cancel', url(:admin_sidebar_groups) %></p>
+  <p><%= submit_button 'Save Sidebar Group' %> or <%= link_to 'Cancel', url(:admin_sidebar_groups) %></p>
 <% end %>
 
 <%= link_to "Back to sidebar groups", url(:admin_sidebar_groups) %>

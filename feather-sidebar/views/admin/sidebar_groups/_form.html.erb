@@ -1,2 +1,3 @@
 <%= text_control :title, :size => 50, :label => 'Title:' %>
 <%= text_area_control :content, :rows => 20, :cols => 60, :label => 'Content:' %>
+<%= select_control :formatter, :label => "Formatter: ", :collection => Hooks::Formatters.available_formatters, :selected => (@sidebar_group.new_record? ? (self.current_user.default_formatter || "default") : @sidebar_group.formatter) %>

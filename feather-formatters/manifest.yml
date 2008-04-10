@@ -1,0 +1,19 @@
+plugin:
+    name: feather-formatters
+    author: El Draper
+    version: 1.0
+    homepage: http://featherblog.com
+    about: This plugin provides different formatters to be used with Feather.
+    contents:
+        .:
+            - init.rb
+        gems:
+            .:
+                - RedCloth-3.0.4.gem
+                - BlueCloth-1.0.0.gem
+                - rubypants-0.2.0.gem
+        specifications:
+            .:
+                - RedCloth-3.0.4.gemspec
+                - BlueCloth-1.0.0.gemspec
+                - rubypants-0.2.0.gemspec
