@@ -2,7 +2,7 @@ require File.join(File.join(File.dirname(__FILE__), "controllers"), "comments")
 require File.join(File.join(File.dirname(__FILE__), "models"), "comment")
 
 Merb::Router.prepend do |r|
-  r.match("/comments/create", :controller => "Comments", :action => "create")
+  r.resources :comments
 end
 
 Hooks::View.register_view do

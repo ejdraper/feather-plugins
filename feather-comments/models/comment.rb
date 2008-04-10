@@ -5,6 +5,7 @@ class Comment < DataMapper::Base
   property :comment, :text
   property :created_at, :datetime
   property :email_address, :string
+  property :formatter, :string, :default => "default"
   
   validates_presence_of :name, :comment, :article_id
   
