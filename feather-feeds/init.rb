@@ -8,6 +8,6 @@ Merb::Router.prepend do |r|
 end
 
 Hooks::View.register_view do
-  { :name => "head", :partial => "feed_link" }
-  { :name => "sidebar", :partial => "feed_link" }
+  [{ :name => "head", :partial => "feed_link" },
+  { :name => "sidebar", :partial => "feed_link" }]
 end
