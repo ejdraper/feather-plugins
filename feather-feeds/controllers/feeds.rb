@@ -14,7 +14,7 @@ class Feeds < Application
           xml.item do
             xml.title         article.title
             xml.link          "http://#{request.env['HTTP_HOST']}#{article.permalink}"
-            xml.description   RedCloth.new(article.content).to_html
+            xml.description   render_article(article)
             xml.pubDate       rfc822(article.published_at)
             xml.guid          "http://#{request.env['HTTP_HOST']}#{article.permalink}"
             xml.author        article.user.login
@@ -42,7 +42,7 @@ class Feeds < Application
             xml.item do
               xml.title         "Re: #{article.title}"
               xml.link          "http://#{request.env['HTTP_HOST']}#{article.permalink}##{comment.id}"
-              xml.description   RedCloth.new(comment.comment).to_html
+              xml.description   render_text("default", comment.comment)
               xml.pubDate       rfc822(comment.created_at)
               xml.guid          "http://#{request.env['HTTP_HOST']}#{article.permalink}##{comment.id}"
               xml.author        comment.name

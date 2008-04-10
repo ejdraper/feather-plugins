@@ -1,5 +1,6 @@
-require File.join(File.join(File.dirname(__FILE__), "controllers"), "feeds")
 gem "builder"
+require "builder"
+require File.join(File.join(File.dirname(__FILE__), "controllers"), "feeds")
 
 Merb::Router.prepend do |r|
   r.match("/articles.rss").to(:controller => "Feeds", :action => "articles")
