@@ -7,11 +7,11 @@
 <% Comment.all_for_post(@article.id).each do |comment| %>
   <li id="comment-<%= comment.id %>" class="comment">
     <div class="author">
-      <cite><span class="author"><span><%= comment.website.blank? ?  comment.name : link_to(comment.name, comment.website) %></span></span></cite> – 
+      <cite><span class="author"><span><%= comment.website.blank? ?  h(comment.name) : link_to(h(comment.name), comment.website) %></span></span></cite> – 
       <abbr title="<%= render_relative_date(comment.created_at) %>"><span class="date"><%= render_relative_date(comment.created_at) %></span></abbr>
     </div>
     <div class="content">
-      <%= render_text(comment.formatter, comment.comment) %>
+      <%= render_text(comment.formatter, h(comment.comment)) %>
     </div>
   </li>  
 <% end %>
