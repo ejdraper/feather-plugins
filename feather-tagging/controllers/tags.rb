@@ -6,5 +6,4 @@ class Tags < Application
     @tag = Tag.first(:name => id)
     display @tag
   end
-  
 end

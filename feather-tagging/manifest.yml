@@ -10,7 +10,25 @@ plugin:
         controllers:
             .:
                 - tags.rb
+        lib:
+            .:
+                - article.rb
+                - global_helpers.rb
         models:
             .:
                 - tag.rb
                 - tagging.rb
+        views:
+            .:
+                article_form_fields:
+                    .:
+                        - _tag_field.html.erb
+                meta_section:
+                    .:
+                        - _tag_list.html.erb
+                sidebar:
+                    .:
+                        - _tag_cloud.html.erb
+                tags:
+                    .:
+                        - show.html.erb

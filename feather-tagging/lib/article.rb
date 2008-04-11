@@ -20,14 +20,10 @@ class Article
     @tag_list.split(",").each do |t|
       unless t.empty?
         # Hmm, can we do transactions with DM? I'm sure there's a way.
-        tag = Tag.create(:name => t.strip) 
+        tag = Tag.find_or_create(:name => t.strip) 
         Tagging.create(:article_id => self.id, :tag_id => tag.id)
       end
     end
-  end
-  
-  after_save do |article|
-    article.create_tags
   end
   
   # This is probably slower than habtm, but that's not working as stated above.

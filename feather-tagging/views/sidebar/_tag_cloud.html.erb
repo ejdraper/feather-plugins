@@ -1,4 +1,12 @@
-<!-- We need a way to get these classes in the style sheet. -->
+<style>
+	.tag1 { font-size: 12px; }
+	.tag2 { font-size: 14px; }
+	.tag3 { font-size: 16px; }
+	.tag4 { font-size: 18px; }
+	.tag5 { font-size: 20px; }
+</style>
+
+<% @tags = Tag.all %>
 <% tag_cloud @tags, %w(tag1 tag2 tag3 tag4 tag5) do |name, css_class| %>
-  <%= link_to(name, tag_path(name), :class => css_class) %>
+  <%= link_to(name, url(:tag, :id => name), :class => css_class) %>
 <% end %>

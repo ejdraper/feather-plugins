@@ -17,10 +17,14 @@ Merb::Router.prepend do |r|
   r.match('/tags/:id').to(:controller => 'tags', :action =>'show').name(:tag)
 end
 
+Hooks::Events.register_event(:after_save_article) do |args|
+  args.first.create_tags
+end
+
 Hooks::View.register_view do
   [
     { :name => "article_form_fields", :partial => "tag_field" },
     { :name => "meta_section", :partial => "tag_list" },
-    { :name => "sidebar", :partial => "tag_could" }
+    { :name => "sidebar", :partial => "tag_cloud" }
   ]
 end
