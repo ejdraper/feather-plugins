@@ -1,0 +1,13 @@
+<% throw_content :title do %>
+	Articles tagged with <%= @tag.name %>
+<% end %>
+
+<h1>Articles Tagged with '<%= @tag.name %>'</h1>
+
+<!--  -->
+
+<% unless @tag.articles.empty? %>
+  <%= partial('articles/article', :with => @tag.articles) %>
+<% else %>
+  No articles found for <%= @tag.name %>.
+<% end %>

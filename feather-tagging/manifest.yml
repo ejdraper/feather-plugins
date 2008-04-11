@@ -1,0 +1,16 @@
+plugin:
+    name: feather-tagging
+    author: Michael Leung
+    version: 1.0
+    homepage: http://featherblog.com
+    about: This plugin provides tag support to articles.
+    contents:
+        .:
+            - init.rb
+        controllers:
+            .:
+                - tags.rb
+        models:
+            .:
+                - tag.rb
+                - tagging.rb

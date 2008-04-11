@@ -1,0 +1,3 @@
+<% unless article.tags.empty? %>
+  | tagged with: <%= article.taggings.collect { |tagging| link_to(tagging.tag.name, url(:tag, tagging.tag)) }.join(", ") %>
+<% end %>
