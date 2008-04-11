@@ -3,7 +3,7 @@
 </h5>
 <p><a href="#comment-form">Leave a response</a></p>
 <ol class="comments" id="comments">
-<!-- Put this in a partial. Actually I think we should reopen the article model, and stick in has_many :comments. do that. -- Mike -->
+<!-- Put this in a partial. Actually I think we should reopen the article model, and stick in has_many :comments. do that. -->
 <% Comment.all_for_post(@article.id).each do |comment| %>
   <li id="comment-<%= comment.id %>" class="comment">
     <div class="author">
