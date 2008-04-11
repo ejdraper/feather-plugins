@@ -8,7 +8,7 @@
 
 <% unless @tag.articles.empty? %>
   <% @tag.articles.each do |a| %>
-    <%= link_to(a.title, article.permalink) %>
+    <%= link_to(a.title, a.permalink) %>
   <% end %>
 <% else %>
   No articles found for <%= @tag.name %>.
