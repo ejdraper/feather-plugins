@@ -1,0 +1,15 @@
+<% throw_content :right do %>
+  <p>
+	Setup a new ping service here - just give it a name, type in the url to the service, and select whether it uses standard, or extended ping.
+  </p>
+<% end %>
+
+<%= error_messages_for @ping_service %>
+<h1>New Ping Service</h1>
+
+<% form_for :ping_service, :action => url(:admin_ping_service, @ping_service) do %>
+  <%= partial 'form' %>
+  <p><%= submit_button 'Save Ping Service' %> or <%= link_to 'Cancel', url(:admin_ping_services) %></p>
+<% end %>
+
+<%= link_to "Back to ping services", url(:admin_ping_services) %>

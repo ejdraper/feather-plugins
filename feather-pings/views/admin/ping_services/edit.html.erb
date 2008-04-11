@@ -1,0 +1,11 @@
+<% throw_content :right do %>
+	Edit the settings for the ping service.
+<% end %>
+
+<%= error_messages_for @ping_service %>
+<h1>Edit <%= @ping_service.name %></h1>
+
+<% form_for :ping_service, :action => url(:admin_ping_service, @ping_service), :method => :put do %>
+  <%= partial 'form' %>
+  <p><%= submit_button 'Save Ping Service' %> or <%= link_to 'Cancel', url(:admin_ping_services) %></p>
+<% end %>

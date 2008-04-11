@@ -1,0 +1,30 @@
+<% throw_content :right do %>
+  <h4>View Ping Log</h4>
+  <p>
+	  Here you can view the details of a ping log.
+  </p>
+<% end %>
+
+<h1>View Ping Log</h1>
+
+<p>
+	Service: <%= @ping_log.service.name %>
+</p>
+
+<p>
+	Service URL: <%= @ping_log.service.url %>
+</p>
+
+<p>
+	Successful? <%= @ping_log.successful %>
+</p>
+
+<p>
+	Message: <%= @ping_log.message %>
+</p>
+
+<p>
+	When? <%= render_relative_date(@ping_log.created_at) %>
+</p>
+
+<%= link_to "Back to ping logs", url(:admin_ping_logs) %>

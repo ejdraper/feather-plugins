@@ -1,0 +1,23 @@
+<% throw_content :right do %>
+  <h4>View Ping Service</h4>
+  <p>
+	  Here you can view an existing ping service.
+  </p>
+<% end %>
+
+<h1>View Ping Service</h1>
+
+<p>
+	Name: <%= @ping_service.name %>
+</p>
+
+<p>
+	URL: <%= @ping_service.url %>
+</p>
+
+<p>
+	Extended? <%= @ping_service.extended %>
+</p>
+
+<%= link_to "Edit ping service", url(:edit_admin_ping_service, @ping_service) %> |
+<%= link_to "Back to ping services", url(:admin_ping_services) %>
