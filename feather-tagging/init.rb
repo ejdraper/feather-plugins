@@ -20,7 +20,7 @@ end
 Hooks::View.register_view do
   [
     { :name => "article_form_fields", :partial => "tag_field" },
-    { :name => "meta_section", :partial => "tag_list" }
+    { :name => "meta_section", :partial => "tag_list" },
     { :name => "sidebar", :partial => "tag_could" }
   ]
 end
