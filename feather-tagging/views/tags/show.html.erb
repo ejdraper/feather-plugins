@@ -7,7 +7,9 @@
 <!--  -->
 
 <% unless @tag.articles.empty? %>
-  <%= partial('articles/article', :with => @tag.articles) %>
+  <% @tag.articles.each do |a| %>
+    <%= link_to(a.title, article.permalink) %>
+  <% end %>
 <% else %>
   No articles found for <%= @tag.name %>.
 <% end %>
