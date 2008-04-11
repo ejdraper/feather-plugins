@@ -3,15 +3,7 @@ class Article
   # We define this tags attribute so when the form posts, the params for
   # tags get set, and we can subsequently access it later on.
   attr_accessor :tag_list
-  
   has_many :taggings
-  # Datamapper's version of has_many :through. Not quite as pretty, but it'll get the job done. Or not...
-  # This is supposed to work but it just returns a #<DataMapper::Support::TypedSet[Tag]: {}>
-  # has_and_belongs_to_many :tags,
-  #   :join_table => "taggings",
-  #   :left_foreign_key => "article_id",
-  #   :right_foreign_key => "tag_id",
-  #   :class => "Tag"
       
   def create_tags
     return if @tag_list.nil? || @tag_list.empty?
@@ -26,7 +18,6 @@ class Article
     end
   end
   
-  # This is probably slower than habtm, but that's not working as stated above.
   def tags
     taggings.map { |tagging| tagging.tag.name }.join(", ")
   end

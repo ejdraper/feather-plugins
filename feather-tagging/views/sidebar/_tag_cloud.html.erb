@@ -5,8 +5,13 @@
 	.tag4 { font-size: 18px; }
 	.tag5 { font-size: 20px; }
 </style>
-
+<!-- I don't like this in the view. Hmmm... -->
 <% @tags = Tag.all %>
-<% tag_cloud @tags, %w(tag1 tag2 tag3 tag4 tag5) do |name, css_class| %>
-  <%= link_to(name, url(:tag, :id => name), :class => css_class) %>
+<% unless @tags.empty? %>
+  <div style="margin-top: 20px">
+    <h3>Tags</h3>
+    <% tag_cloud @tags, %w(tag1 tag2 tag3 tag4 tag5) do |name, permalink, css_class| %>
+      <%= link_to(name, url(:tag, permalink), :class => css_class) %>
+    <% end %>
+  </div>
 <% end %>
