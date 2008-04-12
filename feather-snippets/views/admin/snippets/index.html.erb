@@ -1,0 +1,14 @@
+<% throw_content :right do %>
+  <h4>View Snippets</h4>
+  <p>
+	Snippets allow you to inject snippets within your blog at specified points.
+  </p>
+<% end %>
+
+<h1>View Snippets</h1>
+
+<table>
+  <%= partial('admin/snippets/snippet', :with => @snippets) %>
+</table>
+<br />
+<%= link_to "New Snippet", url(:new_admin_snippet) %>

@@ -1,27 +1,27 @@
 plugin:
-    name: feather-redirects
+    name: feather-snippets
     author: El Draper
     version: 1.0
     homepage: http://featherblog.com
-    about: This plugin adds the ability for the user to setup custom redirects.
+    about: This plugin adds the ability for the user to create and manage dynamic snippets
     contents:
         .:
             - init.rb
             - install.rb
         controllers:
             .:
-                - redirector.rb
-                - redirects.rb
+                - snippets.rb
         models:
             .:
-                - redirect.rb
+                - snippet.rb
         views:
             .:
                 admin:
                     .:
-                        redirects:
+                        snippets:
                             .:
                                 - _form.html.erb
+                                - _snippet.html.erb
                                 - edit.html.erb
                                 - index.html.erb
                                 - new.html.erb

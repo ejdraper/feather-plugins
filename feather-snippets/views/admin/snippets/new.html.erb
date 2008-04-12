@@ -1,0 +1,15 @@
+<% throw_content :right do %>
+  <p>
+	Setup a new snippet here.
+  </p>
+<% end %>
+
+<%= error_messages_for @snippet %>
+<h1>New Snippet</h1>
+
+<% form_for :snippet, :action => url(:admin_snippet, @snippet) do %>
+  <%= partial 'form' %>
+  <p><%= submit_button 'Save Snippet' %> or <%= link_to 'Cancel', url(:admin_snippets) %></p>
+<% end %>
+
+<%= link_to "Back to snippets", url(:admin_snippets) %>
