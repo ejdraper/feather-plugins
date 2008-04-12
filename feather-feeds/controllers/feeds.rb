@@ -1,6 +1,6 @@
 class Feeds < Application
   def articles
-    @articles = Article.all(:published => true, :limit => 15, :order => "published_at DESC")
+    @articles = Article.all(:published => true, :limit => FeedSetting.current.article_count, :order => "published_at DESC")
     rss = ""
     xml = Builder::XmlMarkup.new(:target => rss)
     xml.instruct!
@@ -26,7 +26,7 @@ class Feeds < Application
   end
   
   def comments
-    @comments = (defined?(Comment) && is_plugin_active("feather-comments")) ? Comment.all(:limit => 15, :order => "created_at DESC") : []
+    @comments = (defined?(Comment) && is_plugin_active("feather-comments")) ? Comment.all(:limit => FeedSetting.current.comment_count, :order => "created_at DESC") : []
     rss = ""
     xml = Builder::XmlMarkup.new(:target => rss)
     xml.instruct!

@@ -7,11 +7,25 @@ plugin:
     contents:
         .:
             - init.rb
+            - install.rb
         controllers:
             .:
                 - feeds.rb
+                - feed_settings.rb
+        helpers:
+            .:
+                - global_helpers.rb
+        models:
+            .:
+                - feed_setting.rb
         views:
             .:
+                admin:
+                    .:
+                        feed_settings:
+                            .:
+                                - edit.html.erb
+                                - show.html.erb
                 head:
                     .:
                         - _feed_link.html.erb

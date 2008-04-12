@@ -1,0 +1,4 @@
+<tr>
+	<td><%= link_to ping_service.name, url(:admin_ping_service, ping_service) %></td>
+	<td <%= link_to "Edit", url(:edit_admin_ping_service, ping_service) %> | <%= link_to 'Delete', url(:delete_admin_ping_service, ping_service), {:method => :delete, :onclick => "return confirm('Are you sure?')"} %></td>
+</tr>

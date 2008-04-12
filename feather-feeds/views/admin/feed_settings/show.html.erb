@@ -1,0 +1,27 @@
+<% throw_content :right do %>
+  <h4>View Feed Settings</h4>
+  <p>
+	Here you can view feed settings.
+  </p>
+<% end %>
+
+<h1>View Feed Settings</h1>
+
+<p>
+	Article count within feed:
+	<%= @feed_setting.article_count %>
+</p>
+
+<% if defined?(Comment) && is_plugin_active("feather-comments") %>
+<p>
+	Comment count within feed:
+	<%= @feed_setting.comment_count %>
+</p>
+<% end %>
+
+<p>
+	External Feed Url:
+	<%= (@feed_setting.external_feed_url.nil? || @feed_setting.external_feed_url == "") ? "Not set" : @feed_setting.external_feed_url %>
+</p>
+
+<%= link_to "Edit feed settings", url(:edit_admin_feed_settings, @feed_setting) %>

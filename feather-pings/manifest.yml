@@ -1,0 +1,35 @@
+plugin:
+    name: feather-pings
+    author: El Draper
+    version: 1.0
+    homepage: http://featherblog.com
+    about: This plugin adds the ability for ping services to be contacted whenever a new post is published.
+    contents:
+        .:
+            - init.rb
+            - install.rb
+        controllers:
+            .:
+                - ping_logs.rb
+                - ping_services.rb
+        models:
+            .:
+                - ping_log.rb
+                - ping_service.rb
+        views:
+            .:
+                admin:
+                    .:
+                        ping_logs:
+                            .:
+                                - _ping_log.html.erb
+                                - index.html.erb
+                                - show.html.erb
+                        ping_services:
+                            .:
+                                - _form.html.erb
+                                - _ping_service.html.erb
+                                - edit.html.erb
+                                - index.html.erb
+                                - new.html.erb
+                                - show.html.erb
