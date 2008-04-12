@@ -1,0 +1,4 @@
+<tr>
+	<td><%= link_to style.name, url(:admin_style, style) %></td>
+	<td <%= link_to "Edit", url(:edit_admin_style, style) %> | <%= link_to 'Delete', url(:delete_admin_style, style), {:method => :delete, :onclick => "return confirm('Are you sure?')"} %></td>
+</tr>

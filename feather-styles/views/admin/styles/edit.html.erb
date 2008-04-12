@@ -1,0 +1,11 @@
+<% throw_content :right do %>
+	Edit the style.
+<% end %>
+
+<%= error_messages_for @style %>
+<h1>Edit style</h1>
+
+<% form_for :style, :action => url(:admin_style, @style), :method => :put do %>
+  <%= partial 'form' %>
+  <p><%= submit_button 'Save Style' %> or <%= link_to 'Cancel', url(:admin_styles) %></p>
+<% end %>

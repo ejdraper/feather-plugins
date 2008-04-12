@@ -10,7 +10,7 @@
 <table>
 	<% @redirects.each do |redirect| %>
 	<tr>
-		<td>From <%= redirect.from_url %> to <%= redirect.to_url %></td>
+		<td>From <%= link_to "#{redirect.from_url} to #{redirect.to_url}", url(:admin_redirect, redirect) %></td>
 		<td>(<%= redirect.permanent ? "Permanent" : "Temporary" %>)</td>
 		<td <%= link_to "Edit", url(:edit_admin_redirect, redirect) %> | <%= link_to 'Delete', url(:delete_admin_redirect, redirect), {:method => :delete, :onclick => "return confirm('Are you sure?')"} %></td>
 	</tr>

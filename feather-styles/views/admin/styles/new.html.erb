@@ -1,0 +1,15 @@
+<% throw_content :right do %>
+  <p>
+	Setup a new style here.
+  </p>
+<% end %>
+
+<%= error_messages_for @style %>
+<h1>New Style</h1>
+
+<% form_for :style, :action => url(:admin_style, @style) do %>
+  <%= partial 'form' %>
+  <p><%= submit_button 'Save Style' %> or <%= link_to 'Cancel', url(:admin_styles) %></p>
+<% end %>
+
+<%= link_to "Back to styles", url(:admin_styles) %>

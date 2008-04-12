@@ -1,0 +1,21 @@
+<% throw_content :right do %>
+  <h4>View Style</h4>
+  <p>
+	  Here you can view the details of an existing style.
+  </p>
+<% end %>
+
+<h1>View Style</h1>
+
+<p>
+	Name: <%= @style.name %>
+</p>
+
+<p>
+	Content:
+	<br />
+	<%= @style.content %>
+</p>
+
+<%= link_to "Edit style", url(:edit_admin_style, @style) %> |
+<%= link_to "Back to styles", url(:admin_styles) %>
