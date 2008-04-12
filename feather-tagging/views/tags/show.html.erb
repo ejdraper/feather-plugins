@@ -8,7 +8,7 @@
 
 <% unless @tag.articles.empty? %>
   <ul>
-  <% @tag.articles.sort.each do |a| %>
+  <% @tag.articles.sort{|a, other| a.published_at <=> other.published_at }.each do |a| %>
     <li><%= link_to(a.title, a.permalink) %></li>
   <% end %>
   </ul>
