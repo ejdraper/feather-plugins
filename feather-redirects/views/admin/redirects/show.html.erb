@@ -1,0 +1,23 @@
+<% throw_content :right do %>
+  <h4>View Redirect</h4>
+  <p>
+	  Here you can view the details of an existing redirect.
+  </p>
+<% end %>
+
+<h1>View Redirect</h1>
+
+<p>
+	From: <%= @redirect.from_url %>
+</p>
+
+<p>
+	To: <%= @redirect.to_url %>
+</p>
+
+<p>
+	Permanent? <%= @redirect.permanent %>
+</p>
+
+<%= link_to "Edit redirect", url(:edit_admin_redirect, @redirect) %> |
+<%= link_to "Back to redirects", url(:admin_redirects) %>

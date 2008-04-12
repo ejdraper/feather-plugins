@@ -1,0 +1,28 @@
+plugin:
+    name: feather-redirects
+    author: El Draper
+    version: 1.0
+    homepage: http://featherblog.com
+    about: This plugin adds the ability for the user to setup custom redirects.
+    contents:
+        .:
+            - init.rb
+            - install.rb
+        controllers:
+            .:
+                - redirector.rb
+                - redirects.rb
+        models:
+            .:
+                - redirect.rb
+        views:
+            .:
+                admin:
+                    .:
+                        redirects:
+                            .:
+                                - _form.html.erb
+                                - edit.html.erb
+                                - index.html.erb
+                                - new.html.erb
+                                - show.html.erb

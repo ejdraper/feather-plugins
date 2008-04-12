@@ -1,0 +1,11 @@
+<% throw_content :right do %>
+	Edit the settings for the redirect.
+<% end %>
+
+<%= error_messages_for @redirect %>
+<h1>Edit redirect</h1>
+
+<% form_for :redirect, :action => url(:admin_redirect, @redirect), :method => :put do %>
+  <%= partial 'form' %>
+  <p><%= submit_button 'Save Redirect' %> or <%= link_to 'Cancel', url(:admin_redirects) %></p>
+<% end %>
