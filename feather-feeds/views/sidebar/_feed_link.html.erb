@@ -1,7 +1,7 @@
 <div id="feed-link">
   <h3>Syndicate</h3>
   <!-- <= image_tag 'feed_icon.png' > -->
-  <a href="http://<%= feed_url %>">Articles</a>
+  <a href="<%= feed_url %>">Articles</a>
   <br />
   <% if defined?(Comment) && is_plugin_active("feather-comments") %>
   	<a href="http://<%= request.env['HTTP_HOST'] %>/comments.rss">Comments</a>
