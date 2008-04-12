@@ -7,12 +7,6 @@ require File.join(File.join(File.dirname(__FILE__), "lib"), "article")
 # This reopens the global_helpers module, and adds the tag cloud stuff.
 require File.join(File.join(File.dirname(__FILE__), "lib"), "global_helpers")
 
-
-# Failing out atm
-# Hooks::Events.register_event(:after_create_article) do |article|
-#   article.create_tags
-# end
-
 Merb::Router.prepend do |r|
   r.match('/tags/:id').to(:controller => 'tags', :action =>'show').name(:tag)
 end
