@@ -1,5 +1,5 @@
 module Admin
-  class PingServices  < Base
+  class PingServices < Base
     include_plugin_views __FILE__
 
     before :find_ping_service, :only => %w(edit update delete show)

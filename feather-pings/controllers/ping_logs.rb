@@ -1,5 +1,5 @@
 module Admin
-  class PingLogs  < Base
+  class PingLogs < Base
     include_plugin_views __FILE__
 
     def index
