@@ -15,6 +15,4 @@ Merb::Router.prepend do |r|
   end
 end
 
-Hooks::Menu.add_menu_item do
-  {:text => "Redirects", :url => "/admin/redirects" }
-end
+Hooks::Menu.add_menu_item "Redirects", "/admin/redirects"

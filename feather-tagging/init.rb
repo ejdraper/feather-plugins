@@ -15,10 +15,6 @@ Hooks::Events.register_event(:after_save_article) do |args|
   args.first.create_tags
 end
 
-Hooks::View.register_view do
-  [
-    { :name => "article_form_fields", :partial => "tag_field" },
-    { :name => "meta_section", :partial => "tag_list" },
-    { :name => "sidebar", :partial => "tag_cloud" }
-  ]
-end
+Hooks::View.register_partial_view "article_form_fields", "tag_field"
+Hooks::View.register_partial_view "meta_section", "tag_list"
+Hooks::View.register_partial_view "sidebar", "tag_cloud"

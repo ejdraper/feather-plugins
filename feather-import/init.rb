@@ -10,6 +10,4 @@ Merb::Router.prepend do |r|
   end
 end
 
-Hooks::Menu.add_menu_item do
-  {:text => "Importer", :url => "/admin/importer" }
-end
+Hooks::Menu.add_menu_item "Importer", "/admin/importer"

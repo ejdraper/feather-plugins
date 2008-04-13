@@ -5,7 +5,5 @@ Merb::Router.prepend do |r|
   r.resources :comments
 end
 
-Hooks::View.register_view do
-  [{ :name => "after_article", :partial => "comments" },
-  { :name => "meta_section", :partial => "comments" }]
-end
+Hooks::View.register_partial_view "after_article", "comments"
+Hooks::View.register_partial_view "meta_section", "comments"

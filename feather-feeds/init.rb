@@ -14,11 +14,7 @@ Merb::Router.prepend do |r|
   end
 end
 
-Hooks::View.register_view do
-  [{ :name => "head", :partial => "feed_link" },
-  { :name => "sidebar", :partial => "feed_link" }]
-end
+Hooks::View.register_partial_view "head", "feed_link"
+Hooks::View.register_partial_view "sidebar", "feed_link"
 
-Hooks::Menu.add_menu_item do
-  {:text => "Feed Settings", :url => "/admin/feed_settings" }
-end
+Hooks::Menu.add_menu_item "Feed Settings", "/admin/feed_settings"

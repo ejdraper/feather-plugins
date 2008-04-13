@@ -11,9 +11,7 @@ Merb::Router.prepend do |r|
   end
 end
 
-Hooks::Menu.add_menu_item do
-  {:text => "Ping Services", :url => "/admin/ping_services" }
-end
+Hooks::Menu.add_menu_item "Ping Services", "/admin/ping_services"
 
 Hooks::Events.register_event(:after_publish_article) do |args|
   PingService.all.each do |ping|

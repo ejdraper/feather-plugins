@@ -7,13 +7,9 @@ Merb::Router.prepend do |r|
   end
 end
 
-Hooks::Menu.add_menu_item do
-  {:text => "Snippets", :url => "/admin/snippets" }
-end
+Hooks::Menu.add_menu_item "Snippets", "/admin/snippets"
 
 Hooks::Events.register_event(:application_before) do
-  Snippet.all.each do |snippet|
-    snippet.register unless snippet.registered?
-    snippet.deregister && snippet.register unless snippet.up_to_date?
-  end
+  Snippet.deregister_snippets
+  Snippet.register_snippets
 end
