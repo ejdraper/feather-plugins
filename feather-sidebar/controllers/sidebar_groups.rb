@@ -21,6 +21,7 @@ module Admin
       else
         render :new
       end
+      expire_all_pages
     end
 
     def edit
@@ -33,10 +34,12 @@ module Admin
       else
         render :edit
       end
+      expire_all_pages
     end
     
     def delete
       @sidebar_group.destroy!
+      expire_all_pages
       redirect url(:admin_sidebar_groups)
     end
     

@@ -9,6 +9,8 @@ class Comment < DataMapper::Base
   
   validates_presence_of :name, :comment, :article_id
   
+  belongs_to :article
+  
   def self.all_for_post(article_id, method = :all)
     self.send(method, {:article_id => article_id, :order => "created_at"})
   end
