@@ -29,6 +29,12 @@
     <fieldset>
       <legend>Comment</legend>
       <%= hidden_field :name => "comment[article_id]", :value => @article.id %>
+	  <% if CommentSetting.current.negative_captcha %>
+	  	<%= text_field :name => "comment[notes]", :id => "comment_notes" %>
+	  	<script type="text/javascript">
+			document.getElementById('comment_notes').style.display = "none";
+	  	</script>
+	  <% end %>
       <p>
         <label for="comment_name" class="text">Name:<label>
         <%= text_field :name => 'comment[name]', :size => 30, :id => 'comment_name' %>

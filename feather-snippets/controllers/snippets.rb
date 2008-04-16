@@ -17,6 +17,7 @@ module Admin
     def create(snippet)
       @snippet = Snippet.new(snippet)
       if @snippet.save
+        expire_all_pages
         redirect url(:admin_snippet)
       else
         render :new
@@ -29,6 +30,7 @@ module Admin
     
     def update(snippet)
       if @snippet.update_attributes(snippet)
+        expire_all_pages
         redirect url(:admin_snippet, @snippet)
       else
         render :edit
@@ -37,6 +39,7 @@ module Admin
     
     def delete
       @snippet.destroy!
+      expire_all_pages
       redirect url(:admin_snippets)
     end
     

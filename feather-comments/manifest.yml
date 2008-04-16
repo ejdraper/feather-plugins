@@ -11,11 +11,28 @@ plugin:
         controllers:
             .:
                 - comments.rb
+                admin:
+                    .:
+                        - comment_settings.rb
+                        - comments.rb
         models:
             .:
                 - comment.rb
+                - comment_setting.rb
         views:
             .:
+            admin:
+                .:
+                    comment_settings:
+                        .:
+                            - edit.html.erb
+                            - show.html.erb
+                    comments:
+                        .:
+                            - _comment.html.erb
+                            - index.html.erb
+                            - show.html.erb
+                            - update.js.erb
             after_post:
                 .:
                     - _comments.html.erb

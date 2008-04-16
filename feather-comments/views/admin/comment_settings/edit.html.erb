@@ -1,0 +1,44 @@
+<% throw_content :right do %>
+	<h4>Comment Settings</h4>
+	Update the comment settings for this blog.
+	<br />
+	<ul>
+		<li>
+			<strong>Moderation</strong>
+			<br />
+			With moderation turned on, no comments that are posted are published and visible until you manually set them to be.
+		</li>
+		<li>
+			<strong>Negative Captcha</strong>
+			<br />
+			With negative captcha turned on, an extra form field is added, but made invisible - a "honeypot". If this has any data set, it is most likely a spam bot making the request, and it is ignored.
+		</li>
+		<li>
+			<strong>E-mail Notification</strong>
+			<br />
+			With e-mail notification turned on, you will receive an e-mail notification each time a comment is posted to your blog.
+		</li>
+	</ul>
+<% end %>
+
+<%= error_messages_for @comment_setting %>
+<h1>Edit comment settings</h1>
+
+<% form_for :comment_setting, :action => url(:admin_comment_settings, @comment_setting), :method => :put do %>
+	<p>
+  		<span class="mock_label">Moderation</span>
+  		<%= checkbox_control :moderation, :value => @comment_setting.moderation %>
+	</p>
+	
+	<p>
+  		<span class="mock_label">Negative Captcha</span>
+  		<%= checkbox_control :negative_captcha, :value => @comment_setting.negative_captcha %>
+	</p>
+	
+	<p>
+		<span class="mock_label">E-mail Notification</span>
+		<%= checkbox_control :email_notification, :value => @comment_setting.email_notification %>
+	</p>
+
+  <%= submit_button 'Save Settings' %> or <%= link_to 'Cancel', url(:admin_comment_settings) %>
+<% end %>

@@ -1,0 +1,28 @@
+<% throw_content :right do %>
+  <h4>View Comment Settings</h4>
+  <p>
+	Here you can view comment settings.
+	<br />
+	<%= link_to "View comments", url(:admin_comments) %>
+  </p>
+<% end %>
+
+<h1>View Comment Settings</h1>
+
+<p>
+	Moderation:
+	<%= @comment_setting.moderation %>
+</p>
+
+<p>
+	Negative Captcha:
+	<%= @comment_setting.negative_captcha %>
+</p>
+
+<p>
+	E-mail Notification:
+	<%= @comment_setting.email_notification %>
+</p>
+
+<%= link_to "Edit comment settings", url(:edit_admin_comment_settings, @comment_setting) %> |
+<%= link_to "View comments", url(:admin_comments) %>

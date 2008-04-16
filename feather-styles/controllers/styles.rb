@@ -17,6 +17,7 @@ module Admin
     def create(style)
       @style = Style.new(style)
       if @style.save
+        expire_all_pages
         redirect url(:admin_style)
       else
         render :new
@@ -29,6 +30,7 @@ module Admin
     
     def update(style)
       if @style.update_attributes(style)
+        expire_all_pages
         redirect url(:admin_style, @style)
       else
         render :edit
@@ -37,6 +39,7 @@ module Admin
     
     def delete
       @style.destroy!
+      expire_all_pages
       redirect url(:admin_styles)
     end
     

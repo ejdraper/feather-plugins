@@ -1,4 +1,4 @@
 <tr>
 	<td><%= link_to snippet.location, url(:admin_snippet, snippet) %></td>
-	<td <%= link_to "Edit", url(:edit_admin_snippet, snippet) %> | <%= link_to 'Delete', url(:delete_admin_snippet, snippet), {:method => :delete, :onclick => "return confirm('Are you sure?')"} %></td>
+	<td><%= link_to "Edit", url(:edit_admin_snippet, snippet) %> | <%= link_to 'Delete', url(:delete_admin_snippet, snippet), {:method => :delete, :onclick => "return confirm('Are you sure?')"} %></td>
 </tr>

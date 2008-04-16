@@ -1,0 +1,7 @@
+<tr>
+	<td><%= link_to comment.name, url(:admin_comment, comment) %></td>
+	<td><%= comment.website %></td>
+	<td><%= comment.email_address %></td>
+	<td><%= comment.ip_address %></td>
+	<td><%= link_to 'Delete', url(:delete_admin_comment, comment), {:method => :delete, :onclick => "return confirm('Are you sure?')"} %></td>
+</tr>

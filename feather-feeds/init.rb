@@ -5,6 +5,8 @@ require File.join(File.join(File.dirname(__FILE__), "controllers"), "feed_settin
 require File.join(File.join(File.dirname(__FILE__), "helpers"), "global_helpers")
 require File.join(File.join(File.dirname(__FILE__), "models"), "feed_setting")
 
+include Merb::GlobalHelpers
+
 Merb::Router.prepend do |r|
   r.match("/articles.rss").to(:controller => "Feeds", :action => "articles")
   r.match("/rss").to(:controller => "Feeds", :action => "articles")
