@@ -8,6 +8,8 @@ class Comments < Application
       article = Article[@comment.article_id]
       expire_index
       expire_article(article)
+      
+      send_mail(CommentMailer, :notify, {:from => "", :to => "", :subject => ""}, {:comment => @comment})
     end
     redirect article.permalink
   end

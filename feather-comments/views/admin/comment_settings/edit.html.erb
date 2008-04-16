@@ -37,8 +37,17 @@
 	
 	<p>
 		<span class="mock_label">E-mail Notification</span>
-		<%= checkbox_control :email_notification, :value => @comment_setting.email_notification %>
+		<%= checkbox_control :email_notification, :value => @comment_setting.email_notification, :onchange => "$('comment_setting_email_notification').checked ? $('from_email_display').show() && $('to_email_display').show() : $('from_email_display').hide() && $('to_email_display').hide()" %>
 	</p>
-
+	
+	<p id="from_email_display" style="display: <%= @comment_setting.email_notification ? 'block' : 'none' %>;">
+		<span class="mock_label">From e-mail address</span>
+		<%= text_control :from_email, :value => @comment_setting.from_email %>
+	</p>
+	
+	<p id="to_email_display" style="display: <%= @comment_setting.email_notification ? 'block' : 'none' %>;">
+		<span class="mock_label">To e-mail address</span>
+		<%= text_control :to_email, :value => @comment_setting.from_email %>
+	</p>
   <%= submit_button 'Save Settings' %> or <%= link_to 'Cancel', url(:admin_comment_settings) %>
 <% end %>

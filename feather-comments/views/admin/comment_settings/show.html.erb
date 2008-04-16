@@ -24,5 +24,17 @@
 	<%= @comment_setting.email_notification %>
 </p>
 
+<% if @comment_setting.email_notification %>
+<p>
+	From e-mail address:
+	<%= @comment_setting.from_email %>
+</p>
+
+<p>
+	To e-mail address:
+	<%= @comment_setting.to_email %>
+</p>
+<% end %>
+
 <%= link_to "Edit comment settings", url(:edit_admin_comment_settings, @comment_setting) %> |
 <%= link_to "View comments", url(:admin_comments) %>

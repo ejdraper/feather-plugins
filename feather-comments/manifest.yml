@@ -11,10 +11,10 @@ plugin:
         controllers:
             .:
                 - comments.rb
-                admin:
-                    .:
-                        - comment_settings.rb
-                        - comments.rb
+            admin:
+                .:
+                    - comment_settings.rb
+                    - comments.rb
         models:
             .:
                 - comment.rb
