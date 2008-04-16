@@ -33,7 +33,7 @@ plugin:
                             - index.html.erb
                             - show.html.erb
                             - update.js.erb
-            after_post:
+            after_article:
                 .:
                     - _comments.html.erb
             meta_section:
