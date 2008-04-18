@@ -15,24 +15,29 @@ plugin:
                 .:
                     - comment_settings.rb
                     - comments.rb
+        mailers:
+            .:
+                - comment_mailer.rb
+            views:
+                comment_mailer:
+                    .:
+                        - notify.text.erb                
         models:
             .:
                 - comment.rb
                 - comment_setting.rb
         views:
-            .:
             admin:
-                .:
-                    comment_settings:
-                        .:
-                            - edit.html.erb
-                            - show.html.erb
-                    comments:
-                        .:
-                            - _comment.html.erb
-                            - index.html.erb
-                            - show.html.erb
-                            - update.js.erb
+                comment_settings:
+                    .:
+                        - edit.html.erb
+                        - show.html.erb
+                comments:
+                    .:
+                        - _comment.html.erb
+                        - index.html.erb
+                        - show.html.erb
+                        - update.js.erb
             after_article:
                 .:
                     - _comments.html.erb

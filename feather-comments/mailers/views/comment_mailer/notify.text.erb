@@ -1,0 +1,5 @@
+This a notification to let you know that <%= @comment.name %> has left a comment on your post "<%= @article.title %>". You can view the comment at http://<%= @request.env["HTTP_HOST"] %><%= @article.permalink %>#<%= @comment.id %>.
+
+The comment is as follows:
+
+<%= @comment.comment %>

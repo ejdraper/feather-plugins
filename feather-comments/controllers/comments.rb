@@ -8,8 +8,11 @@ class Comments < Application
       article = Article[@comment.article_id]
       expire_index
       expire_article(article)
-      
-      send_mail(CommentMailer, :notify, {:from => "", :to => "", :subject => ""}, {:comment => @comment})
+      if CommentSetting.current.email_notification
+        email_params = { :from => CommentSetting.current.from_email, :to => CommentSetting.current.to_email, :subject => "New comment - RE: #{article.title}" }
+        params = { :comment => @comment, :article => article, :request => request }
+        send_mail(CommentMailer, :notify, email_params, params)
+      end
     end
     redirect article.permalink
   end

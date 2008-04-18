@@ -1,6 +1,7 @@
 require File.join(File.join(File.join(File.dirname(__FILE__), "controllers"), "admin"), "comments")
 require File.join(File.join(File.join(File.dirname(__FILE__), "controllers"), "admin"), "comment_settings")
 require File.join(File.join(File.dirname(__FILE__), "controllers"), "comments")
+require File.join(File.join(File.dirname(__FILE__), "mailers"), "comment_mailer")
 require File.join(File.join(File.dirname(__FILE__), "models"), "comment")
 require File.join(File.join(File.dirname(__FILE__), "models"), "comment_setting")
 
