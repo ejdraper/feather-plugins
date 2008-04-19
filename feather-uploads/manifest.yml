@@ -1,0 +1,28 @@
+plugin:
+    name: feather-uploads
+    author: El Draper
+    version: 1.0
+    homepage: http://featherblog.com
+    about: This plugin adds the ability for the user to upload and manage files
+    contents:
+        .:
+            - init.rb
+            - install.rb
+        controllers:
+            admin:
+                - uploads.rb
+        models:
+            .:
+                - upload.rb
+        views:
+            .:
+                admin:
+                    .:
+                        uploads:
+                            .:
+                                - _form.html.erb
+                                - _upload.html.erb
+                                - edit.html.erb
+                                - index.html.erb
+                                - new.html.erb
+                                - show.html.erb

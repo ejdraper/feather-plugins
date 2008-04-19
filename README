@@ -10,3 +10,4 @@ feather-sidebar: this allows the creation of generic sidebar items for your Feat
 feather-snippets: this allows custom and dynamic creation of snippets to add to the blog template
 feather-styles: this allows custom stylesheets to be defined and automatically included so as to override default blog styling
 feather-tagging: this provides tagging for articles, and a tag cloud for the blog sidebar
+feather-uploads: this allows for custom files to be uploaded and served

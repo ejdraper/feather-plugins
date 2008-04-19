@@ -1,0 +1,26 @@
+<% throw_content :right do %>
+  <h4>View Upload</h4>
+  <p>
+	  Here you can view the details of an existing file upload.
+  </p>
+<% end %>
+
+<h1>View Upload</h1>
+
+<p>
+	URL: <%= @upload.url %>
+</p>
+
+<p>
+	Content-Type: <%= @upload.content_type %>
+</p>
+
+<p>
+	Size: <%= @upload.size %>
+</p>
+
+<p>
+	<%= link_to "View", @upload.url %>
+</p>
+
+<%= link_to "Back to uploads", url(:admin_uploads) %>

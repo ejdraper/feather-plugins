@@ -1,0 +1,20 @@
+<% throw_content :right do %>
+  <h4>View Uploads</h4>
+  <p>
+	Uploads allow you to serve custom files such as images.
+  </p>
+<% end %>
+
+<h1>View Uploads</h1>
+
+<table>
+  <tr>
+	<th>URL</th>
+	<th>Content-Type</th>
+	<th>Size</th>
+	<th>&nbsp;</th>
+  </tr>
+  <%= partial('admin/uploads/upload', :with => @uploads) %>
+</table>
+<br />
+<%= link_to "Upload new file", url(:new_admin_upload) %>
