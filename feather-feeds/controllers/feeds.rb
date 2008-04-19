@@ -17,7 +17,7 @@ class Feeds < Application
             xml.description   render_article(article)
             xml.pubDate       rfc822(article.published_at)
             xml.guid          "http://#{request.env['HTTP_HOST']}#{article.permalink}"
-            xml.author        article.user.login
+            xml.author        article.user.name || article.user.login
           end
         end
       end
