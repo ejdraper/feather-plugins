@@ -1,2 +1,2 @@
-<%= select_control :location, :collection => ["before_article", "before_article_in_list", "after_article", "after_article_in_list", "meta_section", "head", "header", "before_layout", "after_layout", "sidebar", "footer"], :label => 'Location:' %>
+<%= select_control :location, :collection => Hooks::View.available_hooks, :label => 'Location:' %>
 <%= text_area_control :content, :rows => 20, :cols => 100, :label => 'Snippet:' %>

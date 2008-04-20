@@ -1,0 +1,35 @@
+plugin:
+    name: feather-twitter
+    author: El Draper
+    version: 1.0
+    homepage: http://featherblog.com
+    about: This plugin provides Twitter integration for your blog
+    contents:
+        .:
+            - init.rb
+            - install.rb
+        controllers:
+            .:
+            admin:
+                .:
+                    - twitter_settings.rb
+                    - tweets.rb
+        models:
+            .:
+                - tweet.rb
+                - twitter_setting.rb
+        views:
+            admin:
+                twitter_settings:
+                    .:
+                        - edit.html.erb
+                        - show.html.erb
+                tweets:
+                    .:
+                        - _tweet.html.erb
+                        - index.html.erb
+                        - show.html.erb
+                        - update.js.erb
+            between_articles:
+                .:
+                    - _tweets.html.erb
