@@ -5,6 +5,7 @@ class Tweet < DataMapper::Base
   property :in_reply_to, :string, :length => 140
   property :username, :string, :nullable => false, :length => 255
   property :created_at, :datetime, :nullable => false
+  property :published_at, :datetime, :nullable => false
   
   validates_presence_of :twitter_id, :key => "uniq_twitter_id"
   validates_presence_of :text, :key => "uniq_text"
@@ -39,7 +40,7 @@ class Tweet < DataMapper::Base
   # This returns any tweets found between two articles
   def self.find_between_articles(before, after)
     settings = TwitterSetting.current
-    Tweet.all.select { |t| t.created_at < before.published_at && t.created_at > after.published_at }.select { |t| (t.reply? && settings.ignore_replies) ? false : true }
+    Tweet.all.select { |t| t.published_at < before.published_at && t.published_at > after.published_at }.select { |t| (t.reply? && settings.ignore_replies) ? false : true }
   end
   
   ##

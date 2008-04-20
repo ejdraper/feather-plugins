@@ -30,7 +30,11 @@
 </p>
 
 <p>
-	Created? <%= @tweet.created_at %>
+	Created: <%= @tweet.created_at %>
+</p>
+
+<p>
+	Published: <%= @tweet.published_at %>
 </p>
 
 <%= link_to "Back to tweets", url(:admin_tweets) %>

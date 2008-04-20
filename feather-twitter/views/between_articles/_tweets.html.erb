@@ -6,7 +6,7 @@
   		<div class="vcard">
     		Posted to Twitter by <span class="fn"><%= tweet.username %></span>using <%= tweet.source %>&nbsp;
   		</div>
-  		<abbr class="published" title=""><%= tweet.created_at.strftime("on %b %d, %y") %></abbr>
+  		<abbr class="published" title=""><%= tweet.published_at.strftime("on %b %d, %y") %></abbr>
   		<br class="clear" />
   		<div class="entry-content">
 			<%= tweet.text %>

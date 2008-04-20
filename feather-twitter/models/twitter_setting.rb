@@ -31,7 +31,8 @@ class TwitterSetting < DataMapper::Base
           tweet.source = (status/"source").first.innerText
           tweet.in_reply_to = (status/"in_reply_to").first.innerText == "" ? nil : (status/"in_reply_to").first.innerText
           tweet.username = (status/"user"/"screen_name").first.innerText
-          tweet.created_at = (status/"created_at").first.innerText
+          tweet.published_at = (status/"created_at").first.innerText
+          tweet.created_at = DateTime.now
           tweet.save
         end
       end
