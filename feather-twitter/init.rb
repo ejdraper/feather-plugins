@@ -11,6 +11,8 @@ Merb::Router.prepend do |r|
 end
 
 Hooks::View.register_partial_view "between_articles", "tweets"
+Hooks::View.register_partial_view "first_article_in_list", "tweets"
+Hooks::View.register_partial_view "last_article_in_list", "tweets"
 
 Hooks::Menu.add_menu_item "Tweets", "/admin/tweets"
 

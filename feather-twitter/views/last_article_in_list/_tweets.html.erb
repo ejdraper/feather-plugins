@@ -1,4 +1,4 @@
-<% Tweet.find_between_articles(locals[:with][:before], locals[:with][:after]).each do |tweet| %>
+<% Tweet.find_older_than_article(locals[:with][:last])[0..4].each do |tweet| %>
 <div class="hentry" id="tweet-<%= tweet.id %>">
 	<h2 class="entry-title">
 		<%= link_to tweet.text_summary, tweet.url %>

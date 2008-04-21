@@ -1,7 +1,7 @@
 class Tweet < DataMapper::Base
   property :twitter_id, :string, :nullable => false
   property :text, :string, :nullable => false, :length => 140
-  property :source, :string, :nullable => false
+  property :source, :string, :nullable => false, :length => 255
   property :in_reply_to, :string, :length => 140
   property :username, :string, :nullable => false, :length => 255
   property :created_at, :datetime, :nullable => false
@@ -40,7 +40,21 @@ class Tweet < DataMapper::Base
   # This returns any tweets found between two articles
   def self.find_between_articles(before, after)
     settings = TwitterSetting.current
-    Tweet.all.select { |t| t.published_at < before.published_at && t.published_at > after.published_at }.select { |t| (t.reply? && settings.ignore_replies) ? false : true }
+    Tweet.all(:order => "published_at DESC").select { |t| t.published_at < before.published_at && t.published_at > after.published_at }.select { |t| (t.reply? && settings.ignore_replies) ? false : true }
+  end
+
+  ##
+  # This returns any tweets newer than the specified article
+  def self.find_newer_than_article(article)
+    settings = TwitterSetting.current
+    Tweet.all(:order => "published_at DESC").select { |t| t.published_at > article.published_at }.select { |t| (t.reply? && settings.ignore_replies) ? false : true }
+  end
+
+  ##
+  # This returns any tweets found after the specified article
+  def self.find_older_than_article(article)
+    settings = TwitterSetting.current
+    Tweet.all(:order => "published_at DESC").select { |t| t.published_at < article.published_at }.select { |t| (t.reply? && settings.ignore_replies) ? false : true }
   end
   
   ##

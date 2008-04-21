@@ -33,3 +33,9 @@ plugin:
             between_articles:
                 .:
                     - _tweets.html.erb
+            first_article_in_list:
+                .:
+                    - _tweets.html.erb
+            last_article_in_list:
+                .:
+                    - _tweets.html.erb
