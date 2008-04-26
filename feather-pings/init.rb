@@ -13,12 +13,12 @@ end
 
 Hooks::Menu.add_menu_item "Ping Services", "/admin/ping_services"
 
-Hooks::Events.register_event(:after_publish_article) do |args|
+Hooks::Events.register_event(:after_publish_article_request) do |args|
   PingService.all.each do |ping|
     log = PingLog.new
     log.ping_service_id = ping.id
     begin
-      log.message = ping.execute(args.first)
+      log.message = ping.execute(args[0], args[1])
       log.successful = true
     rescue Exception => err
       log.message = err.message

@@ -1,19 +1,17 @@
 module Admin
   class TwitterSettings < Base
     include_plugin_views __FILE__
-    
+    before :find_twitter_setting
+
     def show
-      @twitter_setting = TwitterSetting.current
       display @twitter_setting
     end
-    
+
     def edit
-      @twitter_setting = TwitterSetting.current
       display @twitter_setting
     end
-    
+
     def update
-      @twitter_setting = TwitterSetting.current
       res = true
       res = @twitter_setting.update_attributes(params[:twitter_setting]) unless params[:twitter_setting].nil?
       if res
@@ -24,5 +22,10 @@ module Admin
         render :edit
       end
     end
+    
+    private
+      def find_twitter_setting
+        @twitter_setting = TwitterSetting.current
+      end
   end
 end

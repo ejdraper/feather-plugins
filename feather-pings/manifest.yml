@@ -2,7 +2,7 @@ plugin:
     name: feather-pings
     author: El Draper
     version: 1.0
-    homepage: http://featherblog.com
+    homepage: http://featherblog.org
     about: This plugin adds the ability for ping services to be contacted whenever a new post is published.
     contents:
         .:

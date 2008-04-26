@@ -1,7 +1,6 @@
 require "net/http"
 require "hpricot"
 require "uri"
-
 require File.join(File.join(File.dirname(__FILE__), "controllers"), "importer")
 
 Merb::Router.prepend do |r|

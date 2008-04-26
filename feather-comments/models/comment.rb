@@ -8,13 +8,12 @@ class Comment < DataMapper::Base
   property :formatter, :string, :default => "default"
   property :ip_address, :string, :default => "127.0.0.1"
   property :published, :boolean, :default => true
-  
+
   validates_presence_of :name, :comment, :article_id
-  
-  belongs_to :article
-  
+
+  belongs_to :article  
   after_save :fire_after_comment_event
-  
+
   def self.all_for_post(article_id, method = :all)
     self.send(method, {:article_id => article_id, :published => true, :order => "created_at"})
   end

@@ -2,7 +2,7 @@ plugin:
     name: feather-feeds
     author: El Draper
     version: 1.0
-    homepage: http://featherblog.com
+    homepage: http://featherblog.org
     about: This plugin provides an RSS feed for a Feather blog.
     contents:
         .:

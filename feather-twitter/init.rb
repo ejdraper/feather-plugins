@@ -16,5 +16,5 @@ Hooks::View.register_partial_view "last_article_in_list", "tweets"
 
 Hooks::Menu.add_menu_item "Tweets", "/admin/tweets"
 
-Hooks::Events.register_event(:after_article_index) { TwitterSetting.current.rescan }
-Hooks::Events.register_event(:after_article_show) { TwitterSetting.current.rescan }
+Hooks::Events.register_event(:after_article_index_request) { TwitterSetting.current.rescan }
+Hooks::Events.register_event(:after_article_show_request) { TwitterSetting.current.rescan }

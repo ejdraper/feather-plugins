@@ -7,6 +7,6 @@ Merb::Router.prepend do |r|
   end
 end
 
-Hooks::Menu.add_menu_item "Sidebar", "/admin/sidebar_groups"
-
 Hooks::View.register_partial_view "sidebar", "sidebar_groups"
+
+Hooks::Menu.add_menu_item "Sidebar", "/admin/sidebar_groups"

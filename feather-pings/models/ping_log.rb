@@ -5,7 +5,7 @@ class PingLog < DataMapper::Base
   property :created_at, :datetime
 
   validates_presence_of :message, :key => "uniq_ping_log_message"
-  
+
   def service
     @ping_service ||= PingService[self.ping_service_id]
   end

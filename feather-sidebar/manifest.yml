@@ -2,7 +2,7 @@ plugin:
     name: feather-sidebar
     author: Michael Leung
     version: 1.0
-    homepage: http://featherblog.com
+    homepage: http://featherblog.org
     about: This plugin provides the ability to create arbitrary sidebar links.
     contents:
         .:

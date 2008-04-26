@@ -9,6 +9,6 @@ Merb::Router.prepend do |r|
   r.match("/stylesheets/custom.css").to(:controller => "css", :action => "custom")
 end
 
-Hooks::Menu.add_menu_item "Styles", "/admin/styles"
-
 Hooks::View.register_dynamic_view "head", "<link type=\"text/css\" media=\"all\" href=\"/stylesheets/custom.css\" rel=\"Stylesheet\" charset=\"utf-8\" />"
+
+Hooks::Menu.add_menu_item "Styles", "/admin/styles"

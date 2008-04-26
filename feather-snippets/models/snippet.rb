@@ -2,10 +2,10 @@ class Snippet < DataMapper::Base
   property :content, :text, :nullable => false
   property :location, :string, :nullable => false, :length => 255
   property :created_at, :datetime
-  
+
   class << self
     @@registered = {}
-    
+
     ##
     # This registers all snippets
     def register_snippets

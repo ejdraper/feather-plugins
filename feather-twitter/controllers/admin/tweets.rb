@@ -1,7 +1,6 @@
 module Admin
   class Tweets < Base
     include_plugin_views __FILE__
-
     before :find_tweet, :only => %w(delete show)
 
     def index

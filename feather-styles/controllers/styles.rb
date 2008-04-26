@@ -1,7 +1,6 @@
 module Admin
   class Styles < Base
     include_plugin_views __FILE__
-
     before :find_style, :only => %w(edit update delete show)
 
     def index
@@ -13,7 +12,7 @@ module Admin
       @style = Style.new
       display @style
     end
-    
+
     def create(style)
       @style = Style.new(style)
       if @style.save
@@ -27,7 +26,7 @@ module Admin
     def edit
       display @style
     end
-    
+
     def update(style)
       if @style.update_attributes(style)
         expire_all_pages
@@ -36,13 +35,13 @@ module Admin
         render :edit
       end
     end
-    
+
     def delete
       @style.destroy!
       expire_all_pages
       redirect url(:admin_styles)
     end
-    
+
     def show
       display @style
     end

@@ -2,7 +2,7 @@ plugin:
     name: feather-formatters
     author: El Draper
     version: 1.0
-    homepage: http://featherblog.com
+    homepage: http://featherblog.org
     about: This plugin provides different formatters to be used with Feather.
     contents:
         .:

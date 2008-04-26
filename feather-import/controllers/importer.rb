@@ -1,7 +1,7 @@
 module Admin
   class Importer < Base
     include_plugin_views __FILE__
-    
+
     def show
       render
     end
@@ -74,7 +74,7 @@ module Admin
         # Return the list of processed comments
         processed
       end
-      
+
       ##
       # This retrieves the content of the specified url
       def retrieve(url)

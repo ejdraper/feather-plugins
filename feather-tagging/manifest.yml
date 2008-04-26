@@ -1,8 +1,8 @@
 plugin:
     name: feather-tagging
-    author: Michael Leung
+    author: Michael Leung and El Draper
     version: 1.0
-    homepage: http://featherblog.com
+    homepage: http://featherblog.org
     about: This plugin provides tag support to articles.
     contents:
         .:

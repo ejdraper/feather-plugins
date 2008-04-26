@@ -2,7 +2,7 @@ plugin:
     name: feather-import
     author: El Draper
     version: 1.0
-    homepage: http://featherblog.com
+    homepage: http://featherblog.org
     about: This plugin provides a way for users to import existing content (posts and comments) from other sources using RSS
     contents:
         .:

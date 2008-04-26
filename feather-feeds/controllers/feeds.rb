@@ -1,6 +1,8 @@
 class Feeds < Application
+  before :find_feed_setting
+
   def articles
-    @articles = Article.all(:published => true, :limit => FeedSetting.current.article_count, :order => "published_at DESC")
+    @articles = Article.all(:published => true, :limit => @feed_setting.article_count, :order => "published_at DESC")
     rss = ""
     xml = Builder::XmlMarkup.new(:target => rss)
     xml.instruct!
@@ -24,9 +26,9 @@ class Feeds < Application
     end
     rss
   end
-  
+
   def comments
-    @comments = (defined?(Comment) && is_plugin_active("feather-comments")) ? Comment.all(:limit => FeedSetting.current.comment_count, :order => "created_at DESC") : []
+    @comments = (defined?(Comment) && is_plugin_active("feather-comments")) ? Comment.all(:limit => @feed_setting.comment_count, :order => "created_at DESC") : []
     rss = ""
     xml = Builder::XmlMarkup.new(:target => rss)
     xml.instruct!
@@ -54,8 +56,14 @@ class Feeds < Application
     rss
   end
 
-  # Returns the specified time in RFC822 format
-  def rfc822(time)
-    time.strftime("%a, %d %b %Y %H:%M:%S GMT")
-  end
+  private
+    def find_feed_setting
+      @feed_setting = FeedSetting.current
+    end
+
+    ##
+    # This returns the specified time in RFC822 format
+    def rfc822(time)
+      time.strftime("%a, %d %b %Y %H:%M:%S GMT")
+    end
 end

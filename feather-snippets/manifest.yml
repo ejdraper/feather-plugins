@@ -2,7 +2,7 @@ plugin:
     name: feather-snippets
     author: El Draper
     version: 1.0
-    homepage: http://featherblog.com
+    homepage: http://featherblog.org
     about: This plugin adds the ability for the user to create and manage dynamic snippets
     contents:
         .:
