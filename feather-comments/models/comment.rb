@@ -11,6 +11,7 @@ class Comment < DataMapper::Base
 
   validates_presence_of :name, :comment, :article_id
 
+  before_save :prepend_http_if_needed
   belongs_to :article  
   after_save :fire_after_comment_event
 
@@ -23,4 +24,11 @@ class Comment < DataMapper::Base
   def fire_after_comment_event
     Hooks::Events.run_event(:after_comment, self)
   end
+  
+  def prepend_http_if_needed
+		protocol = "http://"
+   	self.website.insert(0, protocol) if self.website.rindex(protocol).nil? && !self.website.empty?
+		self.website.strip!
+  end
+  
 end

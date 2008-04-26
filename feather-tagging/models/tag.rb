@@ -10,7 +10,7 @@ class Tag < DataMapper::Base
   ##
   # Has many through would be nice here
   def articles
-    Article.all(:id => taggings.map{|t| t.article_id })
+    Article.all(:id => taggings.map{|t| t.article_id }, :published => true)
   end
 
   def to_param
