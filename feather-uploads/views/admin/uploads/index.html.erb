@@ -7,13 +7,15 @@
 
 <h1>View Uploads</h1>
 
-<table>
-  <tr>
-	<th>URL</th>
-	<th>Content-Type</th>
-	<th>Size</th>
-	<th>&nbsp;</th>
-  </tr>
+<table class='tabular'>
+	<thead>
+    <tr>
+    	<th>URL</th>
+    	<th>Content-Type</th>
+    	<th>Size</th>
+    	<th>&nbsp;</th>
+    </tr>
+  </thead>
   <%= partial('admin/uploads/upload', :with => @uploads) %>
 </table>
 <br />

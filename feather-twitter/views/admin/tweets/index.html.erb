@@ -9,14 +9,16 @@
 
 <h1>View Tweets</h1>
 
-<table>
-  <tr>
-	<th>Text</th>
-	<th>Source</th>
-	<th>Reply?</th>
-	<th>Published</th>
-	<th>&nbsp;</th>
-  </tr>
+<table class='tabular'>
+	<thead>
+    <tr>
+    	<th>Text</th>
+    	<th>Source</th>
+    	<th>Reply?</th>
+    	<th>Published</th>
+    	<th>&nbsp;</th>
+    </tr>
+  </thead>
   <%= partial('admin/tweets/tweet', :with => @tweets) %>
 </table>
 <br />

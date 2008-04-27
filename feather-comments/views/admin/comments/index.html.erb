@@ -9,14 +9,16 @@
 
 <h1>View Comments</h1>
 
-<table>
+<table class='tabular'>
+	<thead>
   <tr>
-	<th>Name</th>
-	<th>Website</th>
-	<th>E-mail address</th>
-	<th>IP address</th>
-	<th>&nbsp;</th>
+  	<th>Name</th>
+  	<th>Website</th>
+  	<th>E-mail address</th>
+  	<th>IP address</th>
+  	<th>&nbsp;</th>
   </tr>
+  </thead>
   <%= partial('admin/comments/comment', :with => @comments) %>
 </table>
 <br />
