@@ -33,7 +33,8 @@ class Feeds < Application
         # Leave that one out for the moment
         #xml.link            :href => "http://#{request.env['HTTP_HOST']}/atom", :rel => "self"
         xml.link            :href => "http://#{request.env['HTTP_HOST']}"
-        xml.updated         @articles.first.published_at.strftime("%Y-%m-%dT%H:%M:%SZ") if @articles.length > 0
+        # The parentheses are needed, otherwise one gets a pretty weird error complaining about String not having strftime
+        xml.updated(        (@articles.any? ? @articles.first.published_at : DateTime.now).strftime("%Y-%m-%dT%H:%M:%SZ"))
         xml.id              "http://#{request.env['HTTP_HOST']}#{request.uri}"
         @articles.each do |article|
           xml.entry do
