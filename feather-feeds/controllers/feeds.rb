@@ -3,28 +3,57 @@ class Feeds < Application
 
   def articles
     @articles = Article.all(:published => true, :limit => @feed_setting.article_count, :order => "published_at DESC")
-    rss = ""
-    xml = Builder::XmlMarkup.new(:target => rss)
+    output = ""
+    xml = Builder::XmlMarkup.new(:target => output)
     xml.instruct!
-    xml.rss "version" => "2.0" do
-      xml.channel do
-        xml.title         Configuration.current.title
-        xml.link          "http://#{request.env['HTTP_HOST']}#{request.uri}"
-        xml.pubDate       rfc822(@articles.first.published_at) if @articles.length > 0
-        xml.description   Configuration.current.tag_line
-        @articles.each do |article|
-          xml.item do
-            xml.title         article.title
-            xml.link          "http://#{request.env['HTTP_HOST']}#{article.permalink}"
-            xml.description   render_article(article)
-            xml.pubDate       rfc822(article.published_at)
-            xml.guid          "http://#{request.env['HTTP_HOST']}#{article.permalink}"
-            xml.author        article.user.name || article.user.login
+    case params[:format]
+    when "rss"
+      xml.rss "version" => "2.0" do
+        xml.channel do
+          xml.title         Configuration.current.title
+          xml.link          "http://#{request.env['HTTP_HOST']}#{request.uri}"
+          xml.pubDate       rfc822(@articles.first.published_at) if @articles.length > 0
+          xml.description   Configuration.current.tag_line
+          @articles.each do |article|
+            xml.item do
+              xml.title         article.title
+              xml.link          "http://#{request.env['HTTP_HOST']}#{article.permalink}"
+              xml.description   render_article(article)
+              xml.pubDate       rfc822(article.published_at)
+              xml.guid          "http://#{request.env['HTTP_HOST']}#{article.permalink}"
+              xml.author        article.user.name || article.user.login
+            end
           end
         end
       end
+    when "atom"
+      xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
+        xml.title           Configuration.current.title
+        xml.subtitle        Configuration.current.tag_line
+        # Leave that one out for the moment
+        #xml.link            :href => "http://#{request.env['HTTP_HOST']}/atom", :rel => "self"
+        xml.link            :href => "http://#{request.env['HTTP_HOST']}"
+        xml.updated         @articles.first.published_at.strftime("%Y-%m-%dT%H:%M:%SZ") if @articles.length > 0
+        xml.id              "http://#{request.env['HTTP_HOST']}#{request.uri}"
+        @articles.each do |article|
+          xml.entry do
+            xml.title       article.title
+            xml.link        :href => "http://#{request.env['HTTP_HOST']}#{article.permalink}"
+            xml.id          "http://#{request.env['HTTP_HOST']}#{article.permalink}"
+            xml.updated     article.published_at.strftime("%Y-%m-%dT%H:%M:%SZ")
+            xml.author do
+              xml.name      article.user.name || article.user.login
+            end
+            xml.content :type => "html" do
+              xml.text! render_article(article)
+            end
+          end
+        end
+      end
+    else
+      render :status => 404
     end
-    rss
+    output
   end
 
   def comments
