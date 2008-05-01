@@ -30,8 +30,7 @@ class Feeds < Application
       xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
         xml.title           Configuration.current.title
         xml.subtitle        Configuration.current.tag_line
-        # Leave that one out for the moment
-        #xml.link            :href => "http://#{request.env['HTTP_HOST']}/atom", :rel => "self"
+        xml.link            :href => "http://#{request.env['HTTP_HOST']}#{request.uri}", :rel => "self"
         xml.link            :href => "http://#{request.env['HTTP_HOST']}"
         # The parentheses are needed, otherwise one gets a pretty weird error complaining about String not having strftime
         xml.updated(        (@articles.any? ? @articles.first.published_at : DateTime.now).strftime("%Y-%m-%dT%H:%M:%SZ"))
@@ -89,9 +88,8 @@ class Feeds < Application
       xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
         xml.title           Configuration.current.title
         xml.subtitle        Configuration.current.tag_line
-        # Leave that one out for the moment
-        #xml.link            :href => "http://#{request.env['HTTP_HOST']}/atom", :rel => "self"
-        xml.link            :href => "http://#{request.env['HTTP_HOST']}#{request.uri}"
+        xml.link            :href => "http://#{request.env['HTTP_HOST']}#{request.uri}", :rel => "self"
+        xml.link            :href => "http://#{request.env['HTTP_HOST']}"
         # The parentheses are needed, otherwise one gets a pretty weird error complaining about String not having strftime
         xml.updated(        (@comments.any? ? @comments.first.created_at : DateTime.now).strftime("%Y-%m-%dT%H:%M:%SZ"))
         xml.id              "http://#{request.env['HTTP_HOST']}#{request.uri}"
