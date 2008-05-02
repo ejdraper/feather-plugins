@@ -33,7 +33,15 @@ module Admin
     private
     
       def format_permalink(format, date, title)
-        format.gsub(/:year/,date.year).gsub(/:month/,Padding::pad_single_digit(date.month)).gsub(/:day/,Padding::pad_single_digit(date.day)).gsub(/:title/,title.gsub(/[^a-z0-9]+/i, '-'))
+        format = format.gsub(/:year/,date.year.to_s)
+        format.gsub!(/:month/,Padding::pad_single_digit(date.month))
+        format.gsub!(/:day/,Padding::pad_single_digit(date.day))
+        title = title.gsub(/\W+/, ' ') # all non-word chars to spaces
+        title.strip!            # ohh la la
+        title.downcase!         #
+        title.gsub!(/\ +/, '-') # spaces to dashes, preferred separator char everywhere
+        format.gsub!(/:title/,title)
+        format
       end
     
       # Collects the mephisto articles
@@ -56,8 +64,8 @@ module Admin
           article.title = a.title
           article.content = a.body_html
           article.published = "1"
-          article.published_at = a.published_at
           d = DateTime.parse(a.published_at)
+          article.published_at = d
           article.permalink = format_permalink(permalink_format,d,a.title)
           article.user_id = self.current_user.id
           
