@@ -1,5 +1,5 @@
 module Admin
-  class Importer < Base
+  class Mephisto < Base
     include_plugin_views __FILE__
     @article_map = {}
     
