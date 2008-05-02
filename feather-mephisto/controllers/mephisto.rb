@@ -8,25 +8,25 @@ module Admin
     end
 
     def create
-      if parameters_met
-        DataMapper::Database.setup(:mephisto_database, {
-           :adapter  => params[:adapter]
-           :host     => params[:host]
-           :username => params[:user]
-           :password => params[:password]
-           :database => params[:database]
-          })
+      
+      DataMapper::Database.setup(:mephisto_database, {
+         :adapter  => params[:adapter]
+         :host     => params[:host]
+         :username => params[:user]
+         :password => params[:password]
+         :database => params[:database]
+        })
+      
+      @article_map = {}  
         
-        @article_map = {}  
-          
-        DataMapper.database(:mephisto_database) do
-          @mephisto_articles = collect_mephisto_articles()
-          @mephisto_comments = collect_mephisto_comments()
-        end
-          
-        @articles = process_articles(@mephisto_articles)
-        @comments = process_comments(@mephisto_comments)
+      DataMapper.database(:mephisto_database) do
+        @mephisto_articles = collect_mephisto_articles()
+        @mephisto_comments = collect_mephisto_comments()
       end
+        
+      @articles = process_articles(@mephisto_articles)
+      @comments = process_comments(@mephisto_comments)
+      
       render
     end
 
