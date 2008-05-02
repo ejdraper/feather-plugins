@@ -8,9 +8,10 @@ require File.join(File.join(File.dirname(__FILE__), "models"), "feed_setting")
 include Merb::GlobalHelpers
 
 Merb::Router.prepend do |r|
-  r.match("/articles.rss").to(:controller => "Feeds", :action => "articles")
+  r.match("/articles.:format").to(:controller => "Feeds", :action => "articles")
   r.match("/rss").to(:controller => "Feeds", :action => "articles")
-  r.match("/comments.rss").to(:controller => "Feeds", :action => "comments")
+  r.match("/atom").to(:controller => "Feeds", :action => "articles", :format => "atom")
+  r.match("/comments.:format").to(:controller => "Feeds", :action => "comments")
   r.namespace :admin do |admin|
     admin.resource :feed_settings
   end
