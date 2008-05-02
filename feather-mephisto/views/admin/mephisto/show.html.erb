@@ -1,0 +1,10 @@
+<h1>Import existing content</h1>
+
+<% form_tag(:action => url(:admin_mephisto)) do %>
+	<%= text_field :name => "adapter", :label => "Adapter" %><br />
+	<%= text_field :name => "host", :label => "Host" %><br />
+	<%= text_field :name => "database", :label => "Database" %><br />
+	<%= text_field :name => "user", :label => "User" %><br />
+	<%= text_field :name => "password", :label => "Password" %><br />
+	<%= submit_button "Import" %>
+<% end %>
