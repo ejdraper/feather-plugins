@@ -54,7 +54,8 @@ module Admin
           article.content = a.body_html
           article.published = "1"
           article.published_at = a.published_at
-          article.permalink = a.permalink
+          d = DateTime.parse(a.published_at)
+          article.permalink = "/#{d.year}/#{d.month}/#{d.day}/#{a.permalink}"
           article.user_id = self.current_user.id
           
           
@@ -108,10 +109,13 @@ module Admin
           # Grab the information from the comment
           comment.comment = c.body_html
           comment.name = c.author
-          comment.website = c.author_url unless c.author_url == "http://null"
+          comment.website = ''
+          if c.author_url && c.author_url != "http://null"
+            comment.website = c.author_url
+          end
           comment.email_address = c.author_email
           comment.created_at = c.published_at
-          comment.article_id = @article_map[c.id]
+          comment.article_id = @article_map[c.article_id]
           
           # Save the comment
           comment.save
