@@ -35,6 +35,7 @@ module Admin
       # Collects the mephisto articles
       def collect_mephisto_articles()
         MephistoArticle.find_by_sql("select * from contents where type = 'Article'")
+        
       end
       
       ##
@@ -56,13 +57,19 @@ module Admin
           article.permalink = a.permalink
           article.user_id = self.current_user.id
           
+          
           # Add the tags, if present in the feed, and if the tagging plugin is active
           if is_plugin_active("feather-tagging") && defined?(Tag) && defined?(Tagging) && article.respond_to?("tag_list=")
-            taggings = MephistoTagging.find_by_sql("select * from taggings where taggable_id = #{a.id}")
-            tags = MephistoTag.find_by_sql("select * from tags where id in (#{taggings.collect{|tg| tg.id}.join(',')})")
+            tags = []
+            sections = []
             
-            assigned_sections = MephistoAssignedSection.find_by_sql("select * from assigned_sections where article_id = #{a.id}")
-            sections = MephistoSection.find_by_sql("select * from sections where id in (#{assigned_sections.collect{|as| as.id}.join(',')})")
+            DataMapper.database(:mephisto_database) do
+              taggings = MephistoTagging.find_by_sql("select * from taggings where taggable_id = #{a.id}")
+              tags = MephistoTag.find_by_sql("select * from tags where id in (#{taggings.collect{|tg| tg.id}.join(',')})") unless taggings.empty?
+            
+              assigned_sections = MephistoAssignedSection.find_by_sql("select * from assigned_sections where article_id = #{a.id}")
+              sections = MephistoSection.find_by_sql("select * from sections where id in (#{assigned_sections.collect{|as| as.id}.join(',')})") unless assigned_sections.empty?
+            end
             
             article.tag_list = (tags.collect{|tag| tag.name} + sections.collect{|section| section.name}).compact.join(",")
           end
@@ -101,6 +108,8 @@ module Admin
           # Grab the information from the comment
           comment.comment = c.body_html
           comment.name = c.author
+          comment.website = c.author_url unless c.author_url == "http://null"
+          comment.email = c.author_email
           comment.created_at = c.published_at
           comment.article_id = @article_map[c.id]
           
