@@ -109,7 +109,7 @@ module Admin
           comment.comment = c.body_html
           comment.name = c.author
           comment.website = c.author_url unless c.author_url == "http://null"
-          comment.email = c.author_email
+          comment.email_address = c.author_email
           comment.created_at = c.published_at
           comment.article_id = @article_map[c.id]
           
