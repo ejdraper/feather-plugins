@@ -10,10 +10,10 @@ module Admin
     def create
       
       DataMapper::Database.setup(:mephisto_database, {
-         :adapter  => params[:adapter]
-         :host     => params[:host]
-         :username => params[:user]
-         :password => params[:password]
+         :adapter  => params[:adapter],
+         :host     => params[:host],
+         :username => params[:user],
+         :password => params[:password],
          :database => params[:database]
         })
       
