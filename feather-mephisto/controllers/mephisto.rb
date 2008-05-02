@@ -47,7 +47,7 @@ module Admin
         mephisto_articles.each do |a|
           
           # Find the article, or create a new one
-          article = Article.first(:permalink => permalink) || Article.new
+          article = Article.new
           # Grab the information from the article feed item
           article.title = a.title
           article.content = a.body_html
