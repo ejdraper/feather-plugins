@@ -9,7 +9,7 @@ include Merb::GlobalHelpers
 
 Merb::Router.prepend do |r|
   r.match("/articles.:format").to(:controller => "Feeds", :action => "articles")
-  r.match("/rss").to(:controller => "Feeds", :action => "articles")
+  r.match("/rss").to(:controller => "Feeds", :action => "articles", :format => "rss")
   r.match("/atom").to(:controller => "Feeds", :action => "articles", :format => "atom")
   r.match("/comments.:format").to(:controller => "Feeds", :action => "comments")
   r.namespace :admin do |admin|
