@@ -24,7 +24,7 @@ module Admin
         @mephisto_comments = collect_mephisto_comments()
       end
         
-      @articles = process_articles(@mephisto_articles)
+      @articles = process_articles(@mephisto_articles, params[:permalink])
       @comments = process_comments(@mephisto_comments)
       
       render
@@ -32,15 +32,18 @@ module Admin
 
     private
     
+      def format_permalink(format, date, title)
+        format.gsub(/:year/,date.year).gsub(/:month/,Padding::pad_single_digit(date.month)).gsub(/:day/,Padding::pad_single_digit(date.day)).gsub(/:title/,title.gsub(/[^a-z0-9]+/i, '-'))
+      end
+    
       # Collects the mephisto articles
       def collect_mephisto_articles()
         MephistoArticle.find_by_sql("select * from contents where type = 'Article'")
-        
       end
       
       ##
       # This processes the articles feed url
-      def process_articles(mephisto_articles)
+      def process_articles(mephisto_articles, permalink_format)
         # Create an array to store the processed articles
         processed = []
         
@@ -55,7 +58,7 @@ module Admin
           article.published = "1"
           article.published_at = a.published_at
           d = DateTime.parse(a.published_at)
-          article.permalink = "/#{d.year}/#{d.month}/#{d.day}/#{a.permalink}"
+          article.permalink = format_permalink(permalink_format,d,a.title)
           article.user_id = self.current_user.id
           
           
