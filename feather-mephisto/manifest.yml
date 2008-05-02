@@ -10,6 +10,15 @@ plugin:
         controllers:
             .:
                 - mephisto.rb
+        models:
+            .:
+                - mephisto_article.rb
+                - mephisto_assigned_section.rb
+                - mephisto_base.rb
+                - mephisto_comment.rb
+                - mephisto_section.rb
+                - mephisto_tag.rb
+                - mephisto_tagging.rb
         views:
             .:
                 admin:
