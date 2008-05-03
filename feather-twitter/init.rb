@@ -1,3 +1,6 @@
+require "net/http"
+require "hpricot"
+require "uri"
 require File.join(File.join(File.join(File.dirname(__FILE__), "controllers"), "admin"), "tweets")
 require File.join(File.join(File.join(File.dirname(__FILE__), "controllers"), "admin"), "twitter_settings")
 require File.join(File.join(File.dirname(__FILE__), "models"), "tweet")
