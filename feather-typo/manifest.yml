@@ -1,0 +1,29 @@
+plugin:
+    name: feather-typo
+    author: Marc Seeger (based on feather-mephisto by Jake Good)
+    version: 1.0
+    homepage: http://www.marc-seeger.de
+    about: This plugin provides importing functionality from Typo.
+    contents:
+        .:
+            - init.rb
+        controllers:
+            .:
+                - typo.rb
+        models:
+            .:
+                - typo_article.rb
+                - typo_assigned_section.rb
+                - typo_base.rb
+                - typo_comment.rb
+                - typo_section.rb
+                - typo_tag.rb
+                - typo_tagging.rb
+        views:
+            .:
+                admin:
+                    .:
+                        typo:
+                            .:
+                                - show.html.erb
+                                - create.html.erb
