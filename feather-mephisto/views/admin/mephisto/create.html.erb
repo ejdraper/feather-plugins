@@ -1,0 +1,25 @@
+<h1>Imported Existing Content</h1>
+<% if defined?(@articles) && !@articles.nil? %>
+	<b>Articles:</b>
+	<% @articles.each do |article| %>
+		<p>
+		<% if article.new_record? %>
+			<%= error_messages_for(article, lambda{|error| "<li>#{error[1]}</li>"}) {|errors| "Unable to save article #{article.title}!<br />" } %>
+		<% else %>
+			Saved article <%= article.title %> as <%= article.id %>, available <%= link_to "here", article.permalink %>.
+		<% end %>
+		</p>
+	<% end %>
+<% end %>
+<% if defined?(@comments) && !@comments.nil? %>
+	<b>Comments:</b>
+	<% @comments.each do |comment| %>
+		<p>
+		<% if comment.new_record? %>
+			<%= error_messages_for(comment, lambda{|error| "<li>#{error[1]}</li>"}) {|errors| "Unable to save comment by #{comment.name}!<br />" } %>
+		<% else %>
+			Saved comment by <%= comment.name %> as <%= comment.id %>.
+		<% end %>
+		</p>
+	<% end %>
+<% end %>

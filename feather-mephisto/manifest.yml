@@ -1,0 +1,29 @@
+plugin:
+    name: feather-mephisto
+    author: Jake Good
+    version: 1.0
+    homepage: http://thoughtstoblog.com
+    about: This plugin provides importing functionality from Mephisto.
+    contents:
+        .:
+            - init.rb
+        controllers:
+            .:
+                - mephisto.rb
+        models:
+            .:
+                - mephisto_article.rb
+                - mephisto_assigned_section.rb
+                - mephisto_base.rb
+                - mephisto_comment.rb
+                - mephisto_section.rb
+                - mephisto_tag.rb
+                - mephisto_tagging.rb
+        views:
+            .:
+                admin:
+                    .:
+                        mephisto:
+                            .:
+                                - show.html.erb
+                                - create.html.erb
