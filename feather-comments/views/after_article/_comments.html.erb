@@ -48,7 +48,7 @@
         <%= text_field :name => 'comment[website]', :size => 30, :id => 'comment_website' %>
       </p>
 	  <p>
-	    <label class="text" for"comment_formatter">Formatter:</label>
+	    <label class="text" for="comment_formatter">Formatter:</label>
 	    <%= select_field :name => 'comment[formatter]', :collection => Hooks::Formatters.available_formatters, :selected => 'default', :id => 'comment_formatter' %>
 	  </p>
       <p>
