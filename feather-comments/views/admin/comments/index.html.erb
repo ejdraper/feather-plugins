@@ -7,6 +7,10 @@
   </p>
 <% end %>
 
+<div id="action">
+  <%= link_to "View comment settings", url(:admin_comment_settings) %>
+</div>
+
 <h1>View Comments</h1>
 
 <table class='tabular'>
@@ -21,5 +25,8 @@
   </thead>
   <%= partial('admin/comments/comment', :with => @comments) %>
 </table>
-<br />
-<%= link_to "View comment settings", url(:admin_comment_settings) %>
+
+<div id="pagination">
+  <%= merb_paginate @comments %>
+  <%= page_entries_info @comments %>
+</div>

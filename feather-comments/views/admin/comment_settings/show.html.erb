@@ -1,3 +1,7 @@
+<div id="actions">
+  <%= link_to "Edit comment settings", url(:edit_admin_comment_settings, @comment_setting) %> |
+  <%= link_to "View comments", url(:admin_comments) %>
+</div>
 <% throw_content :right do %>
   <h4>View Comment Settings</h4>
   <p>
@@ -35,6 +39,3 @@
 	<%= @comment_setting.to_email %>
 </p>
 <% end %>
-
-<%= link_to "Edit comment settings", url(:edit_admin_comment_settings, @comment_setting) %> |
-<%= link_to "View comments", url(:admin_comments) %>
