@@ -8,12 +8,15 @@ class Comment < DataMapper::Base
   property :formatter, :string, :default => "default"
   property :ip_address, :string, :default => "127.0.0.1"
   property :published, :boolean, :default => true
+  
+  belongs_to :article
 
   validates_presence_of :name, :comment, :article_id
 
   before_save :prepend_http_if_needed
   belongs_to :article  
   after_save :fire_after_comment_event
+  after_create :set_create_activity
 
   def self.all_for_post(article_id, method = :all)
     self.send(method, {:article_id => article_id, :published => true, :order => "created_at"})
@@ -29,6 +32,11 @@ class Comment < DataMapper::Base
 		protocol = "http://"
    	self.website.insert(0, protocol) if self.website.rindex(protocol).nil? && !self.website.empty?
 		self.website.strip!
+  end
+  
+  def set_create_activity
+    # This is lame, but for some reason the association (self.article) isn't available yet.
+    a = Activity.create(:message => "Comment created by \"#{self.name}\" on #{Article[self.article_id].title}")
   end
   
 end
