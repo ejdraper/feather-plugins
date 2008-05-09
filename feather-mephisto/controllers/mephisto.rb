@@ -34,8 +34,8 @@ module Admin
     
       def format_permalink(format, date, title)
         format = format.gsub(/:year/,date.year.to_s)
-        format.gsub!(/:month/,Padding::pad_single_digit(date.month))
-        format.gsub!(/:day/,Padding::pad_single_digit(date.day))
+        format.gsub!(/:month/,date.month.to_s)
+        format.gsub!(/:day/,date.day.to_s)
         title = title.gsub(/\W+/, ' ') # all non-word chars to spaces
         title.strip!            # ohh la la
         title.downcase!         #
