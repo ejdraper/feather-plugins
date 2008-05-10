@@ -1,5 +1,5 @@
 <tr>
-	<td><%= link_to ping_log.service.name, url(:admin_ping_service, ping_log.service) %></td>
+	<td><%= ping_log.service.nil? ? "Unknown" : link_to ping_log.service.name, url(:admin_ping_service, ping_log.service) %></td>
 	<td><%= ping_log.successful %></td>
 	<td><%= render_relative_date(ping_log.created_at) %></td>
 	<td><%= link_to "View", url(:admin_ping_log, ping_log) %></td>
