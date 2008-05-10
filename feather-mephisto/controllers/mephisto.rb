@@ -80,7 +80,7 @@ module Admin
               tags = MephistoTag.find_by_sql("select * from tags where id in (#{taggings.collect{|tg| tg.tag_id}.join(',')})") unless taggings.empty?
             
               assigned_sections = MephistoAssignedSection.find_by_sql("select * from assigned_sections where article_id = #{a.id}")
-              sections = MephistoSection.find_by_sql("select * from sections where id in (#{assigned_sections.collect{|as| as.id}.join(',')})") unless assigned_sections.empty?
+              sections = MephistoSection.find_by_sql("select * from sections where id in (#{assigned_sections.collect{|as| as.section_id}.join(',')})") unless assigned_sections.empty?
             end
             
             article.tag_list = (tags.collect{|tag| tag.name} + sections.collect{|section| section.name}).compact.join(",")
