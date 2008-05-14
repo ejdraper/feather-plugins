@@ -12,6 +12,7 @@ module Admin
       DataMapper::Database.setup(:typo_database, {
          :adapter  => params[:adapter],
          :host     => params[:host],
+         :socket => params[:socket],
          :username => params[:user],
          :password => params[:password],
          :database => params[:database]
