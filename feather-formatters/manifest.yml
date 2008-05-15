@@ -11,6 +11,7 @@ plugin:
             .:
                 - RedCloth-3.0.4.gem
                 - BlueCloth-1.0.0.gem
+                - rubypants-0.2.0.gem
         specifications:
             .:
                 - RedCloth-3.0.4.gemspec
