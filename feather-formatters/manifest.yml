@@ -16,3 +16,4 @@ plugin:
             .:
                 - RedCloth-3.0.4.gemspec
                 - BlueCloth-1.0.0.gemspec
+                - rubypants-0.2.0.gemspec
