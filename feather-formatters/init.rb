@@ -2,6 +2,8 @@ gem "RedCloth"
 require "redcloth"
 gem "BlueCloth"
 require "bluecloth"
+gem "rubypants"
+require "rubypants"
 
 Hooks::Formatters.register_formatter("textile") do |text|
   RedCloth.new(text).to_html
