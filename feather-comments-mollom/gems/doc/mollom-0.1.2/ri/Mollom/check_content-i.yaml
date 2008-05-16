@@ -1,0 +1,18 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Checks the content whether it is spam, ham (not spam), or undecided, and gives a quality assessment of the content. Possible content keys are:"
+- !ruby/struct:SM::Flow::VERB 
+  body: " session_id     # =&gt; If you allready have a session_id\n post_title     # =&gt; The title\n post_body      # =&gt; The main content of the post.\n author_name    # =&gt; The name of the post author\n author_url     # =&gt; The url the author enters\n author_mail    # =&gt; The author's email address\n author_ip      # =&gt; The author's IP address\n author_openid  # =&gt; The author's OpenID\n author_id      # =&gt; The author's ID\n"
+- !ruby/struct:SM::Flow::P 
+  body: Only the <tt>post_body</tt> key is required, all other keys are optional. This function returns a ContentResponse object.
+- !ruby/struct:SM::Flow::VERB 
+  body: " response = mollom.check_content :post_title =&gt; 'Mollom rules!',\n                                 :post_body =&gt; 'I think that mollom is so cool!',\n                                 :author_name =&gt; 'Jan De Poorter',\n                                 :author_url =&gt; 'http://www.openminds.be'\n response.spam? # =&gt; false\n response.ham?  # =&gt; true\n"
+full_name: Mollom#check_content
+is_singleton: false
+name: check_content
+params: (content = {})
+visibility: public

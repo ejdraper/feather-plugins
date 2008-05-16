@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: is Mollom unsure about the content?
+full_name: Mollom::ContentResponse#unsure?
+is_singleton: false
+name: unsure?
+params: ()
+visibility: public

@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Gets some statistics from Mollom about your site.
+- !ruby/struct:SM::Flow::P 
+  body: "The type has to be passed. Possible types:"
+- !ruby/struct:SM::Flow::VERB 
+  body: " total_days\n total_accepted\n total_rejected\n yesterday_accepted\n yesterday_rejected\n today_accepted\n today_rejected\n\n mollom.statistics :type =&gt; 'total_accepted' # =&gt; 123\n"
+full_name: Mollom#statistics
+is_singleton: false
+name: statistics
+params: (options = {})
+visibility: public

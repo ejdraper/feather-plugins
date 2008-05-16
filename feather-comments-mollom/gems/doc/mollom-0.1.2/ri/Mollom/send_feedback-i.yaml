@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Send feedback to Mollom about a certain content. Required keys are <tt>session_id</tt> and <tt>feedback</tt>.
+- !ruby/struct:SM::Flow::P 
+  body: Feedback can be any of
+- !ruby/struct:SM::Flow::VERB 
+  body: " spam\n profanity\n low-quality\n unwanted\n\n mollom.send_feedback :session_id =&gt; 'a9616e6b4cd6a81ecdd509fa624d895d', :feedback =&gt; 'unwanted'\n"
+full_name: Mollom#send_feedback
+is_singleton: false
+name: send_feedback
+params: (feedback = {})
+visibility: public

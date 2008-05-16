@@ -1,0 +1,70 @@
+<% throw_content :right do %>
+  <h4>View Comment</h4>
+  <p>
+	  Here you can view the details of an existing comment.
+  </p>
+<% end %>
+
+<script lang="text/javascript">
+var Comments = {
+	publish: function(id) {
+		new Ajax.Request("/admin/comments/" + id + "?published=true", {
+          asynchronous:'true', 
+          evalScripts:'true',
+          method:'put',
+          onLoading: function() {
+			$('comment-published').hide();
+			$('comment-display').innerText = "Saving..."
+          },
+          onFailure: function() { alert('Something went wrong...') },
+      });
+	},
+
+	unpublish: function(id) {
+		new Ajax.Request("/admin/comments/" + id + "?published=false", {
+          asynchronous:'true', 
+          evalScripts:'true',
+          method:'put',
+          onLoading: function() {
+			$('comment-unpublished').hide();
+			$('comment-display').innerText = "Saving..."
+          },
+          onFailure: function() { alert('Something went wrong...') },
+      });
+	}
+}
+</script>
+
+<h1>View Comment</h1>
+
+<p>
+	Name: <%= @comment.name %>
+</p>
+
+<p>
+	Website: <%= @comment.website %>
+</p>
+
+<p>
+	E-mail address: <%= @comment.email_address %>
+</p>
+
+<p>
+	Comment:
+	<br />
+	<%= render_text(@comment.formatter, @comment.comment) %>
+</p>
+
+<p>
+	<div id="comment_published" style="display: <%= @comment.published ? 'block' : 'none' %>;">
+		Published
+		<a href="#" id="comment_unpublish" onclick="Comments.unpublish(<%= @comment.id %>);">Click to unpublish</a>
+	</div>
+	<div id="comment_unpublished" style="display:  <%= @comment.published ? 'none' : 'block' %>;">
+		Isn't published
+		<a href="#" id="comment_publish" onclick="Comments.publish(<%= @comment.id %>);">Click to publish</a>
+	</div>
+	<div id="comment_display"></div>
+</p>
+
+<%= link_to "Back to comments", url(:admin_comments) %>

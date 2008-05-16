@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This class should only be initialized from within the <tt>check_content</tt> command.
+full_name: Mollom::ContentResponse::new
+is_singleton: true
+name: new
+params: (hash)
+visibility: public

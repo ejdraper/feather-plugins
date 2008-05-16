@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Requests an Image captcha from Mollom. It takes the optional <tt>session_id</tt> and <tt>author_ip</tt> keys, if you allready have a session. It returns a hash with the URL where the captcha can be found, and the session_id, to keep track of the current session (Needed later in <tt>Mollom#check_captcha</tt>)
+- !ruby/struct:SM::Flow::VERB 
+  body: " captcha = mollom.image_captcha :author_ip =&gt; '172.16.0.1'\n captcha['url']        # =&gt; http://xmlrpc1.mollom.com:80/a9616e6b4cd6a81ecdd509fa624d895d.png\n captcha['session_id'] # =&gt; a9616e6b4cd6a81ecdd509fa624d895d\n"
+full_name: Mollom#image_captcha
+is_singleton: false
+name: image_captcha
+params: (info = {})
+visibility: public

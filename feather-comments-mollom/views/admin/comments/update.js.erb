@@ -1,0 +1,7 @@
+<% if @comment.published %>
+	$('comment_published').show();
+	$('comment_unpublished').hide();
+<% else %>
+	$('comment_published').hide();
+	$('comment_unpublished').show();
+<% end %>

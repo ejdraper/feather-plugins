@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Gets a list of servers from Mollom. You should cache this information in your application in a temporary file or in a database. You can set this with Mollom#server_list=
+- !ruby/struct:SM::Flow::P 
+  body: Takes an optional parameter <tt>refresh</tt>, which resets the cached value.
+- !ruby/struct:SM::Flow::VERB 
+  body: " mollom.server_list\n # =&gt; [{:proto=&gt;&quot;http&quot;, :ip=&gt;&quot;88.151.243.81&quot;}, {:proto=&gt;&quot;http&quot;, :ip=&gt;&quot;82.103.131.136&quot;}]\n"
+full_name: Mollom#server_list
+is_singleton: false
+name: server_list
+params: (refresh = false)
+visibility: public

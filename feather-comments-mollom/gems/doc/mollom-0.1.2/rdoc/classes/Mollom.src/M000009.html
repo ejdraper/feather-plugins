@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>server_list (Mollom)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/mollom.rb, line 125</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">server_list</span> <span class="ruby-identifier">refresh</span> = <span class="ruby-keyword kw">false</span>
+    <span class="ruby-ivar">@server_list</span> = <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">refresh</span>
+    <span class="ruby-ivar">@server_list</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">XMLRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;xmlrpc.mollom.com&quot;</span>, <span class="ruby-node">&quot;/#{API_VERSION}&quot;</span>).<span class="ruby-identifier">call</span>(<span class="ruby-value str">'mollom.getServerList'</span>, <span class="ruby-identifier">authentication_hash</span>).<span class="ruby-identifier">collect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">server</span><span class="ruby-operator">|</span> 
+      <span class="ruby-identifier">proto</span>, <span class="ruby-identifier">ip</span> = <span class="ruby-identifier">server</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'://'</span>)
+      {<span class="ruby-identifier">:proto</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">proto</span>, <span class="ruby-identifier">:ip</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ip</span>}
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

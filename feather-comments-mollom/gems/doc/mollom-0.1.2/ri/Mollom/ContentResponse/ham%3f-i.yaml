@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Is the content Ham?
+full_name: Mollom::ContentResponse#ham?
+is_singleton: false
+name: ham?
+params: ()
+visibility: public
