@@ -1,0 +1,10 @@
+plugin:
+    name: feather-antispam
+    author: Jake Good
+    version: 1.0
+    homepage: http://featherblog.org
+    about: This plugin fights the good fight againts evil comment spammers.
+    contents:
+        .:
+            - init.rb
+            - install.rb
