@@ -8,6 +8,7 @@ class Feeds < Application
     xml.instruct!
     case params[:format]
     when "rss"
+      content_type :rss
       xml.rss "version" => "2.0" do
         xml.channel do
           xml.title         Configuration.current.title
@@ -27,6 +28,7 @@ class Feeds < Application
         end
       end
     when "atom"
+      content_type :atom
       xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
         xml.title           Configuration.current.title
         xml.subtitle        Configuration.current.tag_line
