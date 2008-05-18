@@ -1,1 +1,32 @@
-<% # TODO change this to jabber settings. %>
+<div id="actions">
+  <%= link_to "Edit jabber settings", url(:edit_admin_jabber_settings, @jabber_setting) %> |
+</div>
+<% throw_content :right do %>
+  <h4>View Jabber Settings</h4>
+  <p>
+	Here you can view your jabber settings.
+  </p>
+<% end %>
+
+<h1>View Jabber Settings</h1>
+
+
+	Jabber Notification:
+	<%= @jabber_setting.jabber_notification %>
+</p>
+
+<% if @jabber_setting.jabber_notification %>
+<p>
+	From jid address:
+	<%= @jabber_setting.from_jabber %>
+</p>
+<p>
+	jid pass:
+	<%= @jabber_setting.from_jabber_pass %>
+</p>
+
+<p>
+	To jid address:
+	<%= @jabber_setting.to_jabber %>
+</p>
+<% end %>
