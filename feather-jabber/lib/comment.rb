@@ -19,7 +19,7 @@ class Comment < DataMapper::Base
       
       commenter_hp="no homepage"
       if !self.website.empty?
-        commenter_hp=self.self.website 
+        commenter_hp=self.website 
       end
       
       body = "A new comment was posted to #{article.title} at your Blog by #{self.name} (#{commenter_mail} / #{commenter_hp}):\n #{self.comment}"
