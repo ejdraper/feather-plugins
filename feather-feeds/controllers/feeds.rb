@@ -14,7 +14,7 @@ class Feeds < Application
               "xmlns:atom" => "http://www.w3.org/2005/Atom" do
         xml.channel do
           xml.title         Configuration.current.title
-          xml.atom :link,  :href => "http://#{request.env['HTTP_HOST']}#{request.uri}", :rel => "self"
+          xml.atom :link,   :href => "http://#{request.env['HTTP_HOST']}#{request.uri}", :rel => "self"
           xml.link          "http://#{request.env['HTTP_HOST']}#{request.uri}"
           xml.pubDate       rfc822(@articles.first.published_at) if @articles.length > 0
           xml.description   Configuration.current.tag_line
@@ -74,7 +74,7 @@ class Feeds < Application
               "xmlns:atom" => "http://www.w3.org/2005/Atom" do
         xml.channel do
           xml.title         "#{Configuration.current.title}: comments"
-          xml.atom :link,  :href => "http://#{request.env['HTTP_HOST']}#{request.uri}", :rel => "self"
+          xml.atom :link,   :href => "http://#{request.env['HTTP_HOST']}#{request.uri}", :rel => "self"
           xml.link          "http://#{request.env['HTTP_HOST']}#{request.uri}"
           xml.pubDate       rfc822(@comments.first.created_at) if @comments.length > 0
           xml.description   Configuration.current.tag_line
