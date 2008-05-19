@@ -1,0 +1,22 @@
+<script type="text/javascript" src="/javascripts/prototype.js"/>
+<div id="search-bar">
+	<h3>Search</h3>
+	<form method="post" id="search-form" action="/search">
+		<input id="search-text" name="query" size="15" title="Type a word or phrase">
+		<img alt="spinner" id="search-spinner" src="/images/spinner.gif" style="display:none;" />
+	</form>
+	<script>
+		   new Form.Element.Observer('search-text', 1, 
+		      function(element, value) {new Ajax.Updater(
+		        'search-results', 
+		        'http://localhost:3000/search',
+		         {asynchronous:true, evalScripts:true, 
+		           onComplete:function(request)
+		            {Element.hide('search-spinner')}, 
+		           onLoading:function(request)
+		            {Element.show('search-spinner')},
+		           method:'post', parameters:'query=' + value
+		})});
+	</script>
+	<div id="search-results"></div>
+</div>
