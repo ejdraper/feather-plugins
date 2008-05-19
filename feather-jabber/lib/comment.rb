@@ -10,11 +10,24 @@ class Comment < DataMapper::Base
       from = JabberSetting.current.from_jabber
       pass = JabberSetting.current.from_jabber_pass
       to = JabberSetting.current.to_jabber
-      subject = "New comment - RE: #{self.article.title}"
-      body = "A new comment was posted to #{self.article.title} at your Blog by " + self.name + ":\n\"" + self.comment + "\""
-      jid = JID::new(from)
-      cl = Client::new(jid)
+      article = Article[self.article_id]
+      subject = "New comment - RE: #{article.title}"
+      commenter_mail="no email"
+      if !self.email_address.empty?
+        commenter_mail=self.email_address 
+      end
+      
+      commenter_hp="no homepage"
+      if !self.website.empty?
+        commenter_hp=self.website 
+      end
+      
+      body = "A new comment was posted to #{article.title} at your Blog by #{self.name} (#{commenter_mail} / #{commenter_hp}):\n #{self.comment}"
+      #Create a new Jabber connection
+      cl = Client::new(JID::new(from))
+      #Connect
       cl.connect
+      #Send password
       cl.auth(pass)
       m = Message::new(to, body).set_type(:normal).set_id('1').set_subject(subject)
       cl.send(m)

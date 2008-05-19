@@ -13,6 +13,12 @@ plugin:
             admin:
               .:
                 - jabber_settings.rb
+        gems:
+            .:
+                - xmpp4r-0.3.2.gem
+        specifications:
+            .:
+                - xmpp4r-0.3.2.gemspec
         lib:
             .:
                 - comment.rb
