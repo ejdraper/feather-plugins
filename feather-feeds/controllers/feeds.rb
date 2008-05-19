@@ -9,7 +9,7 @@ class Feeds < Application
     case params[:format]
     when "rss"
       content_type :rss
-      xml.rss "version" => "2.0" do
+      xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
         xml.channel do
           xml.title         Configuration.current.title
           xml.link          "http://#{request.env['HTTP_HOST']}#{request.uri}"
@@ -22,7 +22,7 @@ class Feeds < Application
               xml.description   render_article(article)
               xml.pubDate       rfc822(article.published_at)
               xml.guid          "http://#{request.env['HTTP_HOST']}#{article.permalink}"
-              xml.author        article.user.name || article.user.login
+              xml.dc :creator,  article.user.name || article.user.login
             end
           end
         end
@@ -65,7 +65,7 @@ class Feeds < Application
     xml.instruct!
     case params[:format]
     when "rss"
-      xml.rss "version" => "2.0" do
+      xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
         xml.channel do
           xml.title         "#{Configuration.current.title}: comments"
           xml.link          "http://#{request.env['HTTP_HOST']}#{request.uri}"
@@ -80,7 +80,7 @@ class Feeds < Application
                 xml.description   render_text("default", comment.comment)
                 xml.pubDate       rfc822(comment.created_at)
                 xml.guid          "http://#{request.env['HTTP_HOST']}#{article.permalink}##{comment.id}"
-                xml.author        comment.name
+                xml.dc :creator,  comment.name
               end
             end
           end
