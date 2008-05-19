@@ -31,7 +31,7 @@ class Feeds < Application
       content_type :atom
       xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
         xml.title           Configuration.current.title
-        xml.subtitle        Configuration.current.tag_line
+        xml.subtitle        Configuration.current.tag_line if Configuration.current.tag_line
         xml.link            :href => "http://#{request.env['HTTP_HOST']}#{request.uri}", :rel => "self"
         xml.link            :href => "http://#{request.env['HTTP_HOST']}"
         # The parentheses are needed, otherwise one gets a pretty weird error complaining about String not having strftime
@@ -89,7 +89,7 @@ class Feeds < Application
     when "atom"
       xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
         xml.title           Configuration.current.title
-        xml.subtitle        Configuration.current.tag_line
+        xml.subtitle        Configuration.current.tag_line if Configuration.current.tag_line
         xml.link            :href => "http://#{request.env['HTTP_HOST']}#{request.uri}", :rel => "self"
         xml.link            :href => "http://#{request.env['HTTP_HOST']}"
         # The parentheses are needed, otherwise one gets a pretty weird error complaining about String not having strftime
