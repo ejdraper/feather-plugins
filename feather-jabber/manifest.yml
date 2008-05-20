@@ -1,0 +1,33 @@
+plugin:
+    name: feather-jabber
+    author: Marc Seeger and Michael Leung
+    version: 1.0
+    homepage: http://featherblog.org
+    about: This plugin provides Jabber support.
+    contents:
+        .:
+            - init.rb
+            - install.rb
+        controllers:
+            .:
+            admin:
+              .:
+                - jabber_settings.rb
+        gems:
+            .:
+                - xmpp4r-0.3.2.gem
+        specifications:
+            .:
+                - xmpp4r-0.3.2.gemspec
+        lib:
+            .:
+                - comment.rb
+        models:
+            .:
+                - jabber_setting.rb
+        views:
+            admin:
+              jabber_settings:
+                  .:
+                      - edit.html.erb
+                      - show.html.erb

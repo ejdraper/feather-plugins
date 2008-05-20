@@ -1,0 +1,32 @@
+<% throw_content :right do %>
+	<h4>Jabber Settings</h4>
+	Update the jabber settings for this blog.
+	<br />
+<% end %>
+<%= error_messages_for @jabber_setting %>
+<h1>Edit jabber settings</h1>
+
+<% form_for :jabber_setting, :action => url(:admin_jabber_settings, @jabber_setting), :method => :put do %>
+  <p>
+  	<span class="mock_label">Jabber Notification</span>
+  	<%= checkbox_control :jabber_notification, :value => @jabber_setting.jabber_notification, :onchange => "$('jabber_setting_jabber_notification').checked ? $('from_jabber_display').show() && $('from_jabber_pass_display').show() && $('to_jabber_display').show() : $('from_jabber_display').hide() && $('from_jabber_pass_display').hide() && $('to_jabber_display').hide()" %>
+  </p>
+
+  <p id="from_jabber_display" style="display: <%= @jabber_setting.jabber_notification ? 'block' : 'none' %>;">
+  	<span class="mock_label">From jabber id</span>
+  	<%= text_control :from_jabber, :value => @jabber_setting.from_jabber %>
+  </p>
+
+  <p id="from_jabber_pass_display" style="display: <%= @jabber_setting.jabber_notification ? 'block' : 'none' %>;">
+  	<span class="mock_label">jabber id Password</span>
+  	<%= text_control :from_jabber_pass, :value => @jabber_setting.from_jabber_pass %>
+  </p>
+
+
+  <p id="to_jabber_display" style="display: <%= @jabber_setting.jabber_notification ? 'block' : 'none' %>;">
+  	<span class="mock_label">To jabber id</span>
+  	<%= text_control :to_jabber, :value => @jabber_setting.to_jabber %>
+  </p>
+
+  <%= submit_button 'Save Settings' %> or <%= link_to 'Cancel', url(:admin_jabber_settings) %>
+<% end %>
