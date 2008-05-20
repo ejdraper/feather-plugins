@@ -10,6 +10,7 @@ class Comment < DataMapper::Base
       from = JabberSetting.current.from_jabber
       pass = JabberSetting.current.from_jabber_pass
       to = JabberSetting.current.to_jabber
+<<<<<<< HEAD:feather-jabber/lib/comment.rb
       article = Article[self.article_id]
       subject = "New comment - RE: #{article.title}"
       commenter_mail="no email"
@@ -26,8 +27,17 @@ class Comment < DataMapper::Base
       #Create a new Jabber connection
       cl = Client::new(JID::new(from))
       #Connect
+=======
+      subject = "New comment - RE: #{self.article.title}"
+      body = "A new comment was posted to #{self.article.title} at your Blog by " + self.name + ":\n\"" + self.comment + "\""
+      jid = JID::new(from)
+      cl = Client::new(jid)
+>>>>>>> 29654722a21eea2b9d2b65d99c979af384f5f365:feather-jabber/lib/comment.rb
       cl.connect
+<<<<<<< HEAD:feather-jabber/lib/comment.rb
       #Send password
+=======
+>>>>>>> 29654722a21eea2b9d2b65d99c979af384f5f365:feather-jabber/lib/comment.rb
       cl.auth(pass)
       m = Message::new(to, body).set_type(:normal).set_id('1').set_subject(subject)
       cl.send(m)
