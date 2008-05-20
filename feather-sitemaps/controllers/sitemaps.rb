@@ -16,7 +16,7 @@ class Sitemaps < Application
         end
         @articles.each do |article|
           xml.url do
-            xml.loc "http://#{request.env['HTTP_HOST']}#{article.permalink}"
+            xml.loc "http://#{request.env['HTTP_HOST']}/#{article.permalink}"
             xml.lastmod article.published_at.strftime("%Y-%m-%d")
             age = (Date.today - Date.parse(article.published_at.to_s))
             age_old = age % (60*60*24)
