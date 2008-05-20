@@ -13,15 +13,12 @@ plugin:
             admin:
               .:
                 - jabber_settings.rb
-<<<<<<< HEAD:feather-jabber/manifest.yml
         gems:
             .:
                 - xmpp4r-0.3.2.gem
         specifications:
             .:
                 - xmpp4r-0.3.2.gemspec
-=======
->>>>>>> 29654722a21eea2b9d2b65d99c979af384f5f365:feather-jabber/manifest.yml
         lib:
             .:
                 - comment.rb
