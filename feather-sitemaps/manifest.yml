@@ -1,0 +1,13 @@
+plugin:
+    name: feather-sitemaps
+    author: Michael Murray
+    version: 1.0
+    homepage: http://sudothinker.com
+    about: This plugin provides google sitemap support.
+    contents:
+        .:
+            - init.rb
+            - install.rb
+        controllers:
+            .:
+                - sitemaps.rb

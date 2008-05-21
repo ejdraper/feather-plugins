@@ -1,0 +1,39 @@
+<div id="actions">
+  <%= link_to "Edit recaptcha settings", url(:edit_admin_recaptcha_configuration, @recaptcha_config) %> |
+  <%= link_to "View comments", url(:admin_comments) %>
+</div>
+<% throw_content :right do %>
+  <h4>View Recaptcha Settings</h4>
+  <p>
+	Here you can view recaptcha settings.
+	<br />
+	<%= link_to "View comments", url(:admin_comments) %>
+  </p>
+<% end %>
+
+<h1>View Recaptcha Settings</h1>
+
+<p>
+		<span class="mock_label">Public Key</span>
+		<%= @recaptcha_config.public_key %>
+</p>
+
+<p>
+		<span class="mock_label">Private Key</span>
+		<%= @recaptcha_config.private_key %>
+</p>
+
+<p>
+		<span class="mock_label">Theme</span>
+		<%= @recaptcha_config.theme %>
+</p>
+
+<p>
+		<span class="mock_label">Language</span>
+		<%= @recaptcha_config.lang %>
+</p>
+
+<p>
+		<span class="mock_label">Tab Index</span>
+		<%= @recaptcha_config.tabindex %>
+</p>

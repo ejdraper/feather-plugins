@@ -8,9 +8,13 @@ class Feeds < Application
     xml.instruct!
     case params[:format]
     when "rss"
-      xml.rss "version" => "2.0" do
+      content_type :rss
+      xml.rss "version"    => "2.0",
+              "xmlns:dc"   => "http://purl.org/dc/elements/1.1/",
+              "xmlns:atom" => "http://www.w3.org/2005/Atom" do
         xml.channel do
           xml.title         Configuration.current.title
+          xml.atom :link,   :href => "http://#{request.env['HTTP_HOST']}#{request.uri}", :rel => "self"
           xml.link          "http://#{request.env['HTTP_HOST']}#{request.uri}"
           xml.pubDate       rfc822(@articles.first.published_at) if @articles.length > 0
           xml.description   Configuration.current.tag_line
@@ -21,15 +25,16 @@ class Feeds < Application
               xml.description   render_article(article)
               xml.pubDate       rfc822(article.published_at)
               xml.guid          "http://#{request.env['HTTP_HOST']}#{article.permalink}"
-              xml.author        article.user.name || article.user.login
+              xml.dc :creator,  article.user.name || article.user.login
             end
           end
         end
       end
     when "atom"
+      content_type :atom
       xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
         xml.title           Configuration.current.title
-        xml.subtitle        Configuration.current.tag_line
+        xml.subtitle        Configuration.current.tag_line if Configuration.current.tag_line
         xml.link            :href => "http://#{request.env['HTTP_HOST']}#{request.uri}", :rel => "self"
         xml.link            :href => "http://#{request.env['HTTP_HOST']}"
         # The parentheses are needed, otherwise one gets a pretty weird error complaining about String not having strftime
@@ -63,9 +68,13 @@ class Feeds < Application
     xml.instruct!
     case params[:format]
     when "rss"
-      xml.rss "version" => "2.0" do
+      content_type :rss
+      xml.rss "version"    => "2.0",
+              "xmlns:dc"   => "http://purl.org/dc/elements/1.1/",
+              "xmlns:atom" => "http://www.w3.org/2005/Atom" do
         xml.channel do
           xml.title         "#{Configuration.current.title}: comments"
+          xml.atom :link,   :href => "http://#{request.env['HTTP_HOST']}#{request.uri}", :rel => "self"
           xml.link          "http://#{request.env['HTTP_HOST']}#{request.uri}"
           xml.pubDate       rfc822(@comments.first.created_at) if @comments.length > 0
           xml.description   Configuration.current.tag_line
@@ -78,16 +87,17 @@ class Feeds < Application
                 xml.description   render_text("default", comment.comment)
                 xml.pubDate       rfc822(comment.created_at)
                 xml.guid          "http://#{request.env['HTTP_HOST']}#{article.permalink}##{comment.id}"
-                xml.author        comment.name
+                xml.dc :creator,  comment.name
               end
             end
           end
         end
       end
     when "atom"
+      content_type :atom
       xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
         xml.title           Configuration.current.title
-        xml.subtitle        Configuration.current.tag_line
+        xml.subtitle        Configuration.current.tag_line if Configuration.current.tag_line
         xml.link            :href => "http://#{request.env['HTTP_HOST']}#{request.uri}", :rel => "self"
         xml.link            :href => "http://#{request.env['HTTP_HOST']}"
         # The parentheses are needed, otherwise one gets a pretty weird error complaining about String not having strftime

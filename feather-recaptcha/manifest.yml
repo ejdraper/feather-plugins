@@ -1,0 +1,37 @@
+plugin:
+    name: feather-recaptcha
+    author: Jake Good
+    version: 1.0
+    homepage: http://www.thoughtstoblog.com
+    about: This plugin provides basic recaptcha comment validation.
+    contents:
+        .:
+            - init.rb
+            - install.rb
+        helpers:
+            .:
+                - global_helpers.rb
+        controllers:
+            .:
+                - comments.rb
+            admin:
+                .:
+                    - recaptcha_configuration.rb      
+        models:
+            .:
+                - recaptcha_config.rb
+        views:
+            admin:
+                recaptcha_configuration:
+                    .:
+                        - edit.html.erb
+                        - show.html.erb
+            after_article:
+                .:
+                    - _recaptcha.html.erb
+        gems:
+            .:
+                - recaptcha-0.1.47.gem
+        specifications:
+            .:
+                - recaptcha-0.1.47.gemspec
