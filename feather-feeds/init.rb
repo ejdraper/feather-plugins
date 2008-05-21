@@ -21,3 +21,6 @@ Hooks::View.register_partial_view "head", "feed_link"
 Hooks::View.register_partial_view "sidebar", "feed_link"
 
 Hooks::Menu.add_menu_item "Feed Settings", "/admin/feed_settings"
+
+Merb.add_mime_type(:atom, nil, %w[application/atom+xml], :charset => "utf-8")
+Merb.add_mime_type(:rss,  nil, %w[application/rss+xml],  :charset => "utf-8")

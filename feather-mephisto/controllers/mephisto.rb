@@ -48,7 +48,18 @@ module Admin
       def collect_mephisto_articles()
         MephistoArticle.find_by_sql("select * from contents where type = 'Article'")
       end
-      
+
+      def formatter(filter)
+        case filter
+        when 'markdown_filter', 'smartypants_filter'
+          'markdown'
+        when 'textile_filter'
+          'textile'
+        else
+          'default'
+        end
+      end
+
       ##
       # This processes the articles feed url
       def process_articles(mephisto_articles, permalink_format)
@@ -62,7 +73,8 @@ module Admin
           article = Article.new
           # Grab the information from the article feed item
           article.title = a.title
-          article.content = a.body_html
+          article.content = a.body
+          article.formatter = formatter(a.filter)
           article.published = "1"
           d = DateTime.parse(a.published_at)
           article.published_at = d
@@ -118,8 +130,9 @@ module Admin
           comment = Comment.new
           
           # Grab the information from the comment
-          comment.comment = c.body_html
+          comment.comment = c.body
           comment.name = c.author
+          comment.formatter = formatter(c.filter)
           comment.website = ''
           if c.author_url && c.author_url != "http://null"
             comment.website = c.author_url
