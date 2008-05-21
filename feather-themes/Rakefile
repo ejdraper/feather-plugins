@@ -1,0 +1,40 @@
+require 'rubygems'
+require 'rake'
+require 'rake/rdoctask'
+require 'rake/testtask'
+require 'spec/rake/spectask'
+require 'fileutils'
+require 'yaml'
+require 'pp'
+
+namespace :feather do
+  desc "Make plugin package"
+  task :package do
+
+    # Load manifest
+    puts "Load manifest..."
+    pp manifest = YAML::load_file('./manifest.yml')
+    
+    # Target directory for package files
+    target = File.join(File.dirname(__FILE__), 'pkg')
+    puts "Target is: #{target}"
+    Dir.mkdir(target) if not File.exists?(target)
+    
+    # Package name
+    package = "#{manifest['name']}-#{manifest['version']}"
+    puts "Package: #{package}"
+    
+    # Tgz
+    command = "tar -czf #{package}.tgz --exclude pkg ."
+    puts "Packing: #{command}"
+    system command
+    
+    # Move
+    puts "Finishing.."
+    FileUtils.mv("#{package}.tgz", target)
+    FileUtils.cp('./manifest.yml', File.join(target, "#{package}.yml"))
+    
+    puts "Done."
+
+  end
+end
