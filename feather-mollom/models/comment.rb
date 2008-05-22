@@ -12,9 +12,12 @@ class Comment < DataMapper::Base
 
   def spam?
     return false if self.comment.nil? || self.comment.empty?
-    self.mollom_content ||= Comment.mollom.check_content( :post_body => self.comment,
-                                                          :author_name => self.name,
-                                                          :author_url => self.website)
+    options = {}
+    options[:post_body] = self.comment if self.comment
+    options[:author_name] = self.name if self.name
+    options[:author_url] = self.website if self.website
+    options[:author_ip] = self.ip_address if self.ip_address
+    self.mollom_content ||= Comment.mollom.check_content( options)
     self.mollom_content.spam?
   end
   
