@@ -11,12 +11,17 @@ namespace :feather do
   desc "Make plugin package"
   task :package do
 
+    unless path = ENV['path']
+      puts 'Usage: rake feather:package path=<plugin path> [target=<target path>]'
+      return
+    end
+
     # Load manifest
     puts "Load manifest..."
-    pp manifest = YAML::load_file('./manifest.yml')
+    pp manifest = YAML::load_file(File.join(path, 'manifest.yml'))
     
     # Target directory for package files
-    target = File.join(File.dirname(__FILE__), 'pkg')
+    target = ENV['target'] ? ENV['target'] : File.join(File.dirname(__FILE__), 'pkg')
     puts "Target is: #{target}"
     Dir.mkdir(target) if not File.exists?(target)
     
@@ -25,14 +30,18 @@ namespace :feather do
     puts "Package: #{package}"
     
     # Tgz
-    command = "tar -czf #{package}.tgz --exclude pkg ."
+    manifest['package'] = "#{package}.tgz"
+    command = "tar -czf #{package}.tgz --exclude pkg -C #{path} ."
     puts "Packing: #{command}"
     system command
     
     # Move
     puts "Finishing.."
     FileUtils.mv("#{package}.tgz", target)
-    FileUtils.cp('./manifest.yml', File.join(target, "#{package}.yml"))
+    File.open(File.join(target, "#{package}.yml"), 'w') do |f|
+      f.puts(manifest.to_yaml)
+      f.close
+    end
     
     puts "Done."
 

@@ -1,5 +1,8 @@
 name: feather-themes
-author: Alexander Flatter <flatter@gmail.com>
 version: 1.0
 homepage: http://www.featherblog.org
+author:
+    name: Alexander Flatter 
+    email: flatter@gmail.com
+    homepage: http://aflatter.de
 about: This plugin adds theme support to feather.
