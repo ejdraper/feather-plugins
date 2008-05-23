@@ -5,6 +5,7 @@ feather-feeds: this adds RSS feeds to Feather, and if the comment plugin is pres
 feather-formatters: this adds textile, markdown and smartypants formatting for articles, and if the sidebar plugin is present, sidebar groups too
 feather-import: this allows RSS importing of articles, and if the comment plugin is present, comments too
 feather-mephisto: this allows you to import a blog from mephisto
+feather-mollom: this checks all comments against the Mollom comment spam network
 feather-pings: this allows custom ping services to be contacted when new content is published
 feather-redirects: this allows custom redirects to be setup to maintain links and compatibility with previous blog services
 feather-sidebar: this allows the creation of generic sidebar items for your Feather blog
