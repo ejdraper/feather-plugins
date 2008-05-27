@@ -1,15 +1,22 @@
 This contains plugins for Feather:
 
+feather-akismet: this provides Akismet spam protection for comments
+feather-antispam: this provides other anti-spam measures for comments
 feather-comments: this provides commenting on articles for Feather
 feather-feeds: this adds RSS feeds to Feather, and if the comment plugin is present, also adds a comment feed
 feather-formatters: this adds textile, markdown and smartypants formatting for articles, and if the sidebar plugin is present, sidebar groups too
 feather-import: this allows RSS importing of articles, and if the comment plugin is present, comments too
+feather-jabber: this provides Jabber comment notifications
 feather-mephisto: this allows you to import a blog from mephisto
 feather-pings: this allows custom ping services to be contacted when new content is published
+feather-recaptcha: this provides recaptcha anti-spam measures for comments
 feather-redirects: this allows custom redirects to be setup to maintain links and compatibility with previous blog services
+feather-repo: this allows you to host a plugin repository that can be utilised by other Feather blogs to download plugins - this will be used by the main Feather site to host official plugins, and other users can host their own plugins directly from their Feather blogs
 feather-sidebar: this allows the creation of generic sidebar items for your Feather blog
+feather-sitemaps: this provides an xml sitemap for your site, based on the content
 feather-snippets: this allows custom and dynamic creation of snippets to add to the blog template
 feather-styles: this allows custom stylesheets to be defined and automatically included so as to override default blog styling
 feather-tagging: this provides tagging for articles, and a tag cloud for the blog sidebar
 feather-twitter: this polls for twitter updates, and inserts them in to your blog at the appropriate place
+feather-typo: this allows you to import a blog from typo
 feather-uploads: this allows for custom files to be uploaded and served
