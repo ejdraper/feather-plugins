@@ -10,7 +10,7 @@ feather-jabber: this provides Jabber comment notifications
 feather-mephisto: this allows you to import a blog from mephisto
 feather-mollom: this checks all comments against the Mollom comment spam network
 feather-pings: this allows custom ping services to be contacted when new content is published
-feather-recaptcha: this provides recaptcha anti-spam measures for comments **NOTE NOT DONE YET**
+feather-recaptcha: this provides recaptcha anti-spam measures for comments **ALMOST DONE, ALMOST DONE NOW!! It's really just back to Matt and El ;) in order to design that appropriate hook so that the captcha is IN the form, rather than out of it....**
 feather-redirects: this allows custom redirects to be setup to maintain links and compatibility with previous blog services
 feather-repo: this allows you to host a plugin repository that can be utilised by other Feather blogs to download plugins - this will be used by the main Feather site to host official plugins, and other users can host their own plugins directly from their Feather blogs
 feather-sidebar: this allows the creation of generic sidebar items for your Feather blog
