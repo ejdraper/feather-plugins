@@ -6,7 +6,7 @@ require File.join(File.dirname(__FILE__), "..", "..", "models", "comment")
 describe "Comment" do
   it "should know if content is spam" do
     @mollom = Mollom.new(:private_key => 'xxxxxxxxx', :public_key => 'yyyyyyyyy')
-    @mollom.should_receive(:send_command).with('mollom.checkContent', {:author_name=>"This is a comment", :author_url=>nil, :post_body=>"I am spam"}).and_return("spam" => 3, "quality" => 0.40, "session_id" => 1)
+    @mollom.should_receive(:send_command).with('mollom.checkContent', {:author_name=>"This is a comment", :post_body=>"I am spam"}).and_return("spam" => 3, "quality" => 0.40, "session_id" => 1)
     Comment.mollom = @mollom
     
     comment = Comment.new
