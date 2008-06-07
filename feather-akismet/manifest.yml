@@ -6,3 +6,4 @@ author:
     email: jake@whoisjake.com
     homepage: http://www.thoughtstoblog.com
 about: This plugin provides basic akismet comment validation.
+package: package

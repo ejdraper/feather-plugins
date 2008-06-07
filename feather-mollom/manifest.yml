@@ -6,3 +6,4 @@ author:
     email: unknown
     homepage: http://www.notch8.com
 about: This plugin provides basic Mollom comment validation.
+package: package
