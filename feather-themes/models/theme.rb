@@ -53,9 +53,6 @@ class Theme
       FileUtils.rm_rf(path)
       Dir.mkdir(path)
       # Download the package and untgz
-      require 'zlib'
-      require 'stringio'
-      require 'archive/tar/minitar'
       package = Net::HTTP.get(URI.parse(url + ".tgz"))
       Archive::Tar::Minitar.unpack(Zlib::GzipReader.new(StringIO.new(package)), path)
       # Grab metadata from manifest
