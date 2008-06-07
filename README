@@ -17,6 +17,7 @@ feather-sitemaps: this provides an xml sitemap for your site, based on the conte
 feather-snippets: this allows custom and dynamic creation of snippets to add to the blog template
 feather-styles: this allows custom stylesheets to be defined and automatically included so as to override default blog styling
 feather-tagging: this provides tagging for articles, and a tag cloud for the blog sidebar
+feather-themes: allows custom themes to be downloaded, managed and activated for your blog
 feather-twitter: this polls for twitter updates, and inserts them in to your blog at the appropriate place
 feather-typo: this allows you to import a blog from typo
 feather-uploads: this allows for custom files to be uploaded and served
