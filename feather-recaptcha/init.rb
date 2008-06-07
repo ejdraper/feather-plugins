@@ -1,5 +1,6 @@
 PluginDependencies::register_dependency "feather-comments"
 require File.join(File.join(File.dirname(__FILE__), "helpers"), "global_helpers")
+require File.join(File.join(File.dirname(__FILE__), "controllers"), "comments")
 require File.join(File.join(File.join(File.dirname(__FILE__), "controllers"), "admin"), "recaptcha_configuration")
 require File.join(File.join(File.dirname(__FILE__), "models"), "recaptcha_config")
 

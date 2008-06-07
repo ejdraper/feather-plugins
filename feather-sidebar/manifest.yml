@@ -1,31 +1,8 @@
-plugin:
-    name: feather-sidebar
-    author: Michael Leung
-    version: 1.0
-    homepage: http://featherblog.org
-    about: This plugin provides the ability to create arbitrary sidebar links.
-    contents:
-        .:
-            - init.rb
-            - install.rb
-        controllers:
-            .:
-                - sidebar_groups.rb
-        models:
-            .:
-                - sidebar_group.rb
-        views:
-            .:
-                admin:
-                    .:
-                        sidebar_groups:
-                            .:
-                                - _form.html.erb
-                                - _sidebar_group.html.erb
-                                - edit.html.erb
-                                - index.html.erb
-                                - new.html.erb
-                                - show.html.erb
-                sidebar:
-                    .:
-                        - _sidebar_groups.html.erb
+name: feather-sidebar
+version: 1.0
+homepage: http://featherblog.org
+author:
+    name: Michael Leung
+    email: blamemike@gmail.com
+    homepage: http://bloggingmyassoff.com
+about: This plugin provides the ability to create arbitrary sidebar links.

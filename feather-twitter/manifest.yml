@@ -1,41 +1,8 @@
-plugin:
-    name: feather-twitter
-    author: El Draper
-    version: 1.0
-    homepage: http://featherblog.org
-    about: This plugin provides Twitter integration for your blog
-    contents:
-        .:
-            - init.rb
-            - install.rb
-        controllers:
-            .:
-            admin:
-                .:
-                    - twitter_settings.rb
-                    - tweets.rb
-        models:
-            .:
-                - tweet.rb
-                - twitter_setting.rb
-        views:
-            admin:
-                twitter_settings:
-                    .:
-                        - edit.html.erb
-                        - show.html.erb
-                tweets:
-                    .:
-                        - _tweet.html.erb
-                        - index.html.erb
-                        - show.html.erb
-                        - update.js.erb
-            between_articles:
-                .:
-                    - _tweets.html.erb
-            first_article_in_list:
-                .:
-                    - _tweets.html.erb
-            last_article_in_list:
-                .:
-                    - _tweets.html.erb
+name: feather-twitter
+version: 1.0
+homepage: http://featherblog.org
+author:
+    name: El Draper
+    email: el@eldiablo.co.uk
+    homepage: http://crazycool.co.uk
+about: This plugin provides Twitter integration for your blog

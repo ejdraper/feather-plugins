@@ -1,35 +1,8 @@
-plugin:
-    name: feather-tagging
-    author: Michael Leung and El Draper
-    version: 1.0
-    homepage: http://featherblog.org
-    about: This plugin provides tag support to articles.
-    contents:
-        .:
-            - init.rb
-            - install.rb
-        controllers:
-            .:
-                - tags.rb
-        lib:
-            .:
-                - article.rb
-                - global_helpers.rb
-        models:
-            .:
-                - tag.rb
-                - tagging.rb
-        views:
-            .:
-                article_form_fields:
-                    .:
-                        - _tag_field.html.erb
-                meta_section:
-                    .:
-                        - _tag_list.html.erb
-                sidebar:
-                    .:
-                        - _tag_cloud.html.erb
-                tags:
-                    .:
-                        - show.html.erb
+name: feather-tagging
+version: 1.0
+homepage: http://featherblog.org
+author:
+    name: Michael Leung and El Draper
+    email: blamemike@gmail.com and el@eldiablo.co.uk
+    homepage: http://bloggingmyassoff.com and http://crazycool.co.uk
+about: This plugin provides tag support to articles.

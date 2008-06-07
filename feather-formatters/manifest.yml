@@ -1,21 +1,8 @@
 name: feather-formatters
-author: El Draper & Michael Murray
 version: 1.0
 homepage: http://featherblog.org
+author:
+    name: El Draper & Michael Murray
+    email: el@eldiablo.co.uk and sudothinker@gmail.com
+    homepage: http://crazycool.co.uk and http://sudothinker.com
 about: This plugin provides different formatters to be used with Feather. Also includes support for code syntax highlighting via <code:language> tags
-gems:
-    .:
-        - RedCloth-3.0.4.gem
-        - BlueCloth-1.0.0.gem
-        - rubypants-0.2.0.gem
-        - coderay-0.7.4.215.gem
-specifications:
-    .:
-        - RedCloth-3.0.4.gemspec
-        - BlueCloth-1.0.0.gemspec
-        - rubypants-0.2.0.gemspec
-        - coderay-0.7.4.215.gemspec
-views:
-    head:
-        .:
-            - _coderay.html.erb

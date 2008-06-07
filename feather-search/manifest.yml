@@ -1,24 +1,8 @@
-plugin:
-    name: feather-search
-    author: Jake Good
-    version: 1.0
+name: feather-search
+version: 1.0
+homepage: http://featherblog.org
+author:
+    name: Jake Good
+    email: gooberdlx@hotmail.com
     homepage: http://www.thoughtstoblog.com
-    about: This plugin provides searching support.
-    contents:
-        .:
-            - init.rb
-            - install.rb
-        controllers:
-            .:
-                - search.rb
-        views:
-            .:
-                layout:
-                    .:
-                        - empty.html.erb
-                search:
-                    .:
-                        - articles.html.erb
-                sidebar:
-                    .:
-                        - _search_bar.html.erb
+about: This plugin provides searching support.

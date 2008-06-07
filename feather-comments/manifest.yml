@@ -1,46 +1,8 @@
-plugin:
-    name: feather-comments
-    author: Michael Leung and El Draper
-    version: 1.0
-    homepage: http://featherblog.org
-    about: This plugin provides the base commenting system for feather.
-    contents:
-        .:
-            - init.rb
-            - install.rb
-        controllers:
-            .:
-                - comments.rb
-            admin:
-                .:
-                    - comment_settings.rb
-                    - comments.rb
-        mailers:
-            .:
-                - comment_mailer.rb
-            views:
-                comment_mailer:
-                    .:
-                        - notify.text.erb                
-        models:
-            .:
-                - comment.rb
-                - comment_setting.rb
-        views:
-            admin:
-                comment_settings:
-                    .:
-                        - edit.html.erb
-                        - show.html.erb
-                comments:
-                    .:
-                        - _comment.html.erb
-                        - index.html.erb
-                        - show.html.erb
-                        - update.js.erb
-            after_article:
-                .:
-                    - _comments.html.erb
-            meta_section:
-                .:
-                    - _comments.html.erb
+name: feather-comments
+version: 1.0
+homepage: http://featherblog.org
+author:
+    name: Michael Leung and El Draper
+    email: blamemike@gmail.com and el@eldiablo.co.uk
+    homepage: http://bloggingmyassoff.com and http://crazycool.co.uk
+about: This plugin provides the base commenting system for feather.

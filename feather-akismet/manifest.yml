@@ -1,27 +1,8 @@
-plugin:
-    name: feather-akismet
-    author: Jake Good
-    version: 1.0
+name: feather-akismet
+version: 1.0
+homepage: http://featherblog.org
+author:
+    name: Jake Good
+    email: jake@whoisjake.com
     homepage: http://www.thoughtstoblog.com
-    about: This plugin provides basic akismet comment validation.
-    contents:
-        .:
-            - init.rb
-            - install.rb
-        helpers:
-            .:
-                - global_helpers.rb
-        controllers:
-            admin:
-                .:
-                    - akismet_configuration.rb      
-        models:
-            .:
-                - akismet_config.rb
-                - comment.rb
-        views:
-            admin:
-                akismet_configuration:
-                    .:
-                        - edit.html.erb
-                        - show.html.erb
+about: This plugin provides basic akismet comment validation.

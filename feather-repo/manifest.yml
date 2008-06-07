@@ -1,0 +1,8 @@
+name: feather-repo
+version: 1.0
+homepage: http://featherblog.org
+author:
+    name: El Draper
+    email: el@eldiablo.co.uk
+    homepage: http://crazycool.co.uk
+about: This plugin provides repository functionality, allowing you to host plugins for download directly from your Feather installation

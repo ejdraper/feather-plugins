@@ -1,0 +1,11 @@
+<% throw_content :right do %>
+	Edit the release.
+<% end %>
+
+<%= error_messages_for @release %>
+<h1>Edit release</h1>
+
+<% form_for :release, :action => url(:admin_release, @release), :method => :put do %>
+  <%= partial 'form' %>
+  <p><%= submit_button 'Save Release' %> or <%= link_to 'Cancel', url(:admin_releases) %></p>
+<% end %>

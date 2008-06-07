@@ -1,40 +1,8 @@
-plugin:
-    name: feather-feeds
-    author: El Draper
-    version: 1.0
-    homepage: http://featherblog.org
-    about: This plugin provides an RSS feed for a Feather blog.
-    contents:
-        .:
-            - init.rb
-            - install.rb
-        controllers:
-            .:
-                - feeds.rb
-                - feed_settings.rb
-        helpers:
-            .:
-                - global_helpers.rb
-        models:
-            .:
-                - feed_setting.rb
-        views:
-            .:
-                admin:
-                    .:
-                        feed_settings:
-                            .:
-                                - edit.html.erb
-                                - show.html.erb
-                head:
-                    .:
-                        - _feed_link.html.erb
-                sidebar:
-                    .:
-                        - _feed_link.html.erb
-        gems:
-            .:
-                - builder-2.1.2.gem
-        specifications:
-            .:
-                - builder-2.1.2.gemspec
+name: feather-feeds
+version: 1.0
+homepage: http://featherblog.org
+author:
+    name: El Draper
+    email: el@eldiablo.co.uk
+    homepage: http://crazycool.co.uk
+about: This plugin provides RSS/Atom feeds for a Feather blog.
