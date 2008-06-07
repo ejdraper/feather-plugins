@@ -1,29 +1,8 @@
-plugin:
-    name: feather-styles
-    author: El Draper
-    version: 1.0
-    homepage: http://featherblog.org
-    about: This plugin adds the ability for the user to create and manage custom stylesheets
-    contents:
-        .:
-            - init.rb
-            - install.rb
-        controllers:
-            .:
-                - css.rb
-                - styles.rb
-        models:
-            .:
-                - style.rb
-        views:
-            .:
-                admin:
-                    .:
-                        styles:
-                            .:
-                                - _form.html.erb
-                                - _style.html.erb
-                                - edit.html.erb
-                                - index.html.erb
-                                - new.html.erb
-                                - show.html.erb
+name: feather-styles
+version: 1.0
+homepage: http://featherblog.org
+author:
+    name: El Draper
+    email: el@eldiablo.co.uk
+    homepage: http://crazycool.co.uk    
+about: This plugin adds the ability for the user to create and manage custom stylesheets

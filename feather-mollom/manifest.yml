@@ -1,27 +1,8 @@
-plugin:
-    name: feather-mollom
-    author: Rob Kaufman
-    version: 1.0
+name: feather-mollom
+version: 1.0
+homepage: http://featherblog.org
+author:
+    name: Rob Kaufman
+    email: unknown
     homepage: http://www.notch8.com
-    about: This plugin provides basic Mollom comment validation.
-    contents:
-        .:
-            - init.rb
-            - install.rb
-        controllers:
-            admin:
-                .:
-                    - mollom_settings.rb 
-        gems:
-            .:
-                - mollom-0.1.2.gem
-        models:
-            .:
-                - mollom_config.rb
-                - comment.rb
-        views:
-            admin:
-                mollom_settings:
-                    .:
-                        - edit.html.erb
-                        - show.html.erb
+about: This plugin provides basic Mollom comment validation.

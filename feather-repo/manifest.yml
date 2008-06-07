@@ -1,28 +1,8 @@
-plugin:
-    name: feather-repo
-    author: El Draper
-    version: 1.0
-    homepage: http://featherblog.org
-    about: This plugin provides repository functionality, allowing you to host plugins for download directly from your Feather installation
-    contents:
-        .:
-            - init.rb
-            - install.rb
-        controllers:
-            .:
-            admin:
-                .:
-                    - releases.rb
-        models:
-            .:
-                - release.rb
-        views:
-            admin:
-                releases:
-                    .:
-                        - _form.html.erb
-                        - _release.html.erb
-                        - edit.html.erb
-                        - index.html.erb
-                        - new.html.erb
-                        - show.html.erb
+name: feather-repo
+version: 1.0
+homepage: http://featherblog.org
+author:
+    name: El Draper
+    email: el@eldiablo.co.uk
+    homepage: http://crazycool.co.uk
+about: This plugin provides repository functionality, allowing you to host plugins for download directly from your Feather installation
