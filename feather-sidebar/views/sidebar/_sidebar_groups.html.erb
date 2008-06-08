@@ -3,7 +3,7 @@
   <% SidebarGroup.all.each do |sidebar_group| %>
     <div id="sidebar-group-<%= sidebar_group.id %>" style="margin-top: 20px">
       <h3><%= sidebar_group.title %></h3>
-      <%= render_text(sidebar_group.formatter, sidebar_group.content) %>
+      <%= render_text(sidebar_group.formatter, sidebar_group.content) unless sidebar_group.content.blank? %>
     </div>
   <% end %>
 </div>

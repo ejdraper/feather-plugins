@@ -14,7 +14,7 @@
 <p>
 	Content:
 	<br />
-	<%= render_text(@sidebar_group.formatter, @sidebar_group.content) %>
+	<%= render_text(@sidebar_group.formatter, @sidebar_group.content) unless @sidebar_group.content.blank? %>
 </p>
 
 <%= link_to "Edit sidebar_group", url(:edit_admin_sidebar_group, @sidebar_group) %> |
