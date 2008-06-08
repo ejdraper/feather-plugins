@@ -1,0 +1,28 @@
+<% throw_content :right do %>
+  <h4>View Pages</h4>
+  <p>
+	Here you can view existing pages.
+  </p>
+<% end %>
+
+<h1>View Pages</h1>
+
+<table class='tabular'>
+	<thead>
+  	<tr>
+  		<th>Title</th>
+  		<th>Published</th>
+  		<th>By</th>
+  		<th></th>
+  	</tr>	
+	</thead>
+	<tbody>	
+	  <% if @pages.any? %>
+      <%= partial('admin/pages/page', :with => @pages) %>
+    <% else %>
+      <tr><td colspan="4">You have no pages yet. <%= link_to "Create new page?", url(:new_admin_page) %></td></tr>
+    <% end %>
+  </tbody>
+</table>
+<br />
+<%= link_to "New page", url(:new_admin_page) %>

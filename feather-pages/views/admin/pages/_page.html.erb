@@ -1,0 +1,6 @@
+<tr>
+	<td><%= link_to page.title, url(:admin_page, page) %></td>
+	<td><%= render_relative_published_at(page) %></td>
+	<td><%= page.user.name %></td>
+	<td> <%= link_to "Edit", url(:edit_admin_page, page) %> | <%= link_to 'Delete', url(:delete_admin_page, page), {:method => :delete, :onclick => "return confirm('Are you sure?')"} %></td>
+</tr>

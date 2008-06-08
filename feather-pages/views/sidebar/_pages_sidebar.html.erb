@@ -1,0 +1,17 @@
+<% @pages = Page.published_pages_and_in_nav %>
+<% if @pages.size > 0 %>
+	<div id="sidebar-pages" style="margin-top: 20px">
+	  <h3>Pages</h3>
+		<ul id="main-pages">
+		<% @pages.each do |parent_page| %>
+			<li><%= link_to parent_page.title, parent_page.link if parent_page.display_in_nav %></li>
+				<% parent_page.children_nav.each do |subpage| %>
+					<li class="sub-pages"><%= link_to subpage.title, subpage.link if subpage.display_in_nav %></li>
+						<% subpage.children_nav.each do |children| %>
+							<li class="children-pages"><%= link_to children.title, children.link if children.display_in_nav %></li>
+						<% end %>
+				<% end %>
+		<% end %>
+		</ul>
+	</div>
+<% end %>
