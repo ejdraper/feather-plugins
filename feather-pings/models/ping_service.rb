@@ -1,10 +1,13 @@
-class PingService < DataMapper::Base
-  property :name, :string, :nullable => false
-  property :url, :string, :nullable => false, :length => 255
-  property :extended, :boolean
+class PingService
+  include DataMapper::Resource
+  
+  property :id, Integer, :key => true  
+  property :name, String, :nullable => false
+  property :url, String, :nullable => false, :length => 255
+  property :extended, Boolean
 
-  validates_presence_of :name, :key => "uniq_ping_service_name"
-  validates_presence_of :url, :key => "uniq_ping_service_url"
+  validates_present :name, :key => "uniq_ping_service_name"
+  validates_present :url, :key => "uniq_ping_service_url"
 
   ##
   # This executes the specific ping for the specified article

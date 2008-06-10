@@ -21,7 +21,7 @@
     <% if session[:comment_error] %>
       <ul id="comment-errors">
       	<% session[:comment_error].each do |err| %>
-          <li><%= err[1].first %></li>
+          <li><%= err %></li>
       	<% end %>
       </ul>
     	<% session[:comment_error] = nil %>

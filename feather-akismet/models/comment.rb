@@ -1,5 +1,5 @@
 class Comment < DataMapper::Base
-  before_save :validate_with_akismet
+  before :save, :validate_with_akismet
   
   private
     def validate_with_akismet

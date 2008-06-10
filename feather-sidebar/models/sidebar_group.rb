@@ -1,7 +1,10 @@
-class SidebarGroup < DataMapper::Base
-  property :title, :string, :nullable => false
-  property :content, :text
-  property :formatter, :string, :default => "default"
+class SidebarGroup
+  include DataMapper::Resource
+  
+  property :id, Integer, :key => true
+  property :title, String, :nullable => false
+  property :content, Text
+  property :formatter, String, :default => "default"
 
-  validates_presence_of :title, :key => "uniq_sidebar_group_title"
+  validates_present :title, :key => "uniq_sidebar_group_title"
 end

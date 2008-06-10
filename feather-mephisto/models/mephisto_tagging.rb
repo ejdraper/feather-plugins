@@ -1,5 +1,5 @@
 class MephistoTagging < MephistoBase
-  property :taggable_id, :integer
-  property :taggable_type, :string
-  property :tag_id, :integer
+  property :taggable_id, Integer
+  property :taggable_type, String
+  property :tag_id, Integer
 end

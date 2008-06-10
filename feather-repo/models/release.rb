@@ -1,5 +1,8 @@
-class Release < DataMapper::Base
-  property :name, :string, :nullable => false, :length => 255
-  property :manifest, :string, :length => 255
-  property :created_at, :datetime
+class Release
+  include DataMapper::Resource
+  
+  property :id, Integer, :key => true
+  property :name, String, :nullable => false, :length => 255
+  property :manifest, String, :length => 255
+  property :created_at, DateTime
 end

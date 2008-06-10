@@ -1,3 +1,3 @@
 class MephistoTag < MephistoBase
-  property :name, :string
+  property :name, String
 end

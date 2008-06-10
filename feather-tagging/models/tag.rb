@@ -1,9 +1,12 @@
-class Tag < DataMapper::Base
-  property :name, :string
-  property :permalink, :string
-  has_and_belongs_to_many :taggings
+class Tag
+  include DataMapper::Resource
+  
+  property :id, Integer, :key => true
+  property :name, String
+  property :permalink, String
+  has 0..n, :taggings
 
-  before_create do |tag|
+  before :create do |tag|
     tag.permalink = tag.name.downcase.gsub(/[^a-z0-9]+/i, '-')
   end
 

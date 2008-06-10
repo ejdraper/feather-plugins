@@ -1,8 +1,7 @@
 # Let's reopen the comment model to trap after_create and have that there instead of in the controller. Not that
 # We can access the controller create method from here anyway, but imo this is cleaner regardless. - ML.
-class Comment < DataMapper::Base
-
-  after_create :send_to_jabber
+class Comment
+  after :create, :send_to_jabber
   
   def send_to_jabber
     # Send Jabber notification if that setting is enabled

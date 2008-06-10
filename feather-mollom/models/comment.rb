@@ -1,6 +1,6 @@
-class Comment < DataMapper::Base
+class Comment
   attr_accessor :mollom_content
-  before_save :check_if_spam
+  before :save, :check_if_spam
     
   def self.mollom
     @@mollom ||= Mollom.new(:private_key => MollomConfig.current.private_key, :public_key => MollomConfig.current.public_key)

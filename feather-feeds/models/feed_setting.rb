@@ -1,7 +1,10 @@
-class FeedSetting < DataMapper::Base
-  property :article_count, :integer
-  property :comment_count, :integer
-  property :external_feed_url, :string, :length => 255
+class FeedSetting
+  include DataMapper::Resource
+  
+  property :id, Integer, :key => true
+  property :article_count, Integer
+  property :comment_count, Integer
+  property :external_feed_url, String, :length => 255
 
   ##
   # This returns the current settings, creating them if they aren't found

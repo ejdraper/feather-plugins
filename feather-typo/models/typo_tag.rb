@@ -1,3 +1,3 @@
 class TypoTag < TypoBase
-  property :name, :string
+  property :name, String
 end

@@ -1,25 +1,28 @@
-class Comment < DataMapper::Base
-  property :article_id, :integer
-  property :name, :string
-  property :website, :string
-  property :comment, :text
-  property :created_at, :datetime
-  property :email_address, :string
-  property :formatter, :string, :default => "default"
-  property :ip_address, :string, :default => "127.0.0.1"
-  property :published, :boolean, :default => true
+class Comment
+  include DataMapper::Resource
+  
+  property :id, Integer, :key => true
+  property :article_id, Integer
+  property :name, String
+  property :website, String
+  property :comment, Text
+  property :created_at, DateTime
+  property :email_address, String
+  property :formatter, String, :default => "default"
+  property :ip_address, String, :default => "127.0.0.1"
+  property :published, Boolean, :default => true
   
   belongs_to :article
 
-  validates_presence_of :name, :comment, :article_id
+  validates_present :name, :comment, :article_id
 
-  before_save :prepend_http_if_needed
+  before :save, :prepend_http_if_needed
   belongs_to :article  
-  after_save :fire_after_comment_event
-  after_create :set_create_activity
+  after :save, :fire_after_comment_event
+  after :create, :set_create_activity
 
   def self.all_for_post(article_id, method = :all)
-    self.send(method, {:article_id => article_id, :published => true, :order => "created_at"})
+    self.send(method, {:article_id => article_id, :published => true, :order => [:created_at.asc]})
   end
 
   ##

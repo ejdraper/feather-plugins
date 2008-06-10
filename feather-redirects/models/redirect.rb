@@ -1,7 +1,10 @@
-class Redirect < DataMapper::Base
-  property :from_url, :string, :nullable => false, :length => 255
-  property :to_url, :string, :nullable => false, :length => 255
-  property :permanent, :boolean
+class Redirect
+  include DataMapper::Resource
+  
+  property :id, Integer, :key => true
+  property :from_url, String, :nullable => false, :length => 255
+  property :to_url, String, :nullable => false, :length => 255
+  property :permanent, Boolean
 
   def validate(arg)
     super
