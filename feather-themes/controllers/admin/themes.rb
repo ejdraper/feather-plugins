@@ -29,7 +29,7 @@ module Admin
     end
     
     def delete
-      Theme.get(params[:id]).destroy!
+      Theme.get(params[:id]).destroy
       redirect url(:admin_themes)
     end
   end

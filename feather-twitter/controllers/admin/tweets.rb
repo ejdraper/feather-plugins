@@ -9,7 +9,7 @@ module Admin
     end
 
     def delete
-      @tweet.destroy!
+      @tweet.destroy
       expire_index
       redirect url(:admin_tweets)
     end

@@ -35,7 +35,7 @@ module Admin
     end
 
     def delete
-      @release.destroy!
+      @release.destroy
       redirect url(:admin_releases)
     end
 

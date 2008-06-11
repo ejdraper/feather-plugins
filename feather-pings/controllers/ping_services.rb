@@ -37,7 +37,7 @@ module Admin
     end
 
     def delete
-      @ping_service.destroy!
+      @ping_service.destroy
       redirect url(:admin_ping_services)
     end
 

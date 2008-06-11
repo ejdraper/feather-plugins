@@ -9,7 +9,7 @@
 		   new Form.Element.Observer('search-text', 1, 
 		      function(element, value) {new Ajax.Updater(
 		        'search-results', 
-		        'http://<%= request.env['HTTP_HOST'] %>/search',
+		        '/search',
 		         {asynchronous:true, evalScripts:true, 
 		           onComplete:function(request)
 		            {Element.hide('search-spinner')}, 

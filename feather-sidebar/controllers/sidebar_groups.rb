@@ -37,7 +37,7 @@ module Admin
     end
 
     def delete
-      @sidebar_group.destroy!
+      @sidebar_group.destroy
       expire_all_pages
       redirect url(:admin_sidebar_groups)
     end

@@ -37,7 +37,7 @@ module Admin
     end
 
     def delete
-      @style.destroy!
+      @style.destroy
       expire_all_pages
       redirect url(:admin_styles)
     end

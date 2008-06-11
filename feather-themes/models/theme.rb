@@ -18,7 +18,7 @@ class Theme
     name
   end
   
-  def destroy!
+  def destroy
     FileUtils.rm_rf(path)
   end
   

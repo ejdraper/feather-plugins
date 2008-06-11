@@ -37,7 +37,7 @@ module Admin
     end
 
     def delete
-      @snippet.destroy!
+      @snippet.destroy
       expire_all_pages
       redirect url(:admin_snippets)
     end
