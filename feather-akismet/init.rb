@@ -4,8 +4,6 @@ require File.join(File.join(File.join(File.dirname(__FILE__), "controllers"), "a
 require File.join(File.join(File.dirname(__FILE__), "models"), "akismet_config")
 require File.join(File.join(File.dirname(__FILE__), "models"), "comment")
 
-Database::migrate(AkismetConfig) unless database.table_exists?(AkismetConfig)
-
 Merb::Router.prepend do |r|
   r.namespace :admin do |admin|
     admin.resource :akismet_configuration
