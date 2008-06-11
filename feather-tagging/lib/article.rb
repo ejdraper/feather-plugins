@@ -8,7 +8,7 @@ class Article
   def create_tags
     return if @tag_list.nil? || @tag_list.empty?
     # Wax all the existing taggings
-    self.taggings.each {|t| t.destroy! }
+    self.taggings.each {|t| t.destroy }
     @tag_list.split(",").each do |t|
       unless t.empty?
         tag = Tag.find_or_create(:name => t.strip.downcase) 

@@ -37,7 +37,7 @@ module Admin
     end
 
     def delete
-      @redirect.destroy!
+      @redirect.destroy
       redirect url(:admin_redirects)
     end
 
