@@ -1,0 +1,27 @@
+<p>
+  <span class="mock_label">Parent page</span>
+	<select name="page[parent_id]" id="page_parent_id">
+	<%= options_from_collection_for_select @pages, :text_method => 'title', :value_method => 'id', :include_blank => true, :selected => @parent_selected %>
+	</select>
+</p>
+<%= text_control :title, :size => 50, :label => 'Title:' %>
+<%= text_area_control :content, :rows => 20, :cols => 100, :label => 'Content:' %>
+<%= text_control :position, :size => 2, :label => 'Position:' %>
+<%= text_area_control :meta_description, :rows => 2, :cols => 70, :label => 'Meta description:' %>
+<%= text_area_control :meta_keywords, :rows => 2, :cols => 70, :label => 'Meta keywords:' %>
+<p>
+  <span class="mock_label">Published?</span>
+  <%= checkbox_control :published, :value => "1" %>
+</p>
+
+<p>
+  <span class="mock_label">Display in nav?</span>
+  <%= checkbox_control :display_in_nav, :value => "1" %>
+</p>
+
+<p>
+  <span class="mock_label">Formatter</span>
+  <%= select_control :formatter, :collection => Hooks::Formatters.available_formatters, :selected => (@page.new_record? ? (self.current_user.default_formatter || "default") : @page.formatter) %>
+</p>
+
+<%= render_plugin_views "page_form_fields" %>

@@ -1,0 +1,17 @@
+feather-pages - Peter Dirickson
+
+Use this in your CSS file
+<style>
+	#main-pages { }
+	#sidebar #sidebar-pages li.sub-pages { margin-left: 10px; }
+	#sidebar #sidebar-pages li.children-pages { margin-left: 20px; }
+	.page-content { }
+</style>
+
+New/update page clear all cached pages
+
+TODOS:
+Add rspecs
+
+
+Last update 06/08/2008

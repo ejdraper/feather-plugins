@@ -1,0 +1,13 @@
+<% throw_content :right do %>
+  <%= partial 'shared/formatting_help' %>
+<% end %>
+
+<%= error_messages_for @page %>
+<h1>New Page</h1>
+
+<% form_for :page, :action => url(:admin_page, @page) do %>
+  <%= partial 'form' %>
+  <%= submit_button 'Save Page' %> or <%= link_to 'Cancel', url(:admin_pages) %>
+<% end %>
+
+<%= link_to "Back to pages", url(:admin_pages) %>

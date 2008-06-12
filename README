@@ -9,6 +9,7 @@ feather-import: this allows RSS importing of articles, and if the comment plugin
 feather-jabber: this provides Jabber comment notifications
 feather-mephisto: this allows you to import a blog from mephisto
 feather-mollom: this checks all comments against the Mollom comment spam network
+feather-pages: this provides a base content page system (CMS) for Feather
 feather-pings: this allows custom ping services to be contacted when new content is published
 feather-recaptcha: this provides recaptcha anti-spam measures for comments **NOTE NOT DONE YET**
 feather-redirects: this allows custom redirects to be setup to maintain links and compatibility with previous blog services

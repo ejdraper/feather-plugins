@@ -1,0 +1,41 @@
+<% throw_content :right do %>
+  <h4>View Page</h4>
+  <p>
+	Here you can view an existing page.
+  </p>
+<% end %>
+
+<h1>View Page</h1>
+
+<p>
+	Parent page: <%= @page.parent.title if @page.parent %>
+</p>
+
+<p>
+	Title: <%= @page.title %> <%= link_to "(Edit page)", url(:edit_admin_page, @page) %>
+</p>
+
+<p>
+	Published: <%= render_relative_published_at(@page) %>
+</p>
+
+<p>
+	Formatter: <%= @page.formatter %>
+</p>
+
+<p>
+	Content:
+	<br />
+	<%= render_text(@page.formatter, @page.content) %>
+</p>
+
+<p>
+	Meta description: <%= @page.meta_description %>
+</p>
+
+<p>
+	Meta keywords: <%= @page.meta_keywords %>
+</p>
+
+<%= link_to "Edit page", url(:edit_admin_page, @page) %> |
+<%= link_to "Back to pages", url(:admin_pages) %>
