@@ -1,9 +1,12 @@
-class TwitterSetting < DataMapper::Base
-  property :username, :string
-  property :ignore_replies, :boolean, :nullable => false, :default => true
-  property :last_scan_at, :datetime
+class TwitterSetting
+  include DataMapper::Resource
   
-  after_update :rescan
+  property :id, Integer, :key => true
+  property :username, String
+  property :ignore_replies, Boolean, :nullable => false, :default => true
+  property :last_scan_at, DateTime
+  
+  after :update, :rescan
   
   ##
   # This rescans for new Tweets, if the last scan time was more than 30 minutes ago

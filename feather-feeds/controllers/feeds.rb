@@ -2,7 +2,7 @@ class Feeds < Application
   before :find_feed_setting
 
   def articles
-    @articles = Article.all(:published => true, :limit => @feed_setting.article_count, :order => "published_at DESC")
+    @articles = Article.all(:published => true, :limit => @feed_setting.article_count, :order => [:published_at.desc])
     output = ""
     xml = Builder::XmlMarkup.new(:target => output)
     xml.instruct!
@@ -62,7 +62,7 @@ class Feeds < Application
   end
 
   def comments
-    @comments = (defined?(Comment) && is_plugin_active("feather-comments")) ? Comment.all(:limit => @feed_setting.comment_count, :order => "created_at DESC") : []
+    @comments = (defined?(Comment) && is_plugin_active("feather-comments")) ? Comment.all(:limit => @feed_setting.comment_count, :order => [:created_at.desc]) : []
     output = ""
     xml = Builder::XmlMarkup.new(:target => output)
     xml.instruct!

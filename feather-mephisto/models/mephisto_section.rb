@@ -1,3 +1,3 @@
 class MephistoSection < MephistoBase
-  property :name, :string
+  property :name, String
 end

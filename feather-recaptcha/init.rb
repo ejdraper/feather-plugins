@@ -4,11 +4,6 @@ require File.join(File.join(File.dirname(__FILE__), "controllers"), "comments")
 require File.join(File.join(File.join(File.dirname(__FILE__), "controllers"), "admin"), "recaptcha_configuration")
 require File.join(File.join(File.dirname(__FILE__), "models"), "recaptcha_config")
 
-Database::migrate(RecaptchaConfig) unless database.table_exists?(RecaptchaConfig)
-
-RCC_PUB = RecaptchaConfig.current.public_key
-RCC_PRIV = RecaptchaConfig.current.private_key
-
 gem "recaptcha"
 require "recaptcha"
 

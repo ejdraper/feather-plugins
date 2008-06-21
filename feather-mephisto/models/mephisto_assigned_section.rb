@@ -1,4 +1,4 @@
 class MephistoAssignedSection < MephistoBase
-  property :article_id, :integer
-  property :section_id, :integer
+  property :article_id, Integer
+  property :section_id, Integer
 end

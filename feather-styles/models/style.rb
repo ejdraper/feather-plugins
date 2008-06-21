@@ -1,4 +1,7 @@
-class Style < DataMapper::Base
-  property :name, :string, :nullable => false, :length => 255
-  property :content, :text, :nullable => false
+class Style
+  include DataMapper::Resource
+  
+  property :id, Integer, :key => true
+  property :name, String, :nullable => false, :length => 255
+  property :content, Text, :nullable => false
 end

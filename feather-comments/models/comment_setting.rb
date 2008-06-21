@@ -1,9 +1,12 @@
-class CommentSetting < DataMapper::Base
-  property :moderation, :boolean, :nullable => false, :default => false
-  property :negative_captcha, :boolean, :nullable => false, :default => false
-  property :email_notification, :boolean, :nullable => false, :default => false
-  property :from_email, :string
-  property :to_email, :string
+class CommentSetting
+  include DataMapper::Resource
+  
+  property :id, Integer, :key => true
+  property :moderation, Boolean, :nullable => false, :default => false
+  property :negative_captcha, Boolean, :nullable => false, :default => false
+  property :email_notification, Boolean, :nullable => false, :default => false
+  property :from_email, String
+  property :to_email, String
   
   ##
   # This returns the current settings, creating them if they aren't found

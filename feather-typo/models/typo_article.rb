@@ -1,6 +1,6 @@
 class TypoArticle < TypoBase
-  property :title, :string
-  property :content, :string
-  property :published_at, :datetime
-  property :permalink, :string
+  property :title, String
+  property :content, String
+  property :published_at, DateTime
+  property :permalink, String
 end

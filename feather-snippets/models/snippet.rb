@@ -1,7 +1,10 @@
-class Snippet < DataMapper::Base
-  property :content, :text, :nullable => false
-  property :location, :string, :nullable => false, :length => 255
-  property :created_at, :datetime
+class Snippet
+  include DataMapper::Resource
+  
+  property :id, Integer, :key => true
+  property :content, Text, :nullable => false
+  property :location, String, :nullable => false, :length => 255
+  property :created_at, DateTime
 
   class << self
     @@registered = {}

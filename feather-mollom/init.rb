@@ -4,8 +4,6 @@ require File.join(File.dirname(__FILE__),  "gems", "mollom-0.1.2", "lib", "mollo
 require File.join(File.dirname(__FILE__), "models", "mollom_config")
 require File.join(File.dirname(__FILE__), "models", "comment")
 
-Database::migrate(MollomConfig) unless database.table_exists?(MollomConfig)
-
 Merb::Router.prepend do |r|
   r.namespace :admin do |admin|
     admin.resource :mollom_settings
