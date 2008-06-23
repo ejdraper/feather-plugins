@@ -4,7 +4,7 @@ module Admin
     before :find_page, :only => %w(edit update delete show)
 
     def index
-      @pages = Page.all(:order => "created_at DESC")
+      @pages = Page.all(:order => [:created_at.desc])
       display @pages
     end
 
@@ -19,6 +19,8 @@ module Admin
     end
 
     def create(page)
+      page["published"] = (page["published"] == "1")
+      page["display_in_nav"] = (page["display_in_nav"] == "1")
       @page = Page.new(page)
       get_pages
       @parent_selected = params[:page][:parent_id].to_i
@@ -39,6 +41,8 @@ module Admin
     end
 
     def update(page)
+      page["published"] = (page["published"] == "1")
+      page["display_in_nav"] = (page["display_in_nav"] == "1")
       if @page.update_attributes(page)
         # Expire all pages to reflect the updated page
         expire_all_pages
@@ -63,7 +67,7 @@ module Admin
       end
       
       def get_pages
-        @pages = Page.all(:order => "title")
+        @pages = Page.all(:order => [:title.asc])
       end
   end
 end
