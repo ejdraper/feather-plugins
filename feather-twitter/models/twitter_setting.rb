@@ -1,7 +1,7 @@
 class TwitterSetting
   include DataMapper::Resource
   
-  property :id, Integer, :key => true
+  property :id, Integer, :key => true, :serial => true
   property :username, String
   property :ignore_replies, Boolean, :nullable => false, :default => true
   property :last_scan_at, DateTime

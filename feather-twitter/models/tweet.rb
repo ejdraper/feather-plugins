@@ -1,7 +1,7 @@
 class Tweet
   include DataMapper::Resource
   
-  property :id, Integer, :key => true
+  property :id, Integer, :key => true, :serial => true
   property :twitter_id, String, :nullable => false
   property :text, String, :nullable => false, :length => 140
   property :source, String, :nullable => false, :length => 255
