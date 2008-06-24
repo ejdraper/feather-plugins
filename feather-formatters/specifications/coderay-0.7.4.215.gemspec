@@ -3,7 +3,6 @@ Gem::Specification.new do |s|
   s.version = "0.7.4.215"
 
   s.specification_version = 1 if s.respond_to? :specification_version=
-
   s.required_rubygems_version = nil if s.respond_to? :required_rubygems_version=
   s.authors = ["murphy"]
   s.autorequire = %q{coderay}

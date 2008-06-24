@@ -3,6 +3,6 @@ version: 1.0
 homepage: http://featherblog.org
 author:
     name: El Draper & Michael Murray
-    email: el@eldiablo.co.uk and unknown
+    email: el@eldiablo.co.uk and sudothinker@gmail.com
     homepage: http://crazycool.co.uk and http://sudothinker.com
 about: This plugin provides different formatters to be used with Feather. Also includes support for code syntax highlighting via <code:language> tags
