@@ -33,8 +33,6 @@ class Comment
   
   def prepend_http_if_needed
     if !self.website.nil? && self.website.strip! && !self.website.empty?
-      #--> jf quick qn: is there a way to prevent DM from saving empty string as nil? (and NO, despite the '.strip!', this is NOT the culprit)
-      #--> '!self.website.empty?' for the first save before approval, '!self.website.nil?' for when "" ends up getting saved as nil
       protocol = "http://"
       self.website.insert(0, protocol) if self.website.rindex(protocol).nil?
     end
