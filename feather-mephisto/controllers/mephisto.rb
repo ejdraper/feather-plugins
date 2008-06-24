@@ -9,7 +9,7 @@ module Admin
 
     def create
       
-      DataMapper::Database.setup(:mephisto_database, {
+      DataMapper.setup(:mephisto_database, {
          :adapter  => params[:adapter],
          :host     => params[:host],
          :username => params[:user],
@@ -19,13 +19,12 @@ module Admin
       
       @article_map = {}  
         
-      DataMapper.database(:mephisto_database) do
+      DataMapper.repository(:mephisto_database) do
         @mephisto_articles = collect_mephisto_articles()
         @mephisto_comments = collect_mephisto_comments()
       end
-        
-      @articles = process_articles(@mephisto_articles, params[:permalink])
-      @comments = process_comments(@mephisto_comments)
+      @articles = process_articles(@mephisto_articles, params[:permalink]) unless @mephisto_articles.nil?
+      @comments = process_comments(@mephisto_comments) unless @mephisto_comments.nil?
       
       render
     end
@@ -44,9 +43,22 @@ module Admin
         format
       end
     
+      # Collects the mephisto comments
+      def collect_mephisto_comments()
+        if MephistoComment.storage_exists? 
+          MephistoComment.all(:type => "Comment")
+        else
+          nil
+        end
+      end
+
       # Collects the mephisto articles
       def collect_mephisto_articles()
-        MephistoArticle.find_by_sql("select * from contents where type = 'Article'")
+        if MephistoArticle.storage_exists? 
+          MephistoArticle.all(:type => "Article")
+        else
+          nil
+        end
       end
 
       def formatter(filter)
@@ -61,14 +73,13 @@ module Admin
       end
 
       ##
-      # This processes the articles feed url
+      # This processes the articles data
       def process_articles(mephisto_articles, permalink_format)
         # Create an array to store the processed articles
         processed = []
-        
+ 
         # Loop through them
         mephisto_articles.each do |a|
-          
           # Find the article, or create a new one
           article = Article.new
           # Grab the information from the article feed item
@@ -76,9 +87,8 @@ module Admin
           article.content = a.body
           article.formatter = formatter(a.filter)
           article.published = "1"
-          d = DateTime.parse(a.published_at)
-          article.published_at = d
-          article.permalink = format_permalink(permalink_format,d,a.title)
+          article.published_at = DateTime.now
+          article.permalink = format_permalink(permalink_format,DateTime.now,a.title)
           article.user_id = self.current_user.id
           
           
@@ -87,20 +97,21 @@ module Admin
             tags = []
             sections = []
             
-            DataMapper.database(:mephisto_database) do
-              taggings = MephistoTagging.find_by_sql("select * from taggings where taggable_id = #{a.id}")
-              tags = MephistoTag.find_by_sql("select * from tags where id in (#{taggings.collect{|tg| tg.tag_id}.join(',')})") unless taggings.empty?
+            DataMapper.repository(:mephisto_database) do
+              taggings = MephistoTagging.all(:taggable_id => a.id)
+              tags = MephistoTag.all(:id => taggings.collect{|tg| tg.tag_id}.join(',')) unless taggings.empty? 
             
-              assigned_sections = MephistoAssignedSection.find_by_sql("select * from assigned_sections where article_id = #{a.id}")
-              sections = MephistoSection.find_by_sql("select * from sections where id in (#{assigned_sections.collect{|as| as.section_id}.join(',')})") unless assigned_sections.empty?
+              assigned_sections = MephistoAssignedSection.all(:article_id => a.id)
+              sections = MephistoSection.all(:sections => assigned_sections.collect{|as| as.section_id}.join(',')) unless assigned_sections.empty?
             end
             
             article.tag_list = (tags.collect{|tag| tag.name} + sections.collect{|section| section.name}).compact.join(",")
           end
           
+          # ooh perty!
+          Merb.logger.debug!(article.inspect)
           # Save the article
-          article.save
-          
+          raise article.errors.inspect unless article.save
           @article_map[a.id] = article.id
           
           # Add it to the list of processed articles
@@ -111,13 +122,9 @@ module Admin
         processed
       end
       
-      # Collects the mephisto comments
-      def collect_mephisto_comments()
-        MephistoComment.find_by_sql("select * from contents where type = 'Comment'")
-      end
 
       ##
-      # This processes the comments feed url
+      # This processes the comments data
       def process_comments(mephisto_comments)
         # Ensure the comment plugin exists
         raise "Unable to process comments: comment plugin not detected!" unless defined?(Comment)
