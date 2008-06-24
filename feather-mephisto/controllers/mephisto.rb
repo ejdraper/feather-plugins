@@ -108,10 +108,8 @@ module Admin
             article.tag_list = (tags.collect{|tag| tag.name} + sections.collect{|section| section.name}).compact.join(",")
           end
           
-          # ooh perty!
-          Merb.logger.debug!(article.inspect)
           # Save the article
-          raise article.errors.inspect unless article.save
+          article.save
           @article_map[a.id] = article.id
           
           # Add it to the list of processed articles
