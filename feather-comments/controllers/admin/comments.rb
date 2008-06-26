@@ -4,7 +4,7 @@ module Admin
     before :find_comment, :only => %w(edit update delete show)
 
     def index
-      @comments = Comment.paginate(:page => params[:page], :per_page => 10, :order => "created_at DESC")
+      @comments = Comment.paginate(:page => params[:page], :per_page => 10, :order => [:created_at.desc])
       display @comments
     end
 
