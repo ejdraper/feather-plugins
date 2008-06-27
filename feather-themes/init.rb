@@ -16,12 +16,12 @@ module Feather
     module Themes
       module ApplicationMixin
         def self.included(base)
-          base._template_roots << [File.join(Merb.dir_for(:themes), 'views'), :_theme_template_location]
+          base._template_roots << [Merb.dir_for(:themes), :_theme_template_location]
         end
         
         def _theme_template_location(action, type = nil, controller = controller_name)
           theme = PluginSetting.read('theme')
-          template = "#{theme}/#{controller}/#{action}.#{type}"
+          template = "#{theme}/views/#{controller}/#{action}.#{type}"
         end
       end
     end
