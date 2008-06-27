@@ -26,9 +26,9 @@ class Theme
   end
   
   def each_asset_path(&proc)
-    [:stylesheet => "stylesheets", :image => "images", :javascript => "javascripts"].each_pair do |k, v|
+    {:stylesheet => "stylesheets", :image => "images", :javascript => "javascripts"}.each_pair do |k, v|
       source = File.join(path, 'assets', v)
-      target = File.join(Merb.dir_for(k), manifest['name'])
+      target = File.join(Merb.dir_for(k), name)
       proc.call(source, target)
     end
   end
@@ -36,7 +36,7 @@ class Theme
   def install_assets
     each_asset_path do |source, target|
       FileUtils.mkdir_p(target)
-      File.mv(Dir.glob(File.join(source, '*')), target)
+      FileUtils.cp_r(Dir.glob(File.join(source, '*')), target)
     end
   end
   
