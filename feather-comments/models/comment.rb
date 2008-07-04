@@ -1,7 +1,7 @@
 class Comment
   include DataMapper::Resource
   
-  property :id, Integer, :key => true
+  property :id, Integer, :serial => true
   property :article_id, Integer
   property :name, String
   property :website, String
