@@ -1,7 +1,7 @@
 class FeedSetting
   include DataMapper::Resource
   
-  property :id, Integer, :key => true
+  property :id, Integer, :serial => true
   property :article_count, Integer
   property :comment_count, Integer
   property :external_feed_url, String, :length => 255
