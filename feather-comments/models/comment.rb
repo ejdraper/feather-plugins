@@ -11,6 +11,8 @@ class Comment
   property :formatter, String, :default => "default"
   property :ip_address, String, :default => "127.0.0.1"
   property :published, Boolean, :default => true
+  # Gotta have this lame dummy property for the negative captcha
+  property :notes, String
   
   belongs_to :article
 
