@@ -1,7 +1,7 @@
 class Upload
   include DataMapper::Resource
   
-  property :id, Integer, :key => true
+  property :id, Integer, :serial => true
   property :url, String, :nullable => false, :length => 255
   property :content_type, String, :nullable => false, :length => 255
   property :size, Integer
