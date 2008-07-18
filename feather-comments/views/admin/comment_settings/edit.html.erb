@@ -47,7 +47,7 @@
 	
 	<p id="to_email_display" style="display: <%= @comment_setting.email_notification ? 'block' : 'none' %>;">
 		<span class="mock_label">To e-mail address</span>
-		<%= text_control :to_email, :value => @comment_setting.from_email %>
+		<%= text_control :to_email, :value => @comment_setting.to_email %>
 	</p>
   <%= submit_button 'Save Settings' %> or <%= link_to 'Cancel', url(:admin_comment_settings) %>
 <% end %>

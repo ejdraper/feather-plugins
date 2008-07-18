@@ -1,7 +1,7 @@
 class CommentSetting
   include DataMapper::Resource
   
-  property :id, Integer, :key => true
+  property :id, Integer, :serial => true
   property :moderation, Boolean, :nullable => false, :default => false
   property :negative_captcha, Boolean, :nullable => false, :default => false
   property :email_notification, Boolean, :nullable => false, :default => false
