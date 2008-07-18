@@ -14,17 +14,17 @@ class Feeds < Application
               "xmlns:atom" => "http://www.w3.org/2005/Atom" do
         xml.channel do
           xml.title         Configuration.current.title
-          xml.atom :link,   :href => "http://#{request.env['HTTP_HOST']}#{request.uri}", :rel => "self"
-          xml.link          "http://#{request.env['HTTP_HOST']}#{request.uri}"
+          xml.atom :link,   :href => "http://#{request.host}#{request.uri}", :rel => "self"
+          xml.link          "http://#{request.host}#{request.uri}"
           xml.pubDate       rfc822(@articles.first.published_at) if @articles.length > 0
           xml.description   Configuration.current.tag_line
           @articles.each do |article|
             xml.item do
               xml.title         article.title
-              xml.link          "http://#{request.env['HTTP_HOST']}#{article.permalink}"
+              xml.link          "http://#{request.host}#{article.permalink}"
               xml.description   render_article(article)
               xml.pubDate       rfc822(article.published_at)
-              xml.guid          "http://#{request.env['HTTP_HOST']}#{article.permalink}"
+              xml.guid          "http://#{request.host}#{article.permalink}"
               xml.dc :creator,  article.user.name || article.user.login
             end
           end
@@ -35,16 +35,16 @@ class Feeds < Application
       xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
         xml.title           Configuration.current.title
         xml.subtitle        Configuration.current.tag_line if Configuration.current.tag_line
-        xml.link            :href => "http://#{request.env['HTTP_HOST']}#{request.uri}", :rel => "self"
-        xml.link            :href => "http://#{request.env['HTTP_HOST']}"
+        xml.link            :href => "http://#{request.host}#{request.uri}", :rel => "self"
+        xml.link            :href => "http://#{request.host}"
         # The parentheses are needed, otherwise one gets a pretty weird error complaining about String not having strftime
         xml.updated(        (@articles.any? ? @articles.first.published_at : DateTime.now).strftime("%Y-%m-%dT%H:%M:%SZ"))
-        xml.id              "http://#{request.env['HTTP_HOST']}#{request.uri}"
+        xml.id              "http://#{request.host}#{request.uri}"
         @articles.each do |article|
           xml.entry do
             xml.title       article.title
-            xml.link        :href => "http://#{request.env['HTTP_HOST']}#{article.permalink}"
-            xml.id          "http://#{request.env['HTTP_HOST']}#{article.permalink}"
+            xml.link        :href => "http://#{request.host}#{article.permalink}"
+            xml.id          "http://#{request.host}#{article.permalink}"
             xml.updated     article.published_at.strftime("%Y-%m-%dT%H:%M:%SZ")
             xml.author do
               xml.name      article.user.name || article.user.login
@@ -74,8 +74,8 @@ class Feeds < Application
               "xmlns:atom" => "http://www.w3.org/2005/Atom" do
         xml.channel do
           xml.title         "#{Configuration.current.title}: comments"
-          xml.atom :link,   :href => "http://#{request.env['HTTP_HOST']}#{request.uri}", :rel => "self"
-          xml.link          "http://#{request.env['HTTP_HOST']}#{request.uri}"
+          xml.atom :link,   :href => "http://#{request.host}#{request.uri}", :rel => "self"
+          xml.link          "http://#{request.host}#{request.uri}"
           xml.pubDate       rfc822(@comments.first.created_at) if @comments.length > 0
           xml.description   Configuration.current.tag_line
           @comments.each do |comment|
@@ -83,10 +83,10 @@ class Feeds < Application
             if article
               xml.item do
                 xml.title         "Re: #{article.title}"
-                xml.link          "http://#{request.env['HTTP_HOST']}#{article.permalink}##{comment.id}"
+                xml.link          "http://#{request.host}#{article.permalink}##{comment.id}"
                 xml.description   render_text("default", comment.comment)
                 xml.pubDate       rfc822(comment.created_at)
-                xml.guid          "http://#{request.env['HTTP_HOST']}#{article.permalink}##{comment.id}"
+                xml.guid          "http://#{request.host}#{article.permalink}##{comment.id}"
                 xml.dc :creator,  comment.name
               end
             end
@@ -98,18 +98,18 @@ class Feeds < Application
       xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
         xml.title           Configuration.current.title
         xml.subtitle        Configuration.current.tag_line if Configuration.current.tag_line
-        xml.link            :href => "http://#{request.env['HTTP_HOST']}#{request.uri}", :rel => "self"
-        xml.link            :href => "http://#{request.env['HTTP_HOST']}"
+        xml.link            :href => "http://#{request.host}#{request.uri}", :rel => "self"
+        xml.link            :href => "http://#{request.host}"
         # The parentheses are needed, otherwise one gets a pretty weird error complaining about String not having strftime
         xml.updated(        (@comments.any? ? @comments.first.created_at : DateTime.now).strftime("%Y-%m-%dT%H:%M:%SZ"))
-        xml.id              "http://#{request.env['HTTP_HOST']}#{request.uri}"
+        xml.id              "http://#{request.host}#{request.uri}"
         @comments.each do |comment|
           article = Article[comment.article_id]
           if article
             xml.entry do
               xml.title       "Re: #{article.title}"
-              xml.link        :href => "http://#{request.env['HTTP_HOST']}#{article.permalink}##{comment.id}"
-              xml.id          "http://#{request.env['HTTP_HOST']}#{article.permalink}##{comment.id}"
+              xml.link        :href => "http://#{request.host}#{article.permalink}##{comment.id}"
+              xml.id          "http://#{request.host}#{article.permalink}##{comment.id}"
               xml.updated     comment.created_at.strftime("%Y-%m-%dT%H:%M:%SZ")
               xml.author do
                 xml.name      comment.name
