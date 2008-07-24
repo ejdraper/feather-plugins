@@ -1,0 +1,20 @@
+#action
+  = link_to "New Sidebar Group", url(:new_admin_sidebar_group)
+- throw_content :right do 
+%h1
+  View Sidebar Groups
+%p
+  Sidebar groups are sections on the public facing view of your blog. Put
+  any arbitrary content in each group, formatted with Textile.
+- end 
+%h4
+  View Sidebar Groups
+%table.tabular
+  %thead
+    %tr
+      %th
+        Sidebar Name                                
+      %th/
+  %tbody 
+= partial('admin/sidebar_groups/sidebar_group', :with => @sidebar_groups) 
+%br/

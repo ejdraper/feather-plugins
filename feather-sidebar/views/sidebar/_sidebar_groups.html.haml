@@ -1,0 +1,7 @@
+#sidebar-groups
+  - SidebarGroup.all.each do |sidebar_group| 
+  #sidebar-group-{:id => "#{@sidebar_group.id}"}{ :style => "margin-top: 20px" }
+    %h3
+      = sidebar_group.title 
+    = render_text(sidebar_group.formatter, sidebar_group.content)
+  - end

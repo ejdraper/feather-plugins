@@ -1,0 +1,15 @@
+- throw_content :right do 
+= partial 'shared/formatting_help' 
+- end 
+
+= error_messages_for @sidebar_group 
+%h1
+  Edit 
+  = @sidebar_group.title 
+- form_for :sidebar_group, :action => url(:admin_sidebar_group, @sidebar_group), :method => :put do 
+= partial 'form' 
+%p
+  = submit_button 'Save Sidebar Group' 
+  or 
+  = link_to 'Cancel', url(:admin_sidebar_groups) 
+- end 
