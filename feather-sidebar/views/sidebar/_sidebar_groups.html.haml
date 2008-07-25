@@ -1,7 +1,9 @@
+/
+  We need a way to add style sheet stuff in for these plugins, instead of whack inline styles.
 #sidebar-groups
-  - SidebarGroup.all.each do |sidebar_group| 
-  #sidebar-group-{:id => "#{@sidebar_group.id}"}{ :style => "margin-top: 20px" }
+  - SidebarGroup.all.each do |sidebar_group|
+  #sidebar-group-{:id => "#{@sidebar_group.id}", :style => "margin-top: 20px" }
     %h3
-      = sidebar_group.title 
+      = sidebar_group.title
     = render_text(sidebar_group.formatter, sidebar_group.content)
-  - end
+  - end 
