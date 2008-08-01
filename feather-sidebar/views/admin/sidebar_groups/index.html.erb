@@ -1,0 +1,26 @@
+<div id="action">
+<%= link_to "New Sidebar Group", url(:new_admin_sidebar_group) %> 
+</div>
+<% throw_content :right do %>
+  <h4>View Sidebar Groups</h4>
+  <p>
+   Sidebar groups are sections on the public facing view of your blog. Put
+   any arbitrary content in each group, formatted with Textile.
+  </p>
+<% end %>
+<h1>View Sidebar Groups</h1>
+<table class='tabular'>
+  <thead>
+  	<tr>
+  		<th>Sidebar Group Name</th>
+  		<th></th>
+  	</tr>
+	</thead>
+	<tbody>
+<% if @sidebar_groups.any? %>
+    <%= partial('admin/sidebar_groups/sidebar_group', :with => @sidebar_groups) %>
+			<% else %>
+				<tr><td colspan="4"><br>You have not made any Sidebars yet <%= link_to "Write one now?", url(:new_admin_sidebar_group) %></td></tr>
+			<% end %>
+  </tbody>
+</table>
