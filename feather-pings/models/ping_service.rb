@@ -1,7 +1,7 @@
 class PingService
   include DataMapper::Resource
   
-  property :id, Integer, :key => true  
+  property :id, Integer, :serial => true  
   property :name, String, :nullable => false
   property :url, String, :nullable => false, :length => 255
   property :extended, Boolean

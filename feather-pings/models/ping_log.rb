@@ -1,7 +1,7 @@
 class PingLog
   include DataMapper::Resource
   
-  property :id, Integer, :key => true  
+  property :id, Integer, :serial => true  
   property :ping_service_id, Integer
   property :message, String, :nullable => false, :length => 255
   property :successful, Boolean
