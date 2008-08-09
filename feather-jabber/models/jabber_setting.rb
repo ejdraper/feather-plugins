@@ -1,7 +1,7 @@
 class JabberSetting
   include DataMapper::Resource
   
-  property :id, Integer, :key => true
+  property :id, Integer, :serial => true
   property :jabber_notification, Boolean, :nullable => false, :default => false
   property :from_jabber, String
   property :from_jabber_pass, String
