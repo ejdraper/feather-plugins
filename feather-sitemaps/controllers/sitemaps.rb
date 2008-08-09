@@ -1,6 +1,6 @@
 class Sitemaps < Application
   def index
-    @articles = Article.all(:published => true, :order => "published_at DESC")
+    @articles = Article.all(:published => true, :order => [:published_at.desc])
     xml = Builder::XmlMarkup.new
     xml.instruct!
     if params[:format] == "xml"

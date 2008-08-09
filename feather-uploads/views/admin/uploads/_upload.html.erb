@@ -1,5 +1,5 @@
 <tr>
-	<td><%= link_to upload.url, url(:admin_upload, upload) %></td>
+	<td><%= link_to upload.url, "#{upload.url}" %></td>
 	<td><%= upload.content_type %></td>
 	<td><%= upload.size %></td>
 	<td><%= link_to 'Delete', url(:delete_admin_upload, upload), {:method => :delete, :onclick => "return confirm('Are you sure?')"} %></td>
