@@ -4,4 +4,4 @@ Database::migrate(Tagging)
 
 # alter the Article table
 
-DataMapper.auto_migrate!
+DataMapper.auto_upgrade!
