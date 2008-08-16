@@ -2,7 +2,12 @@ class Tags < Application
   include_plugin_views __FILE__
 
   def show(id)
-    @tag = Tag.first(:permalink => id)
-    display @tag
+    @tag = Tag.get!(id)
+   display @tag
+  end
+
+  def index
+    @tags = Tag.all
+    display @tags
   end
 end

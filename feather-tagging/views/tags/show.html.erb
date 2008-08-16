@@ -4,9 +4,11 @@
 
 <h1>Articles Tagged with '<%= @tag.name %>'</h1>
 
-<% unless @tag.articles.empty? %>
+<%= error_messages_for @tag %>
+
+<% unless @tag.nil? %>
   <ul>
-  <% @tag.articles.sort{|a, other| other.published_at <=> a.published_at }.each do |a| %>
+  <% Article.tagged_with(@tag.name).each do |a| %>
     <li><%= link_to(a.title, a.permalink) %></li>
   <% end %>
   </ul>
