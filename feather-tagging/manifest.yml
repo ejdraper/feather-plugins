@@ -1,8 +1,8 @@
 name: feather-tagging
-version: 1.0
+version: 1.1
 homepage: http://featherblog.org
 author:
-    name: Michael Leung and El Draper
-    email: blamemike@gmail.com and el@eldiablo.co.uk
-    homepage: http://bloggingmyassoff.com and http://crazycool.co.uk
+    name: AJ Christensen
+    email: aj@junglist.gen.nz 
+    homepage: http://junglist.gen.nz
 about: This plugin provides tag support to articles.
