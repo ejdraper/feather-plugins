@@ -17,7 +17,7 @@
 <% end %>
 </ol>
 <div>
-  <% form_for :comment, :action => url(:comment), :id => 'comment-form' do %>
+  <%= form_for :comment, :action => url(:comment), :id => 'comment-form' do %>
     <% if session[:comment_error] %>
       <ul id="comment-errors">
       	<% session[:comment_error].each do |err| %>
@@ -49,15 +49,15 @@
       </p>
 	  <p>
 	    <label class="text" for="comment_formatter">Formatter:</label>
-	    <%= select :name => 'comment[formatter]', :collection => Hooks::Formatters.available_formatters.collect { |i| [i, i] }, :selected => 'default', :id => 'comment_formatter' %>
+	    <%= select :name => 'comment[formatter]', :collection => Hooks::Formatters.available_formatters, :selected => 'default', :id => 'comment_formatter' %>
 	  </p>
       <p>
       	<label class="text" for="comment_comment">Comment:</label>
-      	<%= text_area_field "", :name => 'comment[comment]', :rows => 10, :cols => 30, :id => 'comment_comment' %>
+      	<%= text_area "", :name => 'comment[comment]', :rows => 10, :cols => 30, :id => 'comment_comment' %>
       </p>
       <div class="formactions">
-      	<%= submit_button "Post comment", :class => 'submit' %>
+      	<%= submit "Post comment", :class => 'submit' %>
       </div>
     </fieldset>
-  <% end %>
+  <% end =%>
 </div>
