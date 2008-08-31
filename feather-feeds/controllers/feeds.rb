@@ -4,7 +4,7 @@ class Feeds < Application
   def articles
     @articles = Article.all(:published => true, :limit => @feed_setting.article_count, :order => [:published_at.desc])
     output = ""
-    xml = Builder::XmlMarkup.new(:target => output)
+    xml = ::Builder::XmlMarkup.new(:target => output)
     xml.instruct!
     case params[:format]
     when "rss"
