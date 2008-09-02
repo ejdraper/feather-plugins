@@ -11,7 +11,7 @@ module Merb
       divisor = ((max - min) / classes.size) + 1
       tags.each do |t|
         count = Article.tagged_with(t.name).size.to_i
-        yield t, classes[count / divisor]
+        yield t, classes[count / divisor] unless count == 0
       end
     end
   end
