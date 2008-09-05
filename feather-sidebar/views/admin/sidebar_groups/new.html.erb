@@ -9,9 +9,9 @@
 <%= error_messages_for @sidebar_group %>
 <h1>New Sidebar Group</h1>
  
-<% form_for :sidebar_group, :action => url(:admin_sidebar_group, @sidebar_group) do %>
+<%= form_for :sidebar_group, :action => url(:admin_sidebar_group, @sidebar_group) do %>
   <%= partial 'form' %>
-  <p><%= submit_button 'Save Sidebar Group' %> or <%= link_to 'Cancel', url(:admin_sidebar_groups) %></p>
-<% end %>
+  <p><%= submit 'Save Sidebar Group' %> or <%= link_to 'Cancel', url(:admin_sidebar_groups) %></p>
+<% end =%>
  
 <%= link_to "Back to sidebar groups", url(:admin_sidebar_groups) %>

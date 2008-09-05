@@ -19,16 +19,16 @@
 <%= error_messages_for @mollom_config %>
 <h1>Edit Mollom settings</h1>
 
-<% form_for :mollom_config, :action => url(:admin_mollom_settings, @mollom_config), :method => :put do %>
+<%= form_for :mollom_config, :action => url(:admin_mollom_settings, @mollom_config), :method => :put do %>
 	<p>
   		<span class="mock_label">Private Key</span>
-  		<%= text_control :private_key, :value => @mollom_config.private_key %>
+  		<%= text_field :private_key, :value => @mollom_config.private_key %>
 	</p>
 	
 	<p>
   		<span class="mock_label">Public Key</span>
-  		<%= text_control :public_key, :value => @mollom_config.public_key %>
+  		<%= text_field :public_key, :value => @mollom_config.public_key %>
 	</p>
 
-  <%= submit_button 'Save Settings' %> or <%= link_to 'Cancel', url(:admin_mollom_settings) %>
-<% end %>
+  <%= submit 'Save Settings' %> or <%= link_to 'Cancel', url(:admin_mollom_settings) %>
+<% end =%>

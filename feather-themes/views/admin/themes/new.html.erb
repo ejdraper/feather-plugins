@@ -7,9 +7,9 @@
 <%= error_messages_for @style %>
 <h1>Install theme</h1>
 
-<% form_for :theme, :action => url(:admin_themes) do %>
-  <%= text_control :url, :label => 'URL' %>
-  <%= submit_button 'Install' %>
-<% end %>
+<%= form_for :theme, :action => url(:admin_themes) do %>
+  <%= text_field :url, :label => 'URL' %>
+  <%= submit 'Install' %>
+<% end =%>
 
 <%= link_to "Back to themes", url(:admin_themes) %>

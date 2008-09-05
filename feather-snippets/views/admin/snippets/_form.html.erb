@@ -1,2 +1,2 @@
-<%= select_control :location, :collection => Hooks::View.available_hooks, :label => 'Location:' %>
-<%= text_area_control :content, :rows => 20, :cols => 100, :label => 'Snippet:' %>
+<%= select :location, :collection => Hooks::View.available_hooks, :label => 'Location:' %>
+<%= text_area :content, :rows => 20, :cols => 100, :label => 'Snippet:' %>

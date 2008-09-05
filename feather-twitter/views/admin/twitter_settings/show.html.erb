@@ -26,10 +26,10 @@
 
 <p>
 	Force re-scan for tweets:
-	<% form_for :twitter_setting, :action => url(:admin_twitter_settings, @twitter_setting), :method => :put do %>
+	<%= form_for :twitter_setting, :action => url(:admin_twitter_settings, @twitter_setting), :method => :put do %>
 			<%= hidden_field :name => "force", :value => true %>
-		<%= submit_button "Re-scan" %>
-	<% end %>
+		<%= submit "Re-scan" %>
+	<% end =%>
 </p>
 
 <%= link_to "Edit Twitter settings", url(:edit_admin_twitter_settings, @twitter_setting) %> |
