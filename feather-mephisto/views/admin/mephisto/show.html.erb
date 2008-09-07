@@ -1,6 +1,6 @@
 <h1>Import existing content</h1>
 
-<%= form_tag(:action => url(:admin_mephisto)) do %>
+<%= form(:action => url(:admin_mephisto)) do %>
   <p><strong>Important:</strong></p>
 	<p>Make sure that the permalink matches your old posts! You can use the variables: :year, :month, :day, :title</p>
 	<%= text_field :name => "permalink", :label => "Permalink", :value => "/:year/:month/:day/:title"%>

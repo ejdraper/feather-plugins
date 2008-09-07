@@ -7,7 +7,7 @@
 
 <h1>View Themes</h1>
 <% default_theme = PluginSetting.read('theme') %>
-<% form_tag(:action => url(:controller => 'admin/themes', :action => 'set_default')) do %>
+<% form(:action => url(:controller => 'admin/themes', :action => 'set_default')) do %>
 <ul id="themes">
   <%- @themes.each do |theme| %>
   <li id="theme-<%= theme.name %>" style="list-style-type: none">

@@ -1,6 +1,6 @@
 <h1>Import existing content</h1>
 
-<%= form_tag(:action => url(:admin_importer)) do %>
+<%= form(:action => url(:admin_importer)) do %>
 	<%= text_field :name => "articles_url", :label => "Articles Feed" %><br />
 	<% if defined?(Comment) && is_plugin_active("feather-comments") %>
 		<%= text_field :name => "comments_url", :label => "Comments Feed" %><br />
