@@ -19,15 +19,15 @@
 <%= error_messages_for @twitter_setting %>
 <h1>Edit Twitter settings</h1>
 
-<% form_for :twitter_setting, :action => url(:admin_twitter_settings, @twitter_setting), :method => :put do %>
+<%= form_for :twitter_setting, :action => url(:admin_twitter_settings, @twitter_setting), :method => :put do %>
 	<p>
 		<span class="mock_label">Username</span>
-		<%= text_control :username, :value => @twitter_setting.username %>
+		<%= text_field :username, :value => @twitter_setting.username %>
 	</p>
 	
 	<p>
   		<span class="mock_label">Ignore Replies</span>
-  		<%= checkbox_control :ignore_replies, :value => @twitter_setting.ignore_replies %>
+  		<%= check_box :ignore_replies, :value => @twitter_setting.ignore_replies %>
 	</p>
-  	<%= submit_button 'Save Settings' %> or <%= link_to 'Cancel', url(:admin_twitter_settings) %>
-<% end %>
+  	<%= submit 'Save Settings' %> or <%= link_to 'Cancel', url(:admin_twitter_settings) %>
+<% end =%>

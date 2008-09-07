@@ -6,23 +6,23 @@
 <%= error_messages_for @feed_setting %>
 <h1>Edit feed settings</h1>
 
-<% form_for :feed_setting, :action => url(:admin_feed_settings, @feed_setting), :method => :put do %>
+<%= form_for :feed_setting, :action => url(:admin_feed_settings, @feed_setting), :method => :put do %>
 	<p>
   		<span class="mock_label">Article Count</span>
-  		<%= text_control :article_count, :value => @feed_setting.article_count %>
+  		<%= text_field :article_count, :value => @feed_setting.article_count %>
 	</p>
 	
     <% if defined?(Comment) && is_plugin_active("feather-comments") %>
 	<p>
   		<span class="mock_label">Comment Count</span>
-  		<%= text_control :comment_count, :value => @feed_setting.comment_count %>
+  		<%= text_field :comment_count, :value => @feed_setting.comment_count %>
 	</p>
 	<% end %>
 	
 	<p>
   		<span class="mock_label">External Feed Url</span>
-  		<%= text_control :external_feed_url, :value => @feed_setting.external_feed_url %>
+  		<%= text_field :external_feed_url, :value => @feed_setting.external_feed_url %>
 	</p>
 
-  <%= submit_button 'Save Settings' %> or <%= link_to 'Cancel', url(:admin_feed_settings) %>
-<% end %>
+  <%= submit 'Save Settings' %> or <%= link_to 'Cancel', url(:admin_feed_settings) %>
+<% end =%>

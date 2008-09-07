@@ -35,31 +35,31 @@
 <%= error_messages_for @recaptcha_config %>
 <h1>Edit recaptcha settings</h1>
 
-<% form_for :recaptcha_config, :action => url(:admin_recaptcha_configuration, @recaptcha_config), :method => :put do %>
+<%= form_for :recaptcha_config, :action => url(:admin_recaptcha_configuration, @recaptcha_config), :method => :put do %>
 	<p>
   		<span class="mock_label">Public Key</span>
-  		<%= text_control :public_key, :value => @recaptcha_config.public_key %>
+  		<%= text_field :public_key, :value => @recaptcha_config.public_key %>
 	</p>
 	
 	<p>
   		<span class="mock_label">Private Key</span>
-  		<%= text_control :private_key, :value => @recaptcha_config.private_key %>
+  		<%= text_field :private_key, :value => @recaptcha_config.private_key %>
 	</p>
 	
 	<p>
   		<span class="mock_label">Theme</span>
-  		<%= text_control :theme, :value => @recaptcha_config.theme %>
+  		<%= text_field :theme, :value => @recaptcha_config.theme %>
 	</p>
 	
 	<p>
   		<span class="mock_label">Language</span>
-  		<%= text_control :lang, :value => @recaptcha_config.lang %>
+  		<%= text_field :lang, :value => @recaptcha_config.lang %>
 	</p>
 	
 	<p>
   		<span class="mock_label">Tab Index</span>
-  		<%= text_control :tabindex, :value => @recaptcha_config.tabindex %>
+  		<%= text_field :tabindex, :value => @recaptcha_config.tabindex %>
 	</p>
 	
-  <%= submit_button 'Save Settings' %> or <%= link_to 'Cancel', url(:admin_recaptcha_configuration) %>
-<% end %>
+  <%= submit 'Save Settings' %> or <%= link_to 'Cancel', url(:admin_recaptcha_configuration) %>
+<% end =%>
