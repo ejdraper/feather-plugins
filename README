@@ -1,25 +1,12 @@
-This contains plugins for Feather:
+This contains plugins for Feather (please see the README for each individual plugin for a more detailed description):
 
-feather-akismet: this provides Akismet spam protection for comments  **NOTE NOT DONE YET**
-feather-antispam: this provides other anti-spam measures for comments **NOTE NOT DONE YET**
-feather-comments: this provides commenting on articles for Feather
-feather-feeds: this adds RSS feeds to Feather, and if the comment plugin is present, also adds a comment feed
-feather-formatters: this adds textile, markdown and smartypants formatting for articles, and if the sidebar plugin is present, sidebar groups too
-feather-import: this allows RSS importing of articles, and if the comment plugin is present, comments too
-feather-jabber: this provides Jabber comment notifications
-feather-mephisto: this allows you to import a blog from mephisto
-feather-mollom: this checks all comments against the Mollom comment spam network
-feather-pages: this provides a base content page system (CMS) for Feather
+feather-comments: this provides commenting on articles for Feather, and provides basic anti-spam measures
+feather-feeds: this exposes RSS feeds from within Feather
+feather-formatters: this adds textile, markdown and smartypants formatting for articles
+feather-importers: this allows RSS importing of content, as well as importing from other blog applications (such as Mephisto, and Typo)
 feather-pings: this allows custom ping services to be contacted when new content is published
-feather-recaptcha: this provides recaptcha anti-spam measures for comments **NOTE NOT DONE YET**
-feather-redirects: this allows custom redirects to be setup to maintain links and compatibility with previous blog services
-feather-repo: this allows you to host a plugin repository that can be utilised by other Feather blogs to download plugins - this will be used by the main Feather site to host official plugins, and other users can host their own plugins directly from their Feather blogs
-feather-sidebar: this allows the creation of generic sidebar items for your Feather blog
-feather-sitemaps: this provides an xml sitemap for your site, based on the content
-feather-snippets: this allows custom and dynamic creation of snippets to add to the blog template
-feather-styles: this allows custom stylesheets to be defined and automatically included so as to override default blog styling
-feather-tagging: this provides tagging for articles, and a tag cloud for the blog sidebar
+feather-redirects: this allows custom redirects to be setup to maintain links and compatibility with previous blog applications and services
+feather-search: this adds in an AJAX search mechanism for your blog
+feather-sitemaps: this provides an XML sitemap for your site, based on the content
+feather-tagging: this provides tagging for articles, and a tag cloud for the blog theme to display
 feather-themes: allows custom themes to be downloaded, managed and activated for your blog
-feather-twitter: this polls for twitter updates, and inserts them in to your blog at the appropriate place
-feather-typo: this allows you to import a blog from typo
-feather-uploads: this allows for custom files to be uploaded and served

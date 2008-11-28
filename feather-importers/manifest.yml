@@ -1,0 +1,8 @@
+name: feather-import
+version: 1.0
+homepage: http://featherblog.org
+author:
+    name: El Draper, Jake Good, Marc Seeger
+    email: el@eldiablo.co.uk, jake@whoisjake.com, unknown
+    homepage: http://crazycool.co.uk, http://www.thoughtstoblog.com, http://www.marc-seeger.de
+about: This plugin provides a way for users to import existing content (posts and comments) from other sources

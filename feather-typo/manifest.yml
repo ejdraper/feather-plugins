@@ -1,8 +1,0 @@
-name: feather-typo
-version: 1.0
-homepage: http://featherblog.org
-author:
-    name: Marc Seeger (based on feather-mephisto by Jake Good)
-    email: unknown
-    homepage: http://www.marc-seeger.de
-about: This plugin provides importing functionality from Typo.
