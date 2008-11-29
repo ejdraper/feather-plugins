@@ -9,9 +9,6 @@ module Feather
           session[:comment_error] = @comment.errors.collect { |e| e[1].first }
         else
           article = Article[@comment.article_id]
-          # Expire the main article index, and the article page itself
-          expire_index
-          expire_article(article)
           # Send e-mail notification if that setting is enabled
           if CommentSetting.current.email_notification
             email_params = { :from => CommentSetting.current.from_email, :to => CommentSetting.current.to_email, :subject => "New comment - RE: #{article.title}" }

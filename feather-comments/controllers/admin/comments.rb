@@ -12,15 +12,11 @@ module Feather
       def update
         @comment.published = (params[:published] == "true" ? true : false) if params[:published]
         @comment.save
-        expire_index
-        expire_article(@comment.article)
         render_js
       end
 
       def delete
         @comment.destroy
-        expire_index
-        expire_article(@comment.article)
         redirect url(:admin_comments)
       end
 

@@ -4,7 +4,7 @@
 <p><a href="#comment-form">Leave a response</a></p>
 <ol class="comments" id="comments">
 <!-- Put this in a partial. Actually I think we should reopen the article model, and stick in has_many :comments. do that. -->
-<% Comment.all_for_post(@article.id).each do |comment| %>
+<% Feather::Comment.all_for_post(@article.id).each do |comment| %>
   <li id="comment-<%= comment.id %>" class="comment">
     <div class="author">
       <cite><span class="author"><span><%= comment.website.blank? ? h(comment.name) : link_to(h(comment.name), comment.website) %></span></span></cite> – 
@@ -17,7 +17,7 @@
 <% end %>
 </ol>
 <div>
-  <%= form_for :comment, :action => url(:comment), :id => 'comment-form' do %>
+  <%= form_for :comment, :action => url(:comments), :id => 'comment-form' do %>
     <% if session[:comment_error] %>
       <ul id="comment-errors">
       	<% session[:comment_error].each do |err| %>
@@ -29,7 +29,7 @@
     <fieldset>
       <legend>Comment</legend>
       <%= hidden_field :name => "comment[article_id]", :value => @article.id %>
-	  <% if CommentSetting.current.negative_captcha %>
+	  <% if Feather::CommentSetting.current.negative_captcha %>
 	  	<%= text_field :name => "comment[notes]", :id => "comment_notes" %>
 	  	<script type="text/javascript">
 			document.getElementById('comment_notes').style.display = "none";
@@ -49,7 +49,7 @@
       </p>
 	  <p>
 	    <label class="text" for="comment_formatter">Formatter:</label>
-	    <%= select :name => 'comment[formatter]', :collection => Hooks::Formatters.available_formatters, :selected => 'default', :id => 'comment_formatter' %>
+	    <%= select :name => 'comment[formatter]', :collection => Feather::Hooks::Formatters.available_formatters, :selected => 'default', :id => 'comment_formatter' %>
 	  </p>
       <p>
       	<label class="text" for="comment_comment">Comment:</label>
