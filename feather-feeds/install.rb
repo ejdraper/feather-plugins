@@ -1,1 +1,1 @@
-Database::migrate(FeedSetting)
+Feather::Database::migrate(Feather::FeedSetting)

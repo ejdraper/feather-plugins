@@ -1,0 +1,18 @@
+<% throw_content :title do %>
+	Tags
+<% end %>
+
+<h1>Tags</h2>
+
+<% unless @tags.empty? %>
+<ul>
+  <% @tags.each do |tag| %>
+    <li><%= tag.name %></li>
+    <ul>
+    <% Feather::Article.tagged_with(tag.name).each do |a| %>
+      <li><%= link_to(a.title, a.permalink) %></li>
+    <% end %>
+    </ul>
+  <% end %>
+</ul>
+<% end %>

@@ -1,19 +1,19 @@
-require File.join(File.join(File.join(File.dirname(__FILE__), "controllers"), "admin"), "comments")
-require File.join(File.join(File.join(File.dirname(__FILE__), "controllers"), "admin"), "comment_settings")
-require File.join(File.join(File.dirname(__FILE__), "controllers"), "comments")
-require File.join(File.join(File.dirname(__FILE__), "mailers"), "comment_mailer")
-require File.join(File.join(File.dirname(__FILE__), "models"), "comment")
-require File.join(File.join(File.dirname(__FILE__), "models"), "comment_setting")
+require File.join(File.dirname(__FILE__), "controllers", "admin", "comments")
+require File.join(File.dirname(__FILE__), "controllers", "admin", "comment_settings")
+require File.join(File.dirname(__FILE__), "controllers", "comments")
+require File.join(File.dirname(__FILE__), "mailers", "comment_mailer")
+require File.join(File.dirname(__FILE__), "models", "feather", "comment")
+require File.join(File.dirname(__FILE__), "models", "feather", "comment_setting")
 
-Merb::Router.prepend do |r|
+Feather::Hooks::Routing.register_route do |r|
   r.resources :comments
-  r.namespace :admin do |admin|
-    admin.resources :comments
-    admin.resource :comment_settings
+  r.namespace "feather/admin", :path => "admin", :name_prefix => "admin" do
+    r.resources :comments
+    r.resource :comment_setting
   end
 end
 
-Hooks::View.register_partial_view "after_article", "comments"
-Hooks::View.register_partial_view "meta_section", "comments"
+Feather::Hooks::View.register_partial_view "after_article", "comments"
+Feather::Hooks::View.register_partial_view "meta_section", "comments"
 
-Hooks::Menu.add_menu_item "Comments", "/admin/comments"
+Feather::Hooks::Menu.add_menu_item "Comments", "/admin/comments"

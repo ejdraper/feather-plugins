@@ -1,0 +1,17 @@
+<% throw_content :title do %>
+	Articles tagged with <%= @tag.name %>
+<% end %>
+
+<h1>Articles Tagged with '<%= @tag.name %>'</h1>
+
+<%= error_messages_for @tag %>
+
+<% unless @tag.nil? %>
+  <ul>
+  <% Feather::Article.tagged_with(@tag.name).each do |a| %>
+    <li><%= link_to(a.title, a.permalink) %></li>
+  <% end %>
+  </ul>
+<% else %>
+  No articles found for <%= @tag.name %>.
+<% end %>

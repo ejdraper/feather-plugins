@@ -1,0 +1,53 @@
+<% throw_content :right do %>
+	<h4>Comment Settings</h4>
+	Update the comment settings for this blog.
+	<br />
+	<ul>
+		<li>
+			<strong>Moderation</strong>
+			<br />
+			With moderation turned on, no comments that are posted are published and visible until you manually set them to be.
+		</li>
+		<li>
+			<strong>Negative Captcha</strong>
+			<br />
+			With negative captcha turned on, an extra form field is added, but made invisible - a "honeypot". If this has any data set, it is most likely a spam bot making the request, and it is ignored.
+		</li>
+		<li>
+			<strong>E-mail Notification</strong>
+			<br />
+			With e-mail notification turned on, you will receive an e-mail notification each time a comment is posted to your blog.
+		</li>
+	</ul>
+<% end %>
+
+<%= error_messages_for @comment_setting %>
+<h1>Edit comment settings</h1>
+
+<%= form_for :comment_setting, :action => url(:admin_comment_setting), :method => :put do %>
+	<p>
+  		<span class="mock_label">Moderation</span>
+		<%= check_box :moderation %>
+	</p>
+	
+	<p>
+  		<span class="mock_label">Negative Captcha</span>
+  		<%= check_box :negative_captcha %>
+	</p>
+	
+	<p>
+		<span class="mock_label">E-mail Notification</span>
+		<%= check_box :email_notification, :onchange => "$('comment_setting_email_notification').checked ? $('from_email_display').show() && $('to_email_display').show() : $('from_email_display').hide() && $('to_email_display').hide()" %>
+	</p>
+	
+	<p id="from_email_display" style="display: <%= @comment_setting.email_notification ? 'block' : 'none' %>;">
+		<span class="mock_label">From e-mail address</span>
+		<%= text_field :from_email, :value => @comment_setting.from_email %>
+	</p>
+	
+	<p id="to_email_display" style="display: <%= @comment_setting.email_notification ? 'block' : 'none' %>;">
+		<span class="mock_label">To e-mail address</span>
+		<%= text_field :to_email, :value => @comment_setting.to_email %>
+	</p>
+  <%= submit 'Save Settings' %> or <%= link_to 'Cancel', url(:admin_comment_setting) %>
+<% end =%>

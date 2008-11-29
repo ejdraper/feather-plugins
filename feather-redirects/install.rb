@@ -1,1 +1,1 @@
-Database::migrate(Redirect)
+Feather::Database::migrate(Feather::Redirect)

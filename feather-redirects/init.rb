@@ -1,18 +1,18 @@
-require File.join(File.join(File.dirname(__FILE__), "controllers"), "redirector")
-require File.join(File.join(File.dirname(__FILE__), "controllers"), "redirects")
-require File.join(File.join(File.dirname(__FILE__), "models"), "redirect")
+require File.join(File.dirname(__FILE__), "controllers", "redirector")
+require File.join(File.dirname(__FILE__), "controllers", "admin", "redirects")
+require File.join(File.dirname(__FILE__), "models", "feather", "redirect")
 
 Merb::Router.prepend do |r|
   # This deferred route allows redirects to be handled
   r.match("").defer_to do |request, path_match|
-    unless (redirect = Redirect.find_by_from_url(request.uri.to_s.chomp("/"))).nil?
-      {:controller => "redirector", :action => "show", :id => redirect.id}
+    unless (redirect = Feather::Redirect.find_by_from_url(request.uri.to_s.chomp("/"))).nil?
+      {:controller => "feather/redirector", :action => "show", :id => redirect.id}
     end
   end
 
-  r.namespace :admin do |admin|
-    admin.resources :redirects
+  r.namespace "feather/admin", :path => "admin", :name_prefix => "admin" do
+    r.resources :redirects
   end
 end
 
-Hooks::Menu.add_menu_item "Redirects", "/admin/redirects"
+Feather::Hooks::Menu.add_menu_item "Redirects", "/admin/redirects"

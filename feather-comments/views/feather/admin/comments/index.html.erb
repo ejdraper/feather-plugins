@@ -1,0 +1,27 @@
+<% throw_content :right do %>
+  <h4>View Comments</h4>
+  <p>
+	Comments are left on your blog by visitors.
+	<br />
+	<%= link_to "View comment settings", url(:admin_comment_setting) %>
+  </p>
+<% end %>
+
+<div id="action">
+  <%= link_to "View comment settings", url(:admin_comment_setting) %>
+</div>
+
+<h1>View Comments</h1>
+
+<table class='tabular'>
+	<thead>
+  <tr>
+  	<th>Name</th>
+  	<th>Website</th>
+  	<th>E-mail address</th>
+  	<th>IP address</th>
+  	<th>&nbsp;</th>
+  </tr>
+  </thead>
+  <%= partial('feather/admin/comments/comment', :with => @comments) %>
+</table>

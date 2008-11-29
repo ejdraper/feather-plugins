@@ -1,2 +1,2 @@
-Database::migrate(Comment)
-Database::migrate(CommentSetting)
+Feather::Database::migrate(Feather::Comment)
+Feather::Database::migrate(Feather::CommentSetting)

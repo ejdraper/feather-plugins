@@ -1,15 +1,15 @@
 require File.join(File.dirname(__FILE__), "controllers", "admin", "themes")
-require File.join(File.dirname(__FILE__), 'models', 'theme')
+require File.join(File.dirname(__FILE__), 'models', "feather", 'theme')
 
 Merb::Router.prepend do |r|
-  r.match('/admin/themes/set_default').to(:controller => 'admin/themes', :action => 'set_default')
-  r.namespace :admin do |admin|
-    admin.resources :themes
+  r.match('/admin/themes/set_default').to(:controller => 'feather/admin/themes', :action => 'set_default')
+  r.namespace "feather/admin", :path => "admin", :name_prefix => "admin" do
+    r.resources :themes
   end
 end
 
 Merb.push_path(:themes, File.join(Merb.dir_for(:root), 'themes'), nil)
-Hooks::Menu.add_menu_item "Themes", "/admin/themes"
+Feather::Hooks::Menu.add_menu_item "Themes", "/admin/themes"
 
 module Feather
   module Plugins
@@ -20,7 +20,7 @@ module Feather
         end
         
         def _theme_template_location(action, type = nil, controller = controller_name)
-          theme = PluginSetting.read('theme')
+          theme = Feather::PluginSetting.read('theme')
           template = "#{theme}/views/#{controller}/#{action}.#{type}"
         end
       end

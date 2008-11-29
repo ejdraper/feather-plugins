@@ -1,0 +1,13 @@
+<% throw_content :right do %>
+  <h4>View Ping Logs</h4>
+  <p>
+	  This contains the log entries letting you know whether pings to external services when publishing posts was successful or not.
+  </p>
+<% end %>
+
+<h1>View Ping Logs</h1>
+
+<table class='tabular'>
+  <%= partial('feather/admin/ping_logs/ping_log', :with => @ping_logs) %>
+</table>
+<br />
