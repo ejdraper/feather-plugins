@@ -1,2 +1,2 @@
-Feather::Database::migrate(Feather::Tag)
-Feather::Database::migrate(Feather::Tagging)
+Feather::Database::migrate(Tag)
+Feather::Database::migrate(Tagging)

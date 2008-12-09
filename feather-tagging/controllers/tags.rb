@@ -3,12 +3,12 @@ module Feather
     include_plugin_views __FILE__
 
     def show(id)
-      @tag = Feather::Tag.get!(id)
+      @tag = Tag.get!(id)
      display @tag
     end
 
     def index
-      @tags = Feather::Tag.all
+      @tags = Tag.all
       display @tags
     end
   end
