@@ -14,7 +14,7 @@ module Feather
 
       def update(feed_setting)
         if @feed_setting.update_attributes(feed_setting)
-          redirect url(:admin_feed_settings, @feed_setting)
+          redirect url(:admin_feed_setting)
         else
           render :edit
         end

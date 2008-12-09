@@ -65,7 +65,7 @@ module Feather
     def comments
       @comments = (defined?(Feather::Comment) && is_plugin_active("feather-comments")) ? Feather::Comment.all(:limit => @feed_setting.comment_count, :order => [:created_at.desc]) : []
       output = ""
-      xml = Builder::XmlMarkup.new(:target => output)
+      xml = ::Builder::XmlMarkup.new(:target => output)
       xml.instruct!
       case params[:format]
       when "rss"
@@ -78,7 +78,7 @@ module Feather
             xml.atom :link,   :href => "http://#{request.host}#{request.uri}", :rel => "self"
             xml.link          "http://#{request.host}#{request.uri}"
             xml.pubDate       rfc822(@comments.first.created_at) if @comments.length > 0
-            xml.description   Configuration.current.tag_line
+            xml.description   Feather::Configuration.current.tag_line
             @comments.each do |comment|
               article = Feather::Article[comment.article_id]
               if article

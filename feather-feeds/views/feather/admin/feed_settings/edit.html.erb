@@ -6,7 +6,7 @@
 <%= error_messages_for @feed_setting %>
 <h1>Edit feed settings</h1>
 
-<%= form_for :feed_setting, :action => url(:admin_feed_settings, @feed_setting), :method => :put do %>
+<%= form_for :feed_setting, :action => url(:admin_feed_setting), :method => :put do %>
 	<p>
   		<span class="mock_label">Article Count</span>
   		<%= text_field :article_count, :value => @feed_setting.article_count %>
@@ -24,5 +24,5 @@
   		<%= text_field :external_feed_url, :value => @feed_setting.external_feed_url %>
 	</p>
 
-  <%= submit 'Save Settings' %> or <%= link_to 'Cancel', url(:admin_feed_settings) %>
+  <%= submit 'Save Settings' %> or <%= link_to 'Cancel', url(:admin_feed_setting) %>
 <% end =%>

@@ -12,7 +12,7 @@
 	<%= @feed_setting.article_count %>
 </p>
 
-<% if defined?(Comment) && is_plugin_active("feather-comments") %>
+<% if defined?(Feather::Comment) && is_plugin_active("feather-comments") %>
 <p>
 	Comment count within feed:
 	<%= @feed_setting.comment_count %>
@@ -24,4 +24,4 @@
 	<%= (@feed_setting.external_feed_url.nil? || @feed_setting.external_feed_url == "") ? "Not set" : @feed_setting.external_feed_url %>
 </p>
 
-<%= link_to "Edit feed settings", url(:edit_admin_feed_settings, @feed_setting) %>
+<%= link_to "Edit feed settings", url(:edit_admin_feed_setting) %>

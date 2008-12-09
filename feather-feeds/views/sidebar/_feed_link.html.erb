@@ -1,10 +1,10 @@
 <div id="feed-link">
   <h3>Syndicate</h3>
   <!-- <= image_tag 'feed_icon.png' > -->
-  Articles: (<%= link_to "RSS", "/articles.rss" %>|<%= link_to "Atom", "/articles.atom" %>)
+  Articles: (<%= link_to "RSS", url(:feeds, :action => :articles, :format => :rss) %>|<%= link_to "Atom", url(:feeds, :action => :articles, :format => :atom) %>)
   <br />
-  <% if defined?(Comment) && is_plugin_active("feather-comments") %>
-  	Comments: (<%= link_to "RSS", "/comments.rss" %>|<%= link_to "Atom", "/comments.atom" %>)
+  <% if defined?(Feather::Comment) && is_plugin_active("feather-comments") %>
+  	Comments: (<%= link_to "RSS", url(:feeds, :action => :comments, :format => :rss) %>|<%= link_to "Atom", url(:feeds, :action => :comments, :format => :atom) %>)
 	<br />
   <% end %>
 </div>
