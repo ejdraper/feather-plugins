@@ -1,3 +1,13 @@
+<% throw_content :right do %>
+  <h4>Other importers</h4>
+  <p>
+    <ul>
+      <li><%= link_to "RSS", url(:admin_importer) %></li>
+      <li><%= link_to "Typo", url(:admin_typo) %></li>
+    </ul>
+  </p>
+<% end %>
+
 <h1>Import existing content</h1>
 
 <%= form(:action => url(:admin_mephisto)) do %>

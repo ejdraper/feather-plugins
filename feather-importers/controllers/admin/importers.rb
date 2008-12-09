@@ -1,6 +1,6 @@
 module Feather
   module Admin
-    class Importer < Base
+    class Importers < Base
       include_plugin_views __FILE__
 
       def show
@@ -11,7 +11,7 @@ module Feather
         # Process the article feed if specified
         @articles = process_articles(params[:articles_url]) if params[:articles_url] && params[:articles_url] != ""
         # Process the comment feed if specified
-        @comments = process_comments(params[:comments_url]) if params[:comments_url] && params[:comments_url] != "" && (defined?(Comment) && is_plugin_active("feather-comments"))
+        @comments = process_comments(params[:comments_url]) if params[:comments_url] && params[:comments_url] != "" && (defined?(Feather::Comment) && is_plugin_active("feather-comments"))
         # Render the results
         render
       end
@@ -29,7 +29,7 @@ module Feather
             # Build the permalink
             permalink = URI.parse((a/"guid").text).request_uri
             # Find the article, or create a new one
-            article = Article.first(:permalink => permalink) || Article.new
+            article = Feather::Article.first(:permalink => permalink) || Feather::Article.new
             # Grab the information from the article feed item
             article.title = (a/"title").text
             article.content = (a/"description").text
@@ -38,7 +38,7 @@ module Feather
             article.permalink = permalink
             article.user_id = self.current_user.id
             # Add the tags, if present in the feed, and if the tagging plugin is active
-            article.tag_list = (a/"category").collect { |c| c.children.first }.join(",") if is_plugin_active("feather-tagging") && defined?(Tag) && defined?(Tagging) && article.respond_to?("tag_list=") && (a/"category") && (a/"category").length > 0
+            article.tag_list = (a/"category").collect { |c| c.children.first }.join(",") if is_plugin_active("feather-tagging") && defined?(Feather::Tag) && defined?(Feather::Tagging) && article.respond_to?("tag_list=") && (a/"category") && (a/"category").length > 0
             # Save the article
             article.save
             # Add it to the list of processed articles
@@ -52,7 +52,7 @@ module Feather
         # This processes the comments feed url
         def process_comments(url)
           # Ensure the comment plugin exists
-          raise "Unable to process comments: comment plugin not detected!" unless defined?(Comment)
+          raise "Unable to process comments: comment plugin not detected!" unless defined?(Feather::Comment)
           # Create an array to store the processed comments
           processed = []
           # Grab the comment items from the feed

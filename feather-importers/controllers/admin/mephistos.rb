@@ -1,6 +1,6 @@
 module Feather
   module Admin
-    class Mephisto < Base
+    class Mephistos < Base
       include_plugin_views __FILE__
       @article_map = {}
     
@@ -9,7 +9,6 @@ module Feather
       end
 
       def create
-      
         DataMapper.setup(:mephisto_database, {
            :adapter  => params[:adapter],
            :host     => params[:host],
@@ -17,21 +16,17 @@ module Feather
            :password => params[:password],
            :database => params[:database]
           })
-      
-        @article_map = {}  
-        
+        @article_map = {}
         DataMapper.repository(:mephisto_database) do
           @mephisto_articles = collect_mephisto_articles()
           @mephisto_comments = collect_mephisto_comments()
         end
         @articles = process_articles(@mephisto_articles, params[:permalink]) unless @mephisto_articles.nil?
         @comments = process_comments(@mephisto_comments) unless @mephisto_comments.nil?
-      
         render
       end
 
       private
-    
         def format_permalink(format, date, title)
           format = format.gsub(/:year/,date.year.to_s)
           format.gsub!(/:month/,date.month.to_s)
@@ -46,8 +41,8 @@ module Feather
     
         # Collects the mephisto comments
         def collect_mephisto_comments()
-          if MephistoComment.storage_exists? 
-            MephistoComment.all(:type => "Comment")
+          if Feather::MephistoComment.storage_exists? 
+            Feather::MephistoComment.all(:type => "Comment")
           else
             nil
           end
@@ -55,8 +50,8 @@ module Feather
 
         # Collects the mephisto articles
         def collect_mephisto_articles()
-          if MephistoArticle.storage_exists? 
-            MephistoArticle.all(:type => "Article")
+          if Feather::MephistoArticle.storage_exists? 
+            Feather::MephistoArticle.all(:type => "Article")
           else
             nil
           end
@@ -82,7 +77,7 @@ module Feather
           # Loop through them
           mephisto_articles.each do |a|
             # Find the article, or create a new one
-            article = Article.new
+            article = Feather::Article.new
             # Grab the information from the article feed item
             article.title = a.title
             article.content = a.body
@@ -94,16 +89,16 @@ module Feather
           
           
             # Add the tags, if present in the feed, and if the tagging plugin is active
-            if is_plugin_active("feather-tagging") && defined?(Tag) && defined?(Tagging) && article.respond_to?("tag_list=")
+            if is_plugin_active("feather-tagging") && defined?(Feather::Tag) && defined?(Feather::Tagging) && article.respond_to?("tag_list=")
               tags = []
               sections = []
             
               DataMapper.repository(:mephisto_database) do
-                taggings = MephistoTagging.all(:taggable_id => a.id)
-                tags = MephistoTag.all(:id => taggings.collect{|tg| tg.tag_id}.join(',')) unless taggings.empty? 
+                taggings = Feather::MephistoTagging.all(:taggable_id => a.id)
+                tags = Feather::MephistoTag.all(:id => taggings.collect{|tg| tg.tag_id}.join(',')) unless taggings.empty? 
             
-                assigned_sections = MephistoAssignedSection.all(:article_id => a.id)
-                sections = MephistoSection.all(:sections => assigned_sections.collect{|as| as.section_id}.join(',')) unless assigned_sections.empty?
+                assigned_sections = Feather::MephistoAssignedSection.all(:article_id => a.id)
+                sections = Feather::MephistoSection.all(:sections => assigned_sections.collect{|as| as.section_id}.join(',')) unless assigned_sections.empty?
               end
             
               article.tag_list = (tags.collect{|tag| tag.name} + sections.collect{|section| section.name}).compact.join(",")
@@ -126,14 +121,14 @@ module Feather
         # This processes the comments data
         def process_comments(mephisto_comments)
           # Ensure the comment plugin exists
-          raise "Unable to process comments: comment plugin not detected!" unless defined?(Comment)
+          raise "Unable to process comments: comment plugin not detected!" unless defined?(Feather::Comment)
           # Create an array to store the processed comments
           processed = []
        
           # Loop through them
           mephisto_comments.each do |c|
             # Create a new comment
-            comment = Comment.new
+            comment = Feather::Comment.new
           
             # Grab the information from the comment
             comment.comment = c.body
@@ -156,7 +151,6 @@ module Feather
           # Return the list of processed comments
           processed
         end
-
     end
   end
 end
