@@ -2,6 +2,6 @@ gem "builder"
 require "builder"
 require File.join(File.dirname(__FILE__), "controllers", "sitemaps")
 
-Merb::Router.prepend do |r|
+Feather::Hooks::Routing.register_route do |r|
   r.match("/sitemap.xml").to(:controller => "feather/sitemaps", :action => "index", :format => "xml")
 end

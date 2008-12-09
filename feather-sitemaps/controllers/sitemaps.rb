@@ -2,7 +2,7 @@ module Feather
   class Sitemaps < Application
     def index
       @articles = Feather::Article.all(:published => true, :order => [:published_at.desc])
-      xml = Builder::XmlMarkup.new
+      xml = ::Builder::XmlMarkup.new
       xml.instruct!
       if params[:format] == "xml"
         xml.urlset :xmlns => "http://www.sitemaps.org/schemas/sitemap/0.9",
