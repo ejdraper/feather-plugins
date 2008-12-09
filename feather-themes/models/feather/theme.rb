@@ -2,10 +2,13 @@ require 'fileutils'
 
 module Feather
   class Theme
-  
     attr_accessor :name, :author, :version, :url, :about
   
     attr_reader :path
+    
+    def errors
+      DataMapper::Validate::ValidationErrors.new
+    end
 
     def initialize(theme = nil)
       if theme
@@ -70,7 +73,6 @@ module Feather
       end
     
       def install(manifest_url)
-
         # Oh, that url seems to give us a manifest file
         # Let's get it
         manifest = YAML::load(Net::HTTP.get(URI.parse(manifest_url)))
@@ -102,7 +104,6 @@ module Feather
         object = new(manifest['name'])
         object.install_assets
         object
-
       end
     end
   end

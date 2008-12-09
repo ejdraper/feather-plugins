@@ -1,7 +1,7 @@
 require File.join(File.dirname(__FILE__), "controllers", "admin", "themes")
 require File.join(File.dirname(__FILE__), 'models', "feather", 'theme')
 
-Merb::Router.prepend do |r|
+Feather::Hooks::Routing.register_route do |r|
   r.match('/admin/themes/set_default').to(:controller => 'feather/admin/themes', :action => 'set_default')
   r.namespace "feather/admin", :path => "admin", :name_prefix => "admin" do
     r.resources :themes
@@ -28,4 +28,17 @@ module Feather
   end
 end
 
-Application.subclasses_list.each { |c| c.constantize.send(:include, Feather::Plugins::Themes::ApplicationMixin) }
+# Add a constantize method to string
+class String
+  def constantize
+    const = nil
+    self.split("::").each do |chunk|
+      const = const.nil? ? Object.const_get(chunk) : const.const_get(chunk)
+    end
+    const
+  rescue
+    nil
+  end
+end
+
+Feather::Application.subclasses_list.each { |c| c.constantize.send(:include, Feather::Plugins::Themes::ApplicationMixin) }
