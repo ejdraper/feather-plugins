@@ -1,10 +1,10 @@
 require "xmlrpc/client"
 require File.join(File.dirname(__FILE__), "controllers", "admin", "ping_logs")
 require File.join(File.dirname(__FILE__), "controllers", "admin", "ping_services")
-require File.join(File.dirname(__FILE__), "models", "admin", "ping_log")
-require File.join(File.dirname(__FILE__), "models", "admin", "ping_service")
+require File.join(File.dirname(__FILE__), "models", "feather", "ping_log")
+require File.join(File.dirname(__FILE__), "models", "feather", "ping_service")
 
-Merb::Router.prepend do |r|
+Feather::Hooks::Routing.register_route do |r|
   r.namespace "feather/admin", :path => "admin", :name_prefix => "admin" do
     r.resources :ping_logs
     r.resources :ping_services
