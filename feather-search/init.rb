@@ -1,7 +1,6 @@
 require File.join(File.dirname(__FILE__), "controllers", "search")
 
-include Merb::Cache::ControllerInstanceMethods
-Merb::Router.prepend do |r|
+Feather::Hooks::Routing.register_route do |r|
   r.match('/search').to(:controller => 'feather/search', :action =>'articles').name(:search)
 end
 

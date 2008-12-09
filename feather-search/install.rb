@@ -1,2 +1,0 @@
-include Merb::Cache::ControllerInstanceMethods
-expire_all_pages
