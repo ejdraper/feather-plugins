@@ -2,7 +2,7 @@ require File.join(File.dirname(__FILE__), "controllers", "redirector")
 require File.join(File.dirname(__FILE__), "controllers", "admin", "redirects")
 require File.join(File.dirname(__FILE__), "models", "feather", "redirect")
 
-Merb::Router.prepend do |r|
+Feather::Hooks::Routing.register_route do |r|
   # This deferred route allows redirects to be handled
   r.match("").defer_to do |request, path_match|
     unless (redirect = Feather::Redirect.find_by_from_url(request.uri.to_s.chomp("/"))).nil?

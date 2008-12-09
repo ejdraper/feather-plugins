@@ -2,7 +2,7 @@ module Feather
   class Redirect
     include DataMapper::Resource
   
-    property :id, Integer, :key => true
+    property :id, Integer, :serial => true
     property :from_url, String, :nullable => false, :length => 255
     property :to_url, String, :nullable => false, :length => 255
     property :permanent, Boolean

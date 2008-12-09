@@ -18,7 +18,7 @@ module Feather
         redirect["permanent"] = (redirect["permanent"] == "0" ? false : true)
         @redirect = Feather::Redirect.new(redirect)
         if @redirect.save
-          redirect url(:admin_redirect)
+          redirect url(:admin_redirect, @redirect)
         else
           render :new
         end
