@@ -20,9 +20,9 @@ require File.join(File.dirname(__FILE__), "models", "feather", "typo_tagging")
 
 Feather::Hooks::Routing.register_route do |r|
   r.namespace "feather/admin", :path => "admin", :name_prefix => "admin" do
-    r.resource :importer
-    r.resource :mephisto
-    r.resource :typo
+    r.resource :importer, :path => "admin/importer", :name_prefix => "admin", :controller => "admin/importers"
+    r.resource :mephisto, :path => "admin/mephisto", :name_prefix => "admin", :controller => "admin/mephistos"
+    r.resource :typo, :path => "admin/typo", :name_prefix => "admin", :controller => "admin/typos"
   end
 end
 

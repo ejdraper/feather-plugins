@@ -6,10 +6,10 @@ require File.join(File.dirname(__FILE__), "models", "feather", "comment")
 require File.join(File.dirname(__FILE__), "models", "feather", "comment_setting")
 
 Feather::Hooks::Routing.register_route do |r|
-  r.resources :comments, :controller => "feather/comments"
+  r.resources :comments, :controller => "comments"
   r.namespace "feather/admin", :path => "admin", :name_prefix => "admin" do
-    r.resources :comments
-    r.resource :comment_setting
+    r.resources :comments, :path => "admin/comments", :name_prefix => "admin", :controller => "admin/comments"
+    r.resource :comment_setting, :path => "admin/comment_setting", :name_prefix => "admin", :controller => "admin/comment_settings"
   end
 end
 

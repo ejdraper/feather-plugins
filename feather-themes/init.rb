@@ -2,9 +2,9 @@ require File.join(File.dirname(__FILE__), "controllers", "admin", "themes")
 require File.join(File.dirname(__FILE__), 'models', "feather", 'theme')
 
 Feather::Hooks::Routing.register_route do |r|
-  r.match('/admin/themes/set_default').to(:controller => 'feather/admin/themes', :action => 'set_default')
-  r.namespace "feather/admin", :path => "admin", :name_prefix => "admin" do
-    r.resources :themes
+  r.match('/admin/themes/set_default').to(:controller => 'admin/themes', :action => 'set_default')
+  r.namespace "admin", :path => "admin", :name_prefix => "admin" do
+    r.resources :themes, :path => "admin/themes", :name_prefix => "admin", :controller => "admin/themes"
   end
 end
 

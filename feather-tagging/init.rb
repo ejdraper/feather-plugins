@@ -13,8 +13,8 @@ Feather::Article.class_eval do
 end
 
 Feather::Hooks::Routing.register_route do |r|
-  r.match('/tags').to(:controller => 'feather/tags', :action => 'index').name(:tagindex)
-  r.match('/tag/:id').to(:controller => 'feather/tags', :action =>'show').name(:tag)
+  r.match('/tags').to(:controller => 'tags', :action => 'index').name(:tagindex)
+  r.match('/tag/:id').to(:controller => 'tags', :action =>'show').name(:tag)
 end
 
 Feather::Hooks::View.register_partial_view "article_form_fields", "tag_field"

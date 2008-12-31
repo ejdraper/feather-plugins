@@ -5,9 +5,9 @@ require File.join(File.dirname(__FILE__), "models", "feather", "ping_log")
 require File.join(File.dirname(__FILE__), "models", "feather", "ping_service")
 
 Feather::Hooks::Routing.register_route do |r|
-  r.namespace "feather/admin", :path => "admin", :name_prefix => "admin" do
-    r.resources :ping_logs
-    r.resources :ping_services
+  r.namespace "admin", :path => "admin", :name_prefix => "admin" do
+    r.resources :ping_logs, :path => "admin/ping_logs", :name_prefix => "admin", :controller => "admin/ping_logs"
+    r.resources :ping_services, :path => "admin/ping_services", :name_prefix => "admin", :controller => "admin/ping_services"
   end
 end
 
