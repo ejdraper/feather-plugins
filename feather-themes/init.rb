@@ -8,7 +8,7 @@ Feather::Hooks::Routing.register_route do |r|
   end
 end
 
-Merb.push_path(:themes, File.join(Merb.dir_for(:root), 'themes'), nil)
+Merb.push_path(:themes, File.join(Merb.dir_for(:root), 'app', 'themes'), nil)
 Feather::Hooks::Menu.add_menu_item "Themes", "/admin/themes"
 
 module Feather

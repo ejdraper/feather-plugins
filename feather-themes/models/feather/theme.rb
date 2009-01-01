@@ -99,7 +99,7 @@ module Feather
         # Download the package and untgz
         package = Net::HTTP.get(package_url)
         Archive::Tar::Minitar.unpack(Zlib::GzipReader.new(StringIO.new(package)), install_path)  
-      
+
         # Grab metadata from manifest
         object = new(manifest['name'])
         object.install_assets
