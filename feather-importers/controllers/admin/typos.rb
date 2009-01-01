@@ -64,7 +64,7 @@ module Feather
             d = DateTime.parse(a.published_at)
             article.published_at = d
             article.permalink = format_permalink(permalink_format,d,a.title)
-            article.user_id = self.current_user.id
+            article.user_id = session.user.id
           
             # Add the tags, if present in the feed, and if the tagging plugin is active
             if is_plugin_active("feather-tagging") && defined?(Feather::Tag) && defined?(Feather::Tagging) && article.respond_to?("tag_list=")

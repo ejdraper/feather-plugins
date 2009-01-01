@@ -85,7 +85,7 @@ module Feather
             article.published = "1"
             article.published_at = DateTime.now
             article.permalink = format_permalink(permalink_format,DateTime.now,a.title)
-            article.user_id = self.current_user.id
+            article.user_id = session.user.id
           
           
             # Add the tags, if present in the feed, and if the tagging plugin is active

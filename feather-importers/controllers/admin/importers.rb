@@ -36,7 +36,7 @@ module Feather
             article.published = "1"
             article.published_at = DateTime.parse((a/"pubdate").text)
             article.permalink = permalink
-            article.user_id = self.current_user.id
+            article.user_id = session.user.id
             # Add the tags, if present in the feed, and if the tagging plugin is active
             article.tag_list = (a/"category").collect { |c| c.children.first }.join(",") if is_plugin_active("feather-tagging") && defined?(Feather::Tag) && defined?(Feather::Tagging) && article.respond_to?("tag_list=") && (a/"category") && (a/"category").length > 0
             # Save the article
