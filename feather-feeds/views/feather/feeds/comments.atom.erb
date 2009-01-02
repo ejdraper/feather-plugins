@@ -19,7 +19,7 @@
         <author>
           <name><%= comment.name %></name>
         </author>
-        <content type="text"><%= render_text("default", comment.comment) %></content>
+        <content type="text"><%= escape_xml(render_text("default", comment.comment)) %></content>
       </entry>
     <% end %>
   <% end %>

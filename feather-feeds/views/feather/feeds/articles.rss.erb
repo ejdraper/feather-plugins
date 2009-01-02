@@ -12,7 +12,7 @@
     <item>
       <title><%= article.title %></title>
       <link><%= "http://#{request.host}#{article.permalink}" %></link>
-      <description><%= render_article(article) %></description>
+      <description><%= escape_xml(render_article(article)) %></description>
       <pubDate><%= rfc822(article.published_at) %></pubDate>
       <guid><%= "http://#{request.host}#{article.permalink}" %></guid>
       <dc:creator><%= article.user.name || article.user.login %></dc:creator>

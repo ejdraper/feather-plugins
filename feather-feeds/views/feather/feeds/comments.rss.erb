@@ -14,7 +14,7 @@
         <item>
           <title><%= "Re: #{article.title}" %></title>
           <link><%= "http://#{request.host}#{article.permalink}##{comment.id}" %></link>
-          <description><%= render_text("default", comment.comment) %></description>
+          <description><%= escape_xml(render_text("default", comment.comment)) %></description>
           <pubDate><%= rfc822(comment.created_at) %></pubDate>
           <guid><%= "http://#{request.host}#{article.permalink}##{comment.id}" %></guid>
           <dc:creator><%= comment.name %></dc:creator>

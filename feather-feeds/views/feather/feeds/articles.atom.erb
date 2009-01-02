@@ -17,7 +17,7 @@
       <author>
         <name><%= article.user.name || article.user.login %></name>
       </author>
-      <content type="html"><%= render_article(article) %></content>
+      <content type="html"><%= escape_xml(render_article(article)) %></content>
     </entry>
   <% end %>
 </feed>
