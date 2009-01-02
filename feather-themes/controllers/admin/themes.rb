@@ -5,6 +5,7 @@ module Feather
 
       def index
         @themes = Feather::Theme.all
+        @default_theme = Feather::PluginSetting.read('theme')
         display @themes
       end
     
