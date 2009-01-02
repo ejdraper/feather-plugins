@@ -9,8 +9,8 @@ Feather::Hooks::Routing.register_route do |r|
   end
 end
 
-#Feather::Hooks::View.register_partial_view "head", "feed_link"
-#Feather::Hooks::View.register_partial_view "sidebar", "feed_link"
+Feather::Hooks::View.register_partial_view "head", "feed_link"
+Feather::Hooks::View.register_partial_view "sidebar", "feed_link"
 
 Feather::Hooks::Menu.add_menu_item "Feed Settings", "/admin/feed_setting"
 
