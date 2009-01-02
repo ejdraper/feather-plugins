@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><%= Feather::Configuration.current.title %></title>
+  <% if Feather::Configuration.current.tag_line %>
+    <subtitle><%= Feather::Configuration.current.tag_line %></subtitle>
+  <% end %>
+  <link rel="self" href="<%= "http://#{request.host}#{request.uri}" %>"/>
+  <link href="<%= "http://#{request.host}" %>"/>
+  <updated><%= (@articles.any? ? @articles.first.published_at : DateTime.now).strftime("%Y-%m-%dT%H:%M:%SZ") %></updated>
+  <id><%= "http://#{request.host}#{request.uri}" %></id>
+  <% @articles.each do |article| %>
+    <entry>
+      <title><%= article.title %></title>
+      <link href="<%= "http://#{request.host}#{article.permalink}" %>"/>
+      <id><%= "http://#{request.host}#{article.permalink}" %></id>
+      <updated><%= article.published_at.strftime("%Y-%m-%dT%H:%M:%SZ") %></updated>
+      <author>
+        <name><%= article.user.name || article.user.login %></name>
+      </author>
+      <content type="html"><%= render_article(article) %></content>
+    </entry>
+  <% end %>
+</feed>

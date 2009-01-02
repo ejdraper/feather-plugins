@@ -1,2 +1,2 @@
-<link rel="alternate" type="application/rss+xml" title="<%= Feather::Configuration.current.title %> (RSS)" href="<%= feed_url(:rss) %>"/>
-<link rel="alternate" type="application/atom+xml" title="<%= Feather::Configuration.current.title %> (Atom)" href="<%= feed_url(:atom) %>"/>
+<link rel="alternate" type="application/rss+xml" title="<%= Feather::Configuration.current.title %> (RSS)" href="<%= url(:feeds, :action => :articles, :format => :rss) %>"/>
+<link rel="alternate" type="application/atom+xml" title="<%= Feather::Configuration.current.title %> (Atom)" href="<%= url(:feeds, :action => :articles, :format => :atom) %>"/>

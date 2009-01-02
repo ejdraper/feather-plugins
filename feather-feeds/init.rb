@@ -1,11 +1,6 @@
-gem "builder"
-require "builder"
 require File.join(File.dirname(__FILE__), "controllers", "feeds")
 require File.join(File.dirname(__FILE__), "controllers", "admin", "feed_settings")
-require File.join(File.dirname(__FILE__), "helpers", "global_helpers")
 require File.join(File.dirname(__FILE__), "models", "feather", "feed_setting")
-
-include Merb::GlobalHelpers
 
 Feather::Hooks::Routing.register_route do |r|
   r.match("/feeds/:action.:format").to(:controller => "feeds").name(:feeds)
@@ -14,8 +9,8 @@ Feather::Hooks::Routing.register_route do |r|
   end
 end
 
-Feather::Hooks::View.register_partial_view "head", "feed_link"
-Feather::Hooks::View.register_partial_view "sidebar", "feed_link"
+#Feather::Hooks::View.register_partial_view "head", "feed_link"
+#Feather::Hooks::View.register_partial_view "sidebar", "feed_link"
 
 Feather::Hooks::Menu.add_menu_item "Feed Settings", "/admin/feed_setting"
 

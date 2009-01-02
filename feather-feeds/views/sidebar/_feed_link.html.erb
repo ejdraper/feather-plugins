@@ -1,6 +1,5 @@
 <div id="feed-link">
   <h3>Syndicate</h3>
-  <!-- <= image_tag 'feed_icon.png' > -->
   Articles: (<%= link_to "RSS", url(:feeds, :action => :articles, :format => :rss) %>|<%= link_to "Atom", url(:feeds, :action => :articles, :format => :atom) %>)
   <br />
   <% if defined?(Feather::Comment) && is_plugin_active("feather-comments") %>

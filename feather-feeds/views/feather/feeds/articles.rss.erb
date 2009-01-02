@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title><%= Feather::Configuration.current.title %></title>
+    <atom:link rel="self" href="<%= "http://#{request.host}#{request.uri}" %>"/>
+    <link><%= "http://#{request.host}#{request.uri}" %></link>
+    <% if @articles.length > 0 %>
+      <pubDate><%= rfc822(@articles.first.published_at) %></pubDate>
+    <% end %>
+    <description><%= Feather::Configuration.current.tag_line %></description>
+    <% @articles.each do |article| %>
+    <item>
+      <title><%= article.title %></title>
+      <link><%= "http://#{request.host}#{article.permalink}" %></link>
+      <description><%= render_article(article) %></description>
+      <pubDate><%= rfc822(article.published_at) %></pubDate>
+      <guid><%= "http://#{request.host}#{article.permalink}" %></guid>
+      <dc:creator><%= article.user.name || article.user.login %></dc:creator>
+    </item>
+    <% end %>
+  </channel>
+</rss>
