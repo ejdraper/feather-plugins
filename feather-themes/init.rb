@@ -20,8 +20,12 @@ module Feather
         end
         
         def _theme_template_location(action, type = nil, controller = controller_name)
-          theme = Feather::PluginSetting.read('theme')
-          template = "#{theme}/views/#{controller}/#{action}.#{type}"
+          if Feather::Plugin.get("feather-themes").active
+            theme = Feather::PluginSetting.read('theme')
+            template = "#{theme}/views/#{controller}/#{action}.#{type}"
+          else
+            template = "views/#{controller}/#{action}.#{type}"
+          end
         end
       end
     end
