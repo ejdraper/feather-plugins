@@ -25,6 +25,12 @@ module Feather
     belongs_to :article  
     after :save, :fire_after_comment_event
     after :create, :set_create_activity
+    after :save, :expire_cache
+    
+    # This expires the article page that the comment belongs to
+    def expire_cache
+      Feather::Article.expire_article_page(self.article_id)
+    end
 
     def self.all_for_post(article_id, method = :all)
       self.send(method, {:article_id => article_id, :published => true, :order => [:created_at.asc]})
