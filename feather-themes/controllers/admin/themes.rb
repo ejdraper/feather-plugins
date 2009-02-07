@@ -17,6 +17,9 @@ module Feather
       def set_default
         if params[:default_theme] && Feather::Theme.get(params[:default_theme])
           Feather::PluginSetting.write('theme', params[:default_theme])
+          # Expire all pages as the theme has changed
+          Feather::Article.expire_article_index_page
+          Feather::Article.expire_article_pages
         end
         redirect url(:admin_themes)
       end
