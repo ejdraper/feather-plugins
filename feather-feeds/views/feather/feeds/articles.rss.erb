@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <title><%= Feather::Configuration.current.title %></title>
+    <title><%= Feather::Configuration.current[:title] %></title>
     <atom:link rel="self" href="<%= "http://#{request.host}#{request.uri}" %>"/>
     <link><%= "http://#{request.host}#{request.uri}" %></link>
     <% if @articles.length > 0 %>
       <pubDate><%= rfc822(@articles.first.published_at) %></pubDate>
     <% end %>
-    <description><%= Feather::Configuration.current.tag_line %></description>
+    <description><%= Feather::Configuration.current[:tag_line] %></description>
     <% @articles.each do |article| %>
     <item>
       <title><%= article.title %></title>
