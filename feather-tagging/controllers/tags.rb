@@ -3,6 +3,7 @@ module Feather
     include_plugin_views __FILE__
 
     def show(id)
+      @tags = Tag.all
       @tag = Tag.get(id)
       @tag = Tag.first(:conditions => {:name => id}) if @tag.nil?
       display @tag
