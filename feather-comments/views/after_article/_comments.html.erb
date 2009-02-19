@@ -7,7 +7,7 @@
 <% Feather::Comment.all_for_post(@article.id).each do |comment| %>
   <li id="comment-<%= comment.id %>" class="comment">
     <div class="author">
-      <cite><span class="author"><span><%= comment.website.blank? ? h(comment.name) : link_to(h(comment.name), comment.website) %></span></span></cite> – 
+      <cite><span class="author"><span><%= comment.website.blank? ? h(comment.name) : link_to(h(comment.name), comment.website, :rel => "nofollow") %></span></span></cite> – 
       <abbr title="<%= comment.created_at %>"><span class="date"><%= TZInfo::Timezone.get(@article.user.time_zone).utc_to_local(comment.created_at).strftime("%b %d %y @ %I:%M%p") %></span></abbr>
     </div>
     <div class="content">
