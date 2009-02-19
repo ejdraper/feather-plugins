@@ -10,8 +10,8 @@
 <% unless @tags.empty? %>
   <div style="margin-top: 20px">
     <h3>Tags</h3>
-    <% tag_cloud @tags, @taggings, %w(tag1 tag2 tag3 tag4 tag5) do |tag, css_class| %>
-      <%= link_to(tag.name, url(:tag, tag), :class => css_class) %>
+    <% tag_cloud @tags, @tagging, %w(tag1 tag2 tag3 tag4 tag5) do |tag, css_class| %>
+      <%= link_to(tag[:name], url(:tag, tag), :class => css_class) %>
     <% end %>
   </div>
 <% end %>

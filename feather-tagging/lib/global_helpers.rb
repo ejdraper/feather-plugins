@@ -5,16 +5,16 @@ module Merb
       max, min = 0, 0
       counter = {}
       taggings.each do |t|
-        counter[t.tag_id].nil? ? counter[t.tag_id] = 1 : counter[t.tag_id] += 1
+        counter[t[:tag_id]].nil? ? counter[t[:tag_id]] = 1 : counter[t[:tag_id]] += 1
       end
       tags.each do |t|
-        count = counter[t.id]
+        count = counter[t[:id]]
         max = count if count > max
         min = count if count < min
       end
       divisor = ((max - min) / classes.size) + 1
       tags.each do |t|
-        count = counter[t.id]
+        count = counter[t[:id]]
         yield t, classes[count / divisor] unless count == 0
       end
     end

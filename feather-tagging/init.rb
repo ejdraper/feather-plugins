@@ -25,10 +25,10 @@ Feather::Application.class_eval do
   
   def grab_tags
     @tags = Merb::Cache[:feather].fetch "#{Tag.name}" do
-      Tag.all
+      Tag.all.collect { |t| t.attributes }
     end
     @taggings = Merb::Cache[:feather].fetch "#{Tagging.name}" do
-      Tagging.all
+      Tagging.all.collect { |t| t.attributes }
     end
   end
 end
