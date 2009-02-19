@@ -4,7 +4,7 @@ module Feather
 
     def show(id)
       @tag = Tag.get(id)
-      @tag = Tag.first(:conditions => {:name => id}) if @tag.nil?
+      @tag = Tag.first(:conditions => {:name => CGI.unescape(id)}) if @tag.nil?
       display @tag
     end
 
