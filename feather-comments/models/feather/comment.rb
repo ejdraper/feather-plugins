@@ -13,9 +13,6 @@ module Feather
     property :email_address, String
     property :formatter, String, :default => "default"
     property :ip_address, String, :default => "127.0.0.1"
-    property :published, Boolean, :default => true
-    # Gotta have this lame dummy property for the negative captcha
-    property :notes, String
   
     belongs_to :article
 
@@ -26,6 +23,10 @@ module Feather
     after :save, :fire_after_comment_event
     after :create, :set_create_activity
     after :save, :expire_cache
+    after :destroy, :expire_cache
+    
+    # Dummy honeypot propery
+    attr_accessor :title
     
     # This expires the article page that the comment belongs to
     def expire_cache
@@ -33,7 +34,7 @@ module Feather
     end
 
     def self.all_for_post(article_id, method = :all)
-      self.send(method, {:article_id => article_id, :published => true, :order => [:created_at.asc]})
+      self.send(method, {:article_id => article_id, :order => [:created_at.asc]})
     end
 
     ##

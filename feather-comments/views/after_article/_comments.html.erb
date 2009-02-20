@@ -3,7 +3,6 @@
 </h5>
 <p><a href="#comment-form">Leave a response</a></p>
 <ol class="comments" id="comments">
-<!-- Put this in a partial. Actually I think we should reopen the article model, and stick in has_many :comments. do that. -->
 <% Feather::Comment.all_for_post(@article.id).each do |comment| %>
   <li id="comment-<%= comment.id %>" class="comment">
     <div class="author">
@@ -18,23 +17,13 @@
 </ol>
 <div>
   <%= form_for :comment, :action => url(:comments), :id => 'comment-form' do %>
-    <% if session[:comment_error] %>
-      <ul id="comment-errors">
-      	<% session[:comment_error].each do |err| %>
-          <li><%= err %></li>
-      	<% end %>
-      </ul>
-    	<% session[:comment_error] = nil %>
-    <% end %>
     <fieldset>
       <legend>Comment</legend>
       <%= hidden_field :name => "comment[article_id]", :value => @article.id %>
-	  <% if Feather::CommentSetting.current.negative_captcha %>
-	  	<%= text_field :name => "comment[notes]", :id => "comment_notes" %>
-	  	<script type="text/javascript">
-			document.getElementById('comment_notes').style.display = "none";
-	  	</script>
-	  <% end %>
+      <p class="comment_title">
+        <label for="comment_title" class="text">Title:</label>
+        <%= text_field :name => 'comment[title]', :size => 30, :id => 'comment_title' %>
+      </p>
       <p>
         <label for="comment_name" class="text">Name:</label>
         <%= text_field :name => 'comment[name]', :size => 30, :id => 'comment_name' %>
@@ -61,3 +50,6 @@
     </fieldset>
   <% end =%>
 </div>
+<style>
+  p.comment_title { display: none; }
+</style>
