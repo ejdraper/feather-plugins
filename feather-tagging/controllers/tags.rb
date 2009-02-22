@@ -3,8 +3,7 @@ module Feather
     include_plugin_views __FILE__
 
     def show(id)
-      @tag = Tag.get(id)
-      @tag = Tag.first(:conditions => {:name => CGI.unescape(id)}) if @tag.nil?
+      @tag = Tag.first(:conditions => {:name => id})
       display @tag
     end
 

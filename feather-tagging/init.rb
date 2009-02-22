@@ -25,11 +25,22 @@ Feather::Application.class_eval do
   
   def grab_tags
     @tags = Merb::Cache[:feather].fetch "#{Tag.name}" do
-      Tag.all.collect { |t| t.attributes }
+      Tag.all.collect { |t| t.attributes.merge(:display_name => t.display_name) }
     end
     @taggings = Merb::Cache[:feather].fetch "#{Tagging.name}" do
       Tagging.all.collect { |t| t.attributes }
     end
+  end
+end
+
+Tag.class_eval do
+  before :save, :no_spaces
+  def no_spaces
+    self.name.gsub!(" ", "-")
+  end
+  
+  def display_name
+    self.name.gsub("-", " ")
   end
 end
 

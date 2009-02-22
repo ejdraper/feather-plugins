@@ -7,7 +7,7 @@
 <% unless @tags.empty? %>
 <ul>
   <% @tags.each do |tag| %>
-    <li><%= tag[:name] %></li>
+    <li><%= tag[:display_name] %></li>
     <ul>
     <% Feather::Article.tagged_with(tag[:name]).each do |a| %>
       <li><%= link_to(a.title, a.permalink) %></li>
