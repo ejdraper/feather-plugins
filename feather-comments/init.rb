@@ -1,3 +1,8 @@
+$:.unshift(File.join(File.dirname(__FILE__), "vendor", "splam", "lib"))
+require 'splam'
+require 'splam/rule'
+require 'splam/rules'
+
 require File.join(File.dirname(__FILE__), "controllers", "admin", "comments")
 require File.join(File.dirname(__FILE__), "controllers", "comments")
 require File.join(File.dirname(__FILE__), "models", "feather", "comment")

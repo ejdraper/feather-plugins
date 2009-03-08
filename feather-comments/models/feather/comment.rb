@@ -1,6 +1,12 @@
 module Feather
   class Comment
     include DataMapper::Resource
+
+    include Splam
+    splammable :comment do |splam|
+      splam.threshold  = 40
+      splam.rules     = [:bad_words, :html, :bbcode, :href]
+    end
     
     is_paginated
   
