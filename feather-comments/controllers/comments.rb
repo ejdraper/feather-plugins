@@ -4,7 +4,7 @@ module Feather
       if params[:comment][:title].blank?
         @comment = Comment.new(params[:comment])
         @comment.ip_address = request.remote_ip
-        @comment.save unless @comment.splam?
+        @comment.save
         @article = Article[@comment.article_id]
       end
       redirect @article.nil? ? request.env["HTTP_REFERER"] : @article.permalink

@@ -24,6 +24,11 @@ module Feather
 
     validates_present :name, :comment, :article_id
 
+    before :save, :check_for_spam
+    def check_for_spam
+      throw :halt if self.splam?
+    end
+
     before :save, :prepend_http_if_needed
     belongs_to :article  
     after :save, :fire_after_comment_event
