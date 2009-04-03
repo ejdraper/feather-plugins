@@ -9,14 +9,15 @@
     <% end %>
     <description><%= Feather::Configuration.current[:tag_line] %></description>
     <% @articles.each do |article| %>
-    <item>
-      <title><%= article.title %></title>
-      <link><%= "http://#{request.host}#{article.permalink}" %></link>
-      <description><%= escape_xml(render_article(article)) %></description>
-      <pubDate><%= rfc822(article.published_at) %></pubDate>
-      <guid><%= "http://#{request.host}#{article.permalink}" %></guid>
-      <dc:creator><%= article.user.name || article.user.login %></dc:creator>
-    </item>
+      <% url = ::Feather.config[:path_prefix].empty? ? article.permalink : "/#{::Feather.config[:path_prefix]}#{article.permalink}" %>
+      <item>
+        <title><%= article.title %></title>
+        <link><%= "http://#{request.host}#{url}" %></link>
+        <description><%= escape_xml(render_article(article)) %></description>
+        <pubDate><%= rfc822(article.published_at) %></pubDate>
+        <guid><%= "http://#{request.host}#{url}" %></guid>
+        <dc:creator><%= article.user.name || article.user.login %></dc:creator>
+      </item>
     <% end %>
   </channel>
 </rss>

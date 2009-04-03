@@ -9,10 +9,11 @@
   <updated><%= (@articles.any? ? @articles.first.published_at : DateTime.now).strftime("%Y-%m-%dT%H:%M:%SZ") %></updated>
   <id><%= "http://#{request.host}#{request.uri}" %></id>
   <% @articles.each do |article| %>
+    <% url = ::Feather.config[:path_prefix].empty? ? article.permalink : "/#{::Feather.config[:path_prefix]}#{article.permalink}" %>
     <entry>
       <title><%= article.title %></title>
-      <link href="<%= "http://#{request.host}#{article.permalink}" %>"/>
-      <id><%= "http://#{request.host}#{article.permalink}" %></id>
+      <link href="<%= "http://#{request.host}#{url}" %>"/>
+      <id><%= "http://#{request.host}#{url}" %></id>
       <updated><%= article.published_at.strftime("%Y-%m-%dT%H:%M:%SZ") %></updated>
       <author>
         <name><%= article.user.name || article.user.login %></name>
