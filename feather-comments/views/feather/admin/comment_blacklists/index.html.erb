@@ -1,0 +1,26 @@
+<% throw_content :right do %>
+  <h4>View Comment Blacklist</h4>
+  <p>
+    This shows IP addresses that have been added to the comment blacklist for anti-spam purposes.
+  </p>
+  <p>
+    <%= link_to "View Comments", url(:admin_comments) %>
+  </p>
+<% end %>
+
+<h1>View Comment Blacklist</h1>
+
+<table class='tabular'>
+	<thead>
+  <tr>
+  	<th>IP address</th>
+  	<th>&nbsp;</th>
+  </tr>
+  </thead>
+  <% @comment_blacklists.each do |comment_blacklist| %>
+    <tr>
+    	<td><%= comment_blacklist.ip_address %></td>
+    	<td><%= link_to 'Delete', url(:delete_admin_comment_blacklist, comment_blacklist), {:method => :delete, :onclick => "return confirm('Are you sure you want to delete this comment blacklist entry (so that this IP can leave comments again)?')"} %></td>
+    </tr>
+  <% end %>
+</table>

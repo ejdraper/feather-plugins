@@ -28,6 +28,11 @@ module Feather
     def check_for_spam
       throw :halt if self.splam?
     end
+    
+    before :save, :check_for_blacklisted_ip_address
+    def check_for_blacklisted_ip_address
+      throw :halt if Feather::CommentBlacklist.is_blacklisted?(self.ip_address)
+    end
 
     before :save, :prepend_http_if_needed
     belongs_to :article  

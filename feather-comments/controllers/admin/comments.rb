@@ -19,6 +19,8 @@ module Feather
             Feather::Comment.all(:conditions => {:email_address => @comment.email_address}).each { |c| c.destroy }
             Feather::Comment.all(:conditions => {:website => @comment.website}).each { |c| c.destroy }
             Feather::Comment.all(:conditions => {:name => @comment.name}).each { |c| c.destroy }
+            # Add the IP address of the comment to the blacklist
+            Feather::CommentBlacklist.create!(:ip_address => @comment.ip_address)
           end
           # Now remove the comment itself
           @comment.destroy
