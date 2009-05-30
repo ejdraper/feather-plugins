@@ -11,10 +11,10 @@ Feather::Article.class_eval do
   include DataMapper::Tags
   has_tags
   
-  after :save, :update_tags
-  after :destroy, :update_tags
+  after :save, :update_cache
+  after :destroy, :update_cache
   
-  def update_tags
+  def update_cache
     Merb::Cache[:feather].delete "#{Tag.name}"
     Merb::Cache[:feather].delete "#{Tagging.name}"
   end
