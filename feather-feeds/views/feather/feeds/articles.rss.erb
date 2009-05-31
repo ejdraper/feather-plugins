@@ -17,6 +17,9 @@
         <pubDate><%= rfc822(article.published_at) %></pubDate>
         <guid><%= "http://#{request.host}#{url}" %></guid>
         <dc:creator><%= article.user.name || article.user.login %></dc:creator>
+        <% if article.respond_to?(:frozen_tag_list) && !article.frozen_tag_list.blank? %>
+        <category><%= article.frozen_tag_list %></category>
+        <% end %>
       </item>
     <% end %>
   </channel>

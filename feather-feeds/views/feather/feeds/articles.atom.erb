@@ -18,6 +18,11 @@
       <author>
         <name><%= article.user.name || article.user.login %></name>
       </author>
+      <% if article.respond_to?(:tag_list) && !article.tag_list.blank? %>
+      <% article.tag_list.each do |tag| %>
+      <category><%= tag %></category>
+      <% end %>
+      <% end %>
       <content type="html"><%= escape_xml(render_article(article)) %></content>
     </entry>
   <% end %>
